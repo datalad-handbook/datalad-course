@@ -1,0 +1,34 @@
+%file cartoon_dataladorg.svg
+
+# Disable ALL layers
+layers style=display:none
+
+layer label=background style=display:inline
+%save dataladorg01
+
+layer label=datalad.org style=display:inline
+%save dataladorg02
+
+layer label=crawl1 style=display:inline
+%save dataladorg03
+
+layer label=crawl2 style=display:inline
+%save dataladorg04
+
+layer label=crawl4 style=display:inline
+%save dataladorg05
+
+layer label=crawl4 style=display:none
+layer label=crawl5 style=display:inline
+%save dataladorg06
+
+layer label=crawl5 style=display:none
+layer label:re=user_db.* style=display:inline
+%save dataladorg07
+
+layer label=user_db_flow style=display:none
+layer label=peer2peer style=display:inline
+%save dataladorg08
+
+layers style=display:inline
+%save dataladorg09

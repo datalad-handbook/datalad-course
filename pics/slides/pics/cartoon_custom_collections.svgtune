@@ -1,0 +1,21 @@
+%file cartoon_custom_collections.svg
+
+# Disable ALL layers
+layers style=display:none
+
+layer label=background style=display:inline
+layer label:re=collections.* style=display:inline
+layer label=datalad.org style=display:inline
+%save custom01
+
+layer label=consume_flow style=display:inline
+layer label=collections_flow style=display:none
+%save custom02
+
+layer label=consume_flow style=display:none
+layer label:re=user_db.* style=display:inline
+%save custom03
+
+layer label=user_db_flow style=display:none
+layer label=peer2peer style=display:inline
+%save custom04

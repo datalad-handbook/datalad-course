@@ -1,0 +1,118 @@
+%file cartoon_collaboration.svg
+
+# Disable ALL layers
+layers style=display:none
+
+layer label=background style=display:inline
+layer label:re=^localhost.* style=display:inline
+%save collaboration01
+
+layer label=dimmer2 style=display:inline
+layer label=local_handle1 style=display:inline
+layer label=local_collection style=display:inline
+layer label=local_collection_import style=display:inline
+%save collaboration02
+
+layer label=local_handle1_content style=display:inline
+%save collaboration03
+
+layer label=local_collection_import style=display:none
+layer label=serverA style=display:inline
+layer label=publish1_flow1 style=display:inline
+%save collaboration04
+
+layer label=master_collection style=display:inline
+layer label=publish1_flow2 style=display:inline
+layer label=publish1_flow1 style=display:none
+%save collaboration05
+
+layer label=dimmer2 style=display:none
+layer label=master_collection2 style=display:inline
+layer label=publish1_flow2 style=display:none
+layer label=register2_flow1 style=display:inline
+%save collaboration06
+
+layer label=register2_flow1 style=display:none
+layer label=register2_flow2 style=display:inline
+layer label=local_collection2 style=display:inline
+layer label=local_handle2 style=display:inline
+layer label=local_handle2_content_empty style=display:inline
+%save collaboration07
+
+layer label=register2_flow2 style=display:none
+layer label=register2_flow3 style=display:inline
+layer label=local_handle2_content style=display:inline
+%save collaboration08
+
+layer label=register2_flow3 style=display:none
+%save collaboration09
+
+layer label=serverB style=display:inline
+layer label=publish2_flow1 style=display:inline
+%save collaboration10
+
+layer label=server_labels style=display:inline
+layer label=master_collection2_ds2 style=display:inline
+layer label=publish2_flow1 style=display:none
+layer label=publish2_flow2 style=display:inline
+%save collaboration11
+
+layer label=publish2_flow2 style=display:none
+layer label=register1_flow1 style=display:inline
+layer label=master_collection_ds2 style=display:inline
+%save collaboration12
+
+layer label:re=.*flow.* style=display:inline
+%save collaboration13
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

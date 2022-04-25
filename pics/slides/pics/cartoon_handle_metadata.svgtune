@@ -1,0 +1,35 @@
+%file cartoon_handle_metadata.svg
+
+# Disable ALL layers
+layers style=display:none
+
+layer label=background style=display:inline
+layer label=question style=display:inline
+layer label=person style=display:inline
+%save handle_metadata01
+
+layer label=localhost style=display:inline
+layer label=master_collection style=display:inline
+layer label=long_arrow style=display:inline
+layer label=db_arrow style=display:inline
+layer label:re=db_label.* style=display:inline
+%save handle_metadata02
+
+layer label=question style=display:none
+layer label:re=.*_arrow style=display:none
+layer label=transit_handle style=display:inline
+layer label=local_handle_empty style=display:inline
+%save handle_metadata03
+
+layer label=transit_handle style=display:none
+layer label=local_collection style=display:inline
+layer label=local_collection_import style=display:inline
+%save handle_metadata04
+
+layer label=local_collection_import style=display:none
+layer label=question style=display:inline
+layer label=arrow style=display:inline
+%save handle_metadata05
+
+layer label=dimmer style=display:inline
+%save handle_metadata06

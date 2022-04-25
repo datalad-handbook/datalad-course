@@ -1,0 +1,24 @@
+%file cartoon_handle_collections.svg
+
+# Disable ALL layers
+layers style=display:none
+
+layer label=background style=display:inline
+layer label=person style=display:inline
+%save handle_collections01
+
+layer label=db_arrow style=display:inline
+layer label=master_collection_db1 style=display:inline
+layer label=master_collection style=display:inline
+layer label=localhost style=display:inline
+%save handle_collections02
+
+layer label=db_arrow style=display:none
+layer label=db_arrow2 style=display:inline
+layer label=master_collection_db2 style=display:inline
+%save handle_collections03
+
+layer label:re=db_arrow.* style=display:none
+layer label=arrow style=display:inline
+layer label=question style=display:inline
+%save handle_collections04

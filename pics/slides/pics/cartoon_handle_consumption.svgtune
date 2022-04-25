@@ -1,0 +1,71 @@
+%file cartoon_handle_consumption.svg
+
+# Disable ALL layers
+layers style=display:none
+
+layer label=background style=display:inline
+layer label=person style=display:inline
+%save dl_download_ds01
+
+layer label=transit_handle style=display:inline
+layer label=arrow style=display:inline
+%save dl_download_ds02
+
+layer label=transit_handle style=display:none
+layer label=arrow style=display:none
+layer label=localhost style=display:inline
+layer label=local_handle_empty style=display:inline
+%save dl_download_ds03
+
+layer label=arrow style=display:inline
+%save dl_download_ds04
+
+layer label=transit_file1 style=display:inline
+layer label=file_with_content style=display:inline
+%save dl_download_ds05
+
+layer label=arrow style=display:none
+layer label=person style=display:none
+layer label=transit_file1 style=display:none
+layer label=file_content1 style=display:inline
+layer label=file_link1 style=display:inline
+%save dl_download_ds06
+
+layer label=base_versions style=display:inline
+%save dl_download_ds07
+
+layer label:re=update_db_version.* style=display:inline
+%save dl_download_ds08
+
+layer label=update_db_version_highlight style=display:none
+layer label=arrow style=display:inline
+layer label=transit_handle style=display:inline
+layer label=fetched_handle style=display:inline
+%save dl_download_ds09
+
+layer label=arrow style=display:none
+layer label=transit_handle style=display:none
+layer label=file_link1 style=display:none
+layer label=fetched_handle style=display:none
+layer label=file_with_content style=display:none
+layer label=v2_checkout style=display:inline
+%save dl_download_ds10
+
+layer label=file_with_content style=display:inline
+layer label=file_link2 style=display:inline
+layer label=arrow style=display:inline
+layer label=file_content2 style=display:inline
+layer label=transit_file2 style=display:inline
+%save dl_download_ds11
+
+layer label=arrow style=display:none
+layer label=transit_file2 style=display:none
+%save dl_download_ds12
+
+layer label=file_link2 style=display:none
+layer label=v2_checkout style=display:none
+layer label=fetched_handle style=display:inline
+layer label=file_link1 style=display:inline
+%save dl_download_ds13
+
+

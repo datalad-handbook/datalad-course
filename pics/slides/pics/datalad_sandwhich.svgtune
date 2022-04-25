@@ -1,0 +1,17 @@
+%file datalad_sandwhich.svg
+
+# Disable ALL layers
+layers style=display:none
+
+layer label=datalad style=display:inline
+%save sandwhich01
+
+layer label=git style=display:inline
+%save sandwhich02
+
+layer label=annex style=display:inline
+%save sandwhich03
+
+layer label=rdf style=display:inline
+%save sandwhich04
+
