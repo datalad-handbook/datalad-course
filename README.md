@@ -28,12 +28,13 @@ Note that ``cast_live`` may configure your keyboard layout to ``en-us``. If you 
 # in the root dataset:
 npm install
 # to create a local npm server that automatically refreshes presentations
-npm serve
+npm start
 ``` 
 - A reliable method to export PDFs from a running npm server is ``decktape``. To generate PDFs from HTML run
 ```
-docker run --rm -t --net=host -v `pwd`:/slides astefanutti/decktape http://localhost:8000 slides.pdf -s  1024x768
+docker run --rm -t --net=host -v `pwd`:/slides astefanutti/decktape http://localhost:8000/html/<presentation-of-your-choice.html> slides.pdf -s  1024x768
 ```
+- More options, e.g., exports of individual slide screenshots, are in decktape's [documentation](https://github.com/astefanutti/decktape)
 - The tool [directpoll](https://directpoll.com/) works fantastic for virtual talks. See [#34](https://github.com/datalad-handbook/course/issues/34) or the template talk for info on how to use it
 - We have made good experiences with live code demonstrations. The ``tools/cast_live`` script is used for this. It is highly advised to test whether this script works on your set-up beforehand! 
 
