@@ -469,6 +469,83 @@ nothing to save, working tree clean</code></pre>
         More info: Chapter on <a href="http://handbook.datalad.org/en/latest/basics/basics-thirdparty.html" target="_blank">
             Third party infrastructure</a>.</small>
 </section>
+
+</section>
+
+<section>
+  <section data-transition="None">
+    <h2>Prerequisites: Terminal</h2>
+      <ul>
+          <div>
+          <li>DataLad can be used from the command line</li>
+          <pre><code>datalad create mydataset</code></pre></div>
+          <div class="fragment fade-in">
+          <li>... or with its Python API</li>
+          <pre><code class="python">import datalad.api as dl
+dl.create(path="mydataset")</code></pre></div>
+          <div class="fragment fade-in">
+          <li>... and other programming languages can use it via system call</li>
+          <pre><code class="python"># in R
+> system("datalad create mydataset")
+</code></pre></div>
+          <br><br>
+      </ul>
+  </section>
+
+  <section data-transition="None">
+    <h2>Prerequisites: Terminal</h2>
+      <iframe src="https://directpoll.com/r?XDbzPBdEt8j1rJlVwV5I4m6c9z8nJU2YLnRe3j3k",
+              style="border: 0" width="900" height="800"></iframe>
+      <p><a href="https://datalad-hub.inm7.de" target="_blank">
+          datalad-hub.inm7.de</a></p>
+  </section>
+
+  <section data-transition="None">
+    <h2>Prerequisites: Installation and Configuration</h2>
+          <ul style="font-size:30px">
+          <li  data-fragment-index="1" class="fragment fade-in">Your installed version of DataLad should be at least 0.16</li>
+          <pre class="fragment fade-in" data-fragment-index="1"><code data-fragment-index="1" class="fragment fade-in">datalad --version
+0.17.1</code></pre>
+
+          <li data-fragment-index="2" class="fragment fade-in">DataLad relies on Git to create a revision history with detailed information on
+              what was changes, when, and how. Therefore, you should tell Git who you are and
+              configure a Git identity (name and email)</li>
+          <pre data-fragment-index="2" class="fragment fade-in"><code data-fragment-index="2" class="fragment fade-in" class="bash">$ git config --list
+user.name=Adina Wagner
+user.email=adina.wagner@t-online.de
+[...]
+</code></pre>
+      <li data-fragment-index="3" class="fragment fade-in">Set a Git identity using
+          <pre data-fragment-index="3" class="fragment fade-in"><code data-fragment-index="3" class="fragment fade-in">$ git config set --global user.name "Adina Wagner"
+$ git config set --global user.email "adina.wagner@t-online.de"</code></pre>
+          Find installation and configuration
+      instructions at <a href="http://handbook.datalad.org/en/latest/intro/installation.html" target="_blank">
+              handbook.datalad.org</a> </li></ul>
+  </section>
+
+  <section data-transition="None">
+      <h2>Prerequisites: Using DataLad</h2>
+      <ul style="font-size:30px">
+          <li class="fragment fade-in">Every DataLad command consists of a main
+              command followed by a sub-command. The main and the sub-command can have options.
+              <img src="../pics/command-structure.png">
+          </li>
+          <li class="fragment fade-in"> Example (main command, subcommand, several subcommand options):
+              <pre><code>$ datalad save -m "Saving changes" --recursive </code></pre>
+          </li>
+          <li class="fragment fade-in">Use <em>--help</em> to find out more about any (sub)command
+              and its options, including detailed description and examples (<em>q</em> to close). Use <em>-h</em> to get a short
+          overview of all options
+          <pre><code>$ datalad save -h
+      Usage: datalad save [-h] [-m MESSAGE] [-d DATASET] [-t ID] [-r] [-R LEVELS]
+                    [-u] [-F MESSAGE_FILE] [--to-git] [-J NJOBS] [--amend]
+                    [--version]
+                    [PATH ...]
+
+Use '--help' to get more comprehensive information.
+          </code></pre></li>
+      </ul>
+  </section>
 </section>
 
 <section>
