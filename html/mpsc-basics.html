@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<!-- Edit me start! -->
-		<title>This is where your title goes</title>
+		<title>DataLad Basics</title>
 		<meta name="description" content=" This is where you put a short description ">
 		<meta name="author" content=" Your Name ">
 		<!-- Edit me end! -->
@@ -27,14 +27,28 @@
 <section>
 <script src="https://cdn.logwork.com/widget/countdown.js"></script>
 <a href="https://logwork.com/countdown-2zu8" class="countdown-timer"
-   data-style="columns" data-timezone="Europe/Berlin" data-date="2022-04-21 09:45">
-   "Motivation & Basics of version control" starts in </a>
+   data-style="columns" data-timezone="Europe/Berlin" data-date="2022-07-21 09:45">
+   Up next: DataLad Basics </a>
 </section>
 </section>
 
 <section>
 
+  <section>
+      <h2>Your turn</h2>
+      Try your hands on the following tasks: <br><br>
+      <ul>
+          <li><strong>Create</strong> a dataset, add a file,
+              and <strong>save</strong> the file with a <strong>commit message</strong></li>
+          <li><strong>Download</strong> a file from the web with provenance capture</li>
+          <li>Copy a file into your dataset, but don't save it.
+              Find out how to look at <strong>differences</strong> between particular states
+              of the dataset</li>
+      <br>
+          Use the Jupyterhub (<a href="https://datalad-hub.inm7.de" target="_blank">datalad-hub.inm7.de</a>) or your own system to experiment
+      </ul>
 
+  </section>
   <section>
       <h2>DataLad Datasets</h2>
 
@@ -478,11 +492,11 @@ D.Barber-Bayesian_Reasoning_and_Machine_Learning.pdf
 [...]</code></pre>
           <li  class="fragment fade-in-then-semi-out"> retrieve annexed file's contents on demand:</li>
   <pre class="fragment fade-in"><code>$ datalad get A.Shashua-Introduction_to_Machine_Learning.pdf
-  get(ok): /tmp/machinelearning-books/A.Shashua-Introduction_to_Machine_Learning.pdf (file) [from web...]</code></pre>
+  get(ok): /tmp/machinelearning-books/A.Shashua-....pdf (file) [from web...]</code></pre>
   <li  class="fragment fade-in-then-semi-out"> Drop annexed file's contents when done:</li>
 
   <pre class="fragment fade-in-then-semi-out"><code>$ datalad drop A.Shashua-Introduction_to_Machine_Learning.pdf
-  drop(ok): /tmp/machinelearning-books/A.Shashua-Introduction_to_Machine_Learning.pdf (file) [checking https://arxiv.org/pdf/0904.3664v1.pdf...]</code></pre>
+  drop(ok): /tmp/machinelearning-books/A.Shashua-....pdf (file) [checking https://arxiv.org/pdf/0904.3664v1.pdf...]</code></pre>
       </ul>
   <aside class="notes">
   Idea behind datalad: Enable a similar level of tooling and culture for the distribution and version control of data as it is present for open source software development
