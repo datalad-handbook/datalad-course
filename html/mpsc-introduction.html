@@ -486,21 +486,53 @@ dl.create(path="mydataset")</code></pre></div>
           <li  data-fragment-index="1" class="fragment fade-in">Your installed version of DataLad should be at least 0.16</li>
           <pre class="fragment fade-in" data-fragment-index="1"><code data-fragment-index="1" class="fragment fade-in">datalad --version
 0.17.2</code></pre>
-
-          <li data-fragment-index="2" class="fragment fade-in">DataLad relies on Git to create a revision history with detailed information on
+            <table>
+                <li data-fragment-index="2" class="fragment fade-in">DataLad relies on Git to create a revision history with detailed information on
               what was changes, when, and how. Therefore, you should tell Git who you are and
-              configure a Git identity (name and email)</li>
-          <pre data-fragment-index="2" class="fragment fade-in"><code data-fragment-index="2" class="fragment fade-in" class="bash">$ git config --list
-user.name=Adina Wagner
-user.email=adina.wagner@t-online.de
-[...]
+              configure a Git identity (name and email). Find out if an identity is set
+                by running either of:</li>
+                <tr>
+                    <td>
+<pre data-fragment-index="2" class="fragment fade-in"><code data-fragment-index="2" class="fragment fade-in" class="bash">$ git config --get user.name
+Adina Wagner
+$ git config --get user.email
+adina.wagner@t-online.de                               .
 </code></pre>
-      <li data-fragment-index="3" class="fragment fade-in">Set a Git identity using
-          <pre data-fragment-index="3" class="fragment fade-in"><code data-fragment-index="3" class="fragment fade-in">$ git config set --global user.name "Adina Wagner"
-$ git config set --global user.email "adina.wagner@t-online.de"</code></pre>
-          Find installation and configuration
+                    </td>
+                    <td>
+<pre data-fragment-index="2" class="fragment fade-in"><code data-fragment-index="2" class="fragment fade-in" class="bash">$ datalad configuration get user.name user.email
+Adina Wagner
+adina.wagner@t-online.de
+                                                       .
+</code></pre>
+                    </td>
+                </tr>
+            </table>
+
+      <li data-fragment-index="3" class="fragment fade-in">Set a Git identity using either of
+          <table>
+              <tr>
+                  <td>
+<pre data-fragment-index="3" class="fragment fade-in"><code data-fragment-index="3" class="fragment fade-in">$ git config set --global \
+  user.name "Adina Wagner"
+$ git config set --global \
+  user.email "adina.wagner@t-online.de"                    .</code></pre>
+                  </td>
+                  <td>
+<pre data-fragment-index="3" class="fragment fade-in"><code data-fragment-index="3" class="fragment fade-in">$ datalad configuration --scope global \
+  set user.name="Adina Wagner"
+$ datalad configuration --scope global \
+  set user.email="adina.wagner@t-online.de"                     .</code></pre>
+                  </td>
+              </tr>
+          </table>
+              <li  data-fragment-index="4" class="fragment fade-in">Allow brand-new DataLad functionality:
+<pre><code>datalad configuration --scope global set datalad.extensions.load=next</code></pre>          </li>
+
+          <small>Find installation and configuration
       instructions at <a href="http://handbook.datalad.org/en/latest/intro/installation.html" target="_blank">
-              handbook.datalad.org</a> </li></ul>
+              handbook.datalad.org</a></small>
+          </ul>
   </section>
 
   <section data-transition="None">
