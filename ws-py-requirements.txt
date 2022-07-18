@@ -1,0 +1,13 @@
+# This file contains additional Python software to recreate the workshop
+# software environments we provide via JupyterHub. It expects that you already
+# have datalad installed. Use this file by running
+#
+# $ pip install -r ws-requirements.txt
+#,
+datalad-container
+datalad-next
+datalad-osf
+pillow
+pandas
+seaborn
+pandoc
