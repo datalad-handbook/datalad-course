@@ -566,6 +566,159 @@ Use '--help' to get more comprehensive information.
 </section>
 
 <section>
+<section data-markdown><script type="text/template">
+If everything is important...
+
+...track everything!
+</script></section>
+
+<section data-markdown><script type="text/template">
+![](../pics/datalad_logo_wide.svg)<!-- .element: height="600" -->
+http://datalad.org<!-- .element: style="margin-left:800px" -->
+
+<aside class="notes">
+But let's not talk about it, and only talk about feature and example implementations in DataLad
+</aside>
+</script>
+</section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive tracking of research components
+![](../pics/vamp_0_start.png)<!-- .element: width="100%" -->
+Well-structured datasets (using community standards), and portable computational environments &mdash; and their evolution &mdash; are the precondition for reproducibility
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# turn any directory into a dataset
+# with version control
+
+% datalad create &lt;directory&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# save a new state of a dataset with
+# file content of any size
+
+% datalad save
+</pre></code>
+</td></tr></table>
+Note:
+- link to prev. statements on description standards
+- your community could be really small (your lab), when data are precious resources
+will be spent to understand it, but information must be capture to make this possible
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Capture computational provenance
+![](../pics/vamp_1_provcapture.png)<!-- .element: width="100%" -->
+Which data was needed at which version, as input into which code, running with what parameterization in which
+computional environment, to generate an outcome?
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# execute any command and capture its output
+# while recording all input versions too
+
+% datalad run --input ... --output ... &lt;command&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+The missing link: even when everything is shared, we still don't know how to start.
+README is minimum, but executable prov-records are much better.
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive capture enables portability
+![](../pics/vamp_2_pushtocloud.png)<!-- .element: width="100%" -->
+Precise identification of data and computational environments, combined for provenance records form a comprehensive and portable data structure, capturing all aspects of an investigation.
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# transfer data and metadata to other sites and services
+# with fine-grained access control for dataset components
+
+% datalad push --to &lt;site-or-service&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+Does it fly? Can you give it to someone? Or can you take it with you to your new lab?
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Reproducibility strengthens trust
+![](../pics/vamp_3_reproduce.png)<!-- .element: width="100%" -->
+Outcomes of computational transformations can be validated by authorized 3rd-parties. This enables audits, promotes accountability, and streamlines automated "upgrades" of outputs
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# obtain dataset (initially only identity,
+# availability, and provenance metadata)
+
+% datalad clone &lt;url&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# immediately actionable provenance records
+# full abstraction of input data retrieval
+
+% datalad rerun &lt;commit|tag|range&gt;
+</pre></code>
+</td></tr></table>
+Note:
+Goal is automated reproducibility, enables assessment of robustness and benchmarking algorithmic developments
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Ultimate goal: (re-)usability
+![](../pics/vamp_4_reuse.png)<!-- .element: width="100%" -->
+Verifiable, portable, self-contained data structures that track all aspects of an investigation exhaustively can be (re-)used as modular components in larger contexts &mdash; propagating their traits
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# declare a dependency on another dataset and
+# re-use it a particular state in a new context
+
+% datalad clone -d &lt;superdataset&gt; &lt;url&gt; &lt;path-in-dataset&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+With these in place, re-usability is a small(er) step
+</script></section>
+
+<section data-markdown><script type="text/template">
+## DataLad: Manage (co-)evolution of digital objects
+![](../pics/yoda_decentralized_publishing.png)<!-- .element: width="900" style="margin-bottom:-70px;margin-top:-20px" -->
+
+Consume, create, curate, analyze, publish, and query data with full provenance capture and "universal" metadata support.
+<p style="font-size:70%;margin-top:-20px">
+DataLad is free and open source (MIT-licensed). http://datalad.org
+</p>
+
+<note>
+Halchenko, Meyer, Poldrack, ... & Hanke, M. (2021).
+DataLad: distributed system for joint management of code, data, and their relationship.
+Journal of Open Source Software, 6(63), 3262.
+</note>
+Note:
+- following illustrations contain concrete implementation with datalad
+- Software developed to address the needs of long-term maintenance and collab on the stufyforrest dataset
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Let's try...
+</script></section>
+</section>
+
+
+<section>
     <section>
         <h1>Backup</h1>
     </section>
