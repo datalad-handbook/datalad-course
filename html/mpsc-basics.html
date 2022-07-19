@@ -34,20 +34,32 @@
 
 <section>
 
-  <section>
-      <h2>Your turn</h2>
-      Try your hands on the following tasks: <br><br>
-      <ul>
-          <li><strong>Create</strong> a dataset, add a file,
-              and <strong>save</strong> the file with a <strong>commit message</strong></li>
-          <li><strong>Download</strong> a file from the web with provenance capture</li>
-          <li>Copy a file into your dataset, but don't save it.
-              Find out how to look at <strong>differences</strong> between particular states
-              of the dataset</li>
-      <br>
-          Use the Jupyterhub (<a href="https://datalad-hub.inm7.de" target="_blank">datalad-hub.inm7.de</a>) or your own system to experiment
-      </ul>
-  </section>
+<section data-markdown><script type="text/template">
+## Your turn!
+
+Use what you already know about how and where to get help to complete these challenges
+on https://datalad-hub.inm7.de or on your own system:
+<!-- .element: style="text-align:left" -->
+
+1. **Create** dataset, add a file with the content "abc". Check the **status**
+   of the dataset. Now **save** the dataset with a **commit message**. Check the
+   status again.
+
+2. **Create** a different dataset *outside* the first one.
+
+3. **Clone** the first dataset into the second under the name "input".
+
+4. Use datalad to capture the provenance of a data transformation that converts
+   the content of the file created at (1) to all-uppercase and saves it in the dataset
+   from (2). Hint the command
+   ```
+   sh -c 'tr "a-z" "A-Z" < inputpath > outputpath'
+   ```
+   can convert text in this fashion.
+
+5. Check the **status** of the dataset. Now let DataLad show you the change
+   to the dataset that running the `tr` command made.
+</script></section>
 </section>
 
 <section>
