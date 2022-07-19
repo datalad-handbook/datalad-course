@@ -33,6 +33,109 @@
 </section>
 
 <section>
+
+    <section data-markdown style="font-size:30px"><script type="text/template">
+## Dataset management for Reproducibility & Reusability
+<small>Read more at <a href="https://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.htmlhttps://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.html" target="_blank">
+            psychoinformatics-de.github.io/rdm-course/04-dataset-management
+        </a> </small>
+![](../pics/dataset_modules.png)
+
+When setting up data analyses...
+- Create MODULAR datasets: Whenever a particular collection of files could anyhow be useful in more than one context (e.g. data), put them in their own dataset, and install it as a subdataset. <!-- .element: class="fragment fade-in-then-semi-out" -->
+- Keep everything STRUCTURED: Bundle all components of one analysis into one superdataset, and within this dataset, separate code, data, output, execution environments.<!-- .element: class="fragment fade-in-then-semi-out" -->
+- Keep a dataset SELF-CONTAINED with relative paths in scripts to subdatasets or files.
+  Do not use absolute paths.<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+    </script>
+</section>
+
+  <section data-transition="None">
+      <h2>Why Modularity?</h2>
+
+      <ul style="font-size:30px">
+          <li>1. Reuse and access management</li>
+              <img src="../pics/ukb_datasets.svg" height="500px">
+
+          </li>
+          <li class="fragment fade-in" data-fragment-index="1">2. Scalability</li>
+          <pre  class="fragment fade-in" data-fragment-index="1"><code class="fragment fade-in" data-fragment-index="1">adina@bulk1 in /ds/hcp/super on git:master❱ datalad status --annex -r
+  15530572 annex'd files (77.9 TB recorded total size)
+  nothing to save, working tree clean</code></pre>
+          <small  class="fragment fade-in" data-fragment-index="1"><a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank">(github.com/datalad-datasets/human-connectome-project-openaccess)</a></small>
+      </ul>
+
+  </section>
+
+<section style="font-size:30px" data-transition="None">
+<h2>Why Modularity?</h2>
+    <ul>
+        <li>3. Transparency</li><br>
+
+Original:
+<pre><code class="sh" style="max-height:none" data-trim>
+/dataset
+├── sample1
+│   └── a001.dat
+├── sample2
+│   └── a001.dat
+...
+</code></pre>
+<div class="fragment">
+Without modularity, after applied transform (preprocessing, analysis, ...):
+<pre><code class="sh" style="max-height:none" data-trim>
+/dataset
+├── sample1
+│   ├── ps34t.dat
+│   └── a001.dat
+├── sample2
+│   ├── ps34t.dat
+│   └── a001.dat
+...
+</code></pre>
+Without expert/domain knowledge, no distinction between original and derived data
+    possible.
+</div>
+        </ul>
+</section>
+
+
+<section  style="font-size:30px" data-transition="None">
+<h2>Why Modularity?</h2>
+    <ul>
+        <li>3. Transparency</li><br>
+
+Original:
+<pre><code class="sh" style="max-height:none" data-trim>
+/raw_dataset
+├── sample1
+│   └── a001.dat
+├── sample2
+│   └── a001.dat
+...
+</code></pre>
+        <strong>With modularity</strong> after applied transform (preprocessing, analysis, ...)
+<pre><code class="sh" style="max-height:none" data-trim>
+/derived_dataset
+├── sample1
+│   └── ps34t.dat
+├── sample2
+│   └── ps34t.dat
+├── ...
+└── inputs
+    └── raw
+        ├── sample1
+        │   └── a001.dat
+        ├── sample2
+        │   └── a001.dat
+        ...
+</code></pre>
+Clearer separation of semantics, through use of pristine version of original dataset within a
+        <em>new, additional</em> dataset holding the outputs.</ul>
+
+</section>
+
+
 <section>
     <h2>A machine-learning example</h2>
 
