@@ -3,6 +3,28 @@
 This repository contains the raw sources for talks and workshops on DataLad.
 Its content is based on the [DataLad handbook](http://handbook.datalad.org), and its technical backbone is [reveal.js](https://github.com/hakimel/reveal.js/).
 
+You can find a rendered version of the slides at [datasets.datalad.org/datalad/datalad-course/html](http://datasets.datalad.org/datalad/datalad-course/html/).
+
+### Code-along software setup for users
+
+In order to follow a DataLad talk or workshop, you can set up the required
+software on your own system. Note that this works best on Linux and Mac, Windows users might want to rely on alternative Unix-like compute environments such as shared compute clusters or JupyterHub instances that are provided for DataLad Workshops.
+
+In addition to [installing DataLad](https://handbook.datalad.org/r.html?install), please download the [ws-py-requirements.txt](./ws-py-requirements.txt) file from this repository, and do the following:
+
+```bash
+# create and activate a virtual environment
+virtualenv --system-site-packages --python=python3 ~/.venvs/rdm-workshop
+source ~/.venvs/rdm-workshop/bin/activate
+# install a set of common Python packages used in workshops
+pip install -r ws-py-requirements.txt
+# allow usage of bleeding edge datalad features from datalad-next
+git config --global --add datalad.extensions.load.next
+```
+
+Beyond Python requirements, you could consider installing [tig](https://jonas.github.io/tig/INSTALL.html), a nice terminal-based viewer for revision history.
+
+### Repository overview for lecturers
 
 **Slides** are written in HTML. Their raw sources can be found in ``html/``.
 

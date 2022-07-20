@@ -1,0 +1,364 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Edit me start! -->
+		<title>Computational reproducibility</title>
+		<meta name="description" content=" Reproducible processing with DataLad ">
+		<meta name="author" content=" Adina Wagner & Michael Hanke ">
+		<!-- Edit me end! -->
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/beige.css">
+        <link rel="stylesheet" href="../css/main.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+  <!--...Datalad Basics...-->
+
+  <section>
+<section>
+<script src="https://cdn.logwork.com/widget/countdown.js"></script>
+<a href="https://logwork.com/countdown-2zu8" class="countdown-timer"
+   data-style="columns" data-timezone="Europe/Berlin" data-date="2022-07-21 13:30">
+   Up next: Computational reproducibility </a>
+</section>
+</section>
+
+<section>
+    <section>
+        [Overflow area to finish everything unfinished]
+    </section>
+
+    <section data-markdown style="font-size:30px"><script type="text/template">
+## Dataset management for Reproducibility & Reusability
+<small>Read more at <a href="https://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.htmlhttps://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.html" target="_blank">
+            psychoinformatics-de.github.io/rdm-course/04-dataset-management
+        </a> </small>
+![](../pics/dataset_modules.png)
+
+When setting up data analyses...
+- Create MODULAR datasets: Whenever a particular collection of files could anyhow be useful in more than one context (e.g. data), put them in their own dataset, and install it as a subdataset. <!-- .element: class="fragment fade-in-then-semi-out" -->
+- Keep everything STRUCTURED: Bundle all components of one analysis into one superdataset, and within this dataset, separate code, data, output, execution environments.<!-- .element: class="fragment fade-in-then-semi-out" -->
+- Keep a dataset SELF-CONTAINED with relative paths in scripts to subdatasets or files.
+  Do not use absolute paths.<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+    </script>
+</section>
+
+  <section data-transition="None">
+      <h2>Why Modularity?</h2>
+
+      <ul style="font-size:30px">
+          <li>1. Reuse and access management</li>
+              <img src="../pics/ukb_datasets.svg" height="500px">
+
+          </li>
+          <li class="fragment fade-in" data-fragment-index="1">2. Scalability</li>
+          <pre  class="fragment fade-in" data-fragment-index="1"><code class="fragment fade-in" data-fragment-index="1">adina@bulk1 in /ds/hcp/super on git:master❱ datalad status --annex -r
+  15530572 annex'd files (77.9 TB recorded total size)
+  nothing to save, working tree clean</code></pre>
+          <small  class="fragment fade-in" data-fragment-index="1"><a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank">(github.com/datalad-datasets/human-connectome-project-openaccess)</a></small>
+      </ul>
+
+  </section>
+
+<section style="font-size:30px" data-transition="None">
+<h2>Why Modularity?</h2>
+    <ul>
+        <li>3. Transparency</li><br>
+
+Original:
+<pre><code class="sh" style="max-height:none" data-trim>
+/dataset
+├── sample1
+│   └── a001.dat
+├── sample2
+│   └── a001.dat
+...
+</code></pre>
+<div class="fragment">
+Without modularity, after applied transform (preprocessing, analysis, ...):
+<pre><code class="sh" style="max-height:none" data-trim>
+/dataset
+├── sample1
+│   ├── ps34t.dat
+│   └── a001.dat
+├── sample2
+│   ├── ps34t.dat
+│   └── a001.dat
+...
+</code></pre>
+Without expert/domain knowledge, no distinction between original and derived data
+    possible.
+</div>
+        </ul>
+</section>
+
+
+<section  style="font-size:30px" data-transition="None">
+<h2>Why Modularity?</h2>
+    <ul>
+        <li>3. Transparency</li><br>
+
+Original:
+<pre><code class="sh" style="max-height:none" data-trim>
+/raw_dataset
+├── sample1
+│   └── a001.dat
+├── sample2
+│   └── a001.dat
+...
+</code></pre>
+        <strong>With modularity</strong> after applied transform (preprocessing, analysis, ...)
+<pre><code class="sh" style="max-height:none" data-trim>
+/derived_dataset
+├── sample1
+│   └── ps34t.dat
+├── sample2
+│   └── ps34t.dat
+├── ...
+└── inputs
+    └── raw
+        ├── sample1
+        │   └── a001.dat
+        ├── sample2
+        │   └── a001.dat
+        ...
+</code></pre>
+Clearer separation of semantics, through use of pristine version of original dataset within a
+        <em>new, additional</em> dataset holding the outputs.</ul>
+
+</section>
+
+
+<section>
+    <h2>A machine-learning example</h2>
+
+    Code along or try it later at <br>
+    <a href="http://handbook.datalad.org/en/latest/usecases/ml-analysis.html" target="_blank">
+    handbook.datalad.org/usecases/ml-analysis.html</a>
+</a>
+</section>
+
+<section>
+    <h2>Analysis layout</h2>
+    <table>
+        <tr>
+            <td>
+                <ul>
+        <li>Prepare an input data set</li>
+        <li class="fragment fade-in">Configure and setup an analysis dataset</li>
+        <li class="fragment fade-in">Prepare data</li>
+        <li class="fragment fade-in">Train models and evaluate them</li>
+        <li class="fragment fade-in">Compare different models, repeat with updated data</li>
+                </ul>
+            </td>
+            <td>
+    <img src="../pics/imagenette.png" width="800">
+                <small>Imagenette dataset</small>
+            </td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Prepare an input dataset</h2>
+    <ul>
+        <li>Create a stand-alone input dataset</li>
+        <li>Either add data and <code>datalad save</code> it, or use commands such as <code>datalad download-url</code>
+    or <code>datalad add-urls</code> to retrieve it from web-sources</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Configure and setup an analysis dataset</h2>
+    <ul>
+        <li>Given the purpose of an analysis dataset, configurations can make it easier to use:</li>
+            <ul>
+                <li><code>-c yoda</code> prepares a useful structure</li>
+                <li><code>-c text2git</code> keeps text files such as scripts in Git</li>
+            </ul>
+        <li>The input dataset is installed as a subdataset</li>
+        <li>Required software is containerized and added to the dataset</li>
+    </ul>
+</section>
+
+
+  <section data-transition="None">
+    <h3>Sharing software environments: Why and how</h3>
+
+        <p style="font-size:30px"> Science has many different building blocks: Code, software, and data produce research outputs.
+        The more you share, the more likely can others reproduce your results <br></p>
+        <img height="750px" src="../pics/agoodstart.png">
+  </section>
+
+
+
+<section data-transition="None">
+    <h3>Sharing software environments: Why and how</h3>
+    <ul style="font-size:30px">
+        <li>
+            Software can be difficult or impossible to install (e.g. conflicts with existing software,
+            or on HPC) for you or your collaborators
+        </li>
+        <li>
+            Different software versions/operating systems can produce different results:
+            <a href="https://doi.org/10.3389/fninf.2015.00012" target="_blank">Glatard et al., doi.org/10.3389/fninf.2015.00012</a>
+        </li>
+        <iframe width="1200"  height="500" src="https://doi.org/10.3389/fninf.2015.00012"></iframe>
+    </ul>
+</section>
+
+
+  <section>
+      <h2>Software containers</h2>
+      <ul style="font-size:30px">
+          <table>
+              <tr>
+                  <td>
+          <img src="../pics/dockerexplain.png" height="500">
+                  </td>
+                  <td><img height="100" src="../pics/blog_docker.png"><br>
+                  <img height="100" src="../pics/singularitylogo.jpg"> </td>
+              </tr>
+
+              </table>
+          </img>
+          <li>
+              Put simple, a cut-down virtual machine that is a portable and shareable
+              bundle of software libraries and their dependencies
+          </li>
+          <li><strong>Docker</strong> runs on all operating systems, but requires "sudo" (i.e., admin) privileges</li>
+          <li><strong>Singularity</strong> can run on computational clusters (no "sudo") but is not (well) on non-Linux</li>
+          <li>Their containers are different, but interoperable - e.g., Singularity can use and build Docker Images</li>
+      </ul>
+  </section>
+
+  <section>
+      <h2>The datalad-container extension</h2>
+      <ul style="font-size:30px">
+      <li>
+          The <code>datalad-container</code> extension gives DataLad commands to add, track, retrieve, and
+          execute Docker or Singularity containers.
+      </li>
+      <pre><code>pip/conda install datalad-container</code></pre>
+          <li>
+              If this extension is installed, DataLad can register software containers as "just another file" to your
+              dataset, and <strong>datalad containers-run</strong> analysis inside the container, capturing software as additional
+          provenance
+          </li>
+      </ul>
+      <img class="fragment fade-in" src="../pics/containers-run.svg" height="600"> <!-- .element: class="fragment" -->
+  </section>
+
+
+<section>
+    <h2>Prepare data</h2>
+    <ul>
+        <li>Add a script for data preparation (labels train and validation images)</li>
+        <li>Execute it using <code>datalad containers-run</code></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Train models and evaluate them</h2>
+    <ul>
+        <li>Add scripts for training and evaluation.
+            This dataset state can be tagged to identify it easily at a later point</li>
+        <li>Execute the scripts using <code>datalad containers-run</code></li>
+        <li>By dumping a trained model as a joblib object the trained classifier stays reusable</li>
+    </ul>
+</section>
+
+<section>
+    <section>
+        [Outro & QA]
+    </section>
+
+    <section>
+      <h2>After the workshop</h2>
+      <ul>
+              If you have a question after the workshop, you can reach out for help:
+          <br>
+          <ul style="font-size:30px">
+              <dt>Reach out to to the <b>DataLad</b> team via</dt>
+            <li>
+                <a href="https://matrix.to/#/!NaMjKIhMXhSicFdxAj:matrix.org?via=matrix.waite.eu&via=matrix.org&via=inm7.de" target="_blank">
+                    Matrix</a> (free, decentralized communication app, no app needed).
+                    We run a weekly Zoom office hour (Thursday, 4pm Berlin time) from this room as well.
+            </li>
+            <li>
+                <a href="https://github.com/datalad/datalad" target="_blank">
+                the development repository on GitHub</a>
+            </li>
+              <br>
+              <dt>Reach out to the user community with</dt>
+              <li>A question on <a href="https://neurostars.org/" target="_blank">neurostars.org</a>
+              with a <code>datalad</code> tag</li>
+              <br>
+              <dt>Find more user tutorials or workshop recordings</dt>
+              <li>On <a href="https://www.youtube.com/channel/datalad" target="_blank">
+                  DataLad's YouTube channel</a>
+              </li>
+              <li>
+                  In the <a href="http://handbook.datalad.org/en/latest/" target="_blank">
+                  DataLad Handbook </a>
+              </li>
+              <li>In the <a href="https://psychoinformatics-de.github.io/rdm-course/" target="_blank">DataLad RDM course</a> </li>
+              <li>In the <a href="http://docs.datalad.org" target="_blank">Official API documentation</a> </li>
+          </ul>
+      </ul>
+  </section>
+</section>
+    
+  </section>
+
+
+
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280,
+				height: 960,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.3,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: 'c',
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				pdfPageHeightOffset: -1,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

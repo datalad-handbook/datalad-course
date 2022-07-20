@@ -1,0 +1,887 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Edit me start! -->
+		<title>DataLad Basics</title>
+		<meta name="description" content=" This is where you put a short description ">
+		<meta name="author" content=" Your Name ">
+		<!-- Edit me end! -->
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/beige.css">
+        <link rel="stylesheet" href="../css/main.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+  <!--...Datalad Basics...-->
+
+  <section>
+<section>
+<script src="https://cdn.logwork.com/widget/countdown.js"></script>
+<a href="https://logwork.com/countdown-2zu8" class="countdown-timer"
+   data-style="columns" data-timezone="Europe/Berlin" data-date="2022-07-20 16:00">
+   Up next: DataLad Basics & Exercises</a>
+</section>
+</section>
+
+<section>
+
+<section data-markdown><script type="text/template">
+## Your turn!
+
+Use what you already know about how and where to get help to complete these challenges
+on https://datalad-hub.inm7.de or on your own system:
+<!-- .element: style="text-align:left" -->
+
+1. **Create** dataset, add a file with the content "abc". Check the **status**
+   of the dataset. Now **save** the dataset with a **commit message**. Check the
+   status again.
+
+2. **Create** a different dataset *outside* the first one.
+
+3. **Clone** the first dataset into the second under the name "input".
+
+4. Use datalad to capture the provenance of a data transformation that converts
+   the content of the file created at (1) to all-uppercase and saves it in the dataset
+   from (2). Hint the command
+   ```
+   sh -c 'tr "a-z" "A-Z" < inputpath > outputpath'
+   ```
+   can convert text in this fashion.
+
+5. Check the **status** of the dataset. Now let DataLad show you the change
+   to the dataset that running the `tr` command made.
+</script></section>
+</section>
+
+<section>
+    <section>
+        <h2>A guided code-along through DataLad's Basics and internals</h2>
+        <small>Code:<a href="https://psychoinformatics-de.github.io/rdm-course/01-content-tracking-with-datalad/index.html#getting-started-create-an-empty-dataset" target="_blank">
+           psychoinformatics-de.github.io/rdm-course/01-content-tracking-with-datalad/index.html#getting-started-create-an-empty-dataset
+          </a></small><br>
+    </section>
+  <section>
+      <h2>DataLad Datasets</h2>
+
+      <ul>
+          <li>DataLad's core data structure</li>
+          <ul style="font-size:35px">
+              <li>Dataset = A directory managed by DataLad</li>
+              <li>Any directory of your computer can be managed by DataLad.</li>
+              <li>Datasets can be <i>created</i> (from scratch) or <i>installed</i></li>
+              <li>Datasets can be nested: <i>linked subdirectories</i></li>
+          </ul>
+          <div class="fragment fade-in"><pre><code>$ datalad create -c text2git my-dataset</code></pre></div>
+      </ul>
+
+
+  <aside class="notes">
+      <li>anything can be managed: CV, website, music library, phd</li>
+      <li>show this on the manuscript repo: history, looks/feels</li>
+  </aside>
+  </section>
+
+<section data-transition="None">
+    <h2>DataLad Datasets</h2>
+    A DataLad dataset is a joined Git + git-annex repository
+    <img src="../pics/slides/pics/datalad_sandwhich_tuned/sandwhich03.svg">
+</section>
+</section>
+
+<section>
+  <section data-transition="None">
+      <h3>What is version control?</h3>
+      <img height="400" src="../pics/turingway/VersionControl.svg">
+      <img height="400" src="../pics/turingway/ProjectHistory.svg">
+      <imgcredit>Illustration adapted from Scriberia and The Turing Way</imgcredit>
+      <ul>
+          <li class="fragment fade-in">keep things organized</li>
+          <li class="fragment fade-in">keep track of changes</li>
+          <li class="fragment fade-in">revert changes or go back to previous states</li>
+      </ul>
+  </section>
+
+  <section data-transition="None">
+      <h2>Why version control?</h2>
+      <img src="../pics/final.png" style="box-shadow: 10px 10px 8px #888888;height=600px" height="600"><br>
+  </aside>
+  </section>
+
+  <section>
+      <h2>Version Control</h2>
+
+      <ul>
+          <li>DataLad knows two things: Datasets and files</li>
+          <img class="fragment fade-in" data-fragment-index="1" style="box-shadow: 5px 5px 3px #888888" src="../pics/artwork/src/dataset.svg" height="330"> <img style="box-shadow: 5px 5px 3px #888888" height="330" class="fragment fade-in" data-fragment-index="2" src="../pics/artwork/src/local_wf.svg">
+       </ul><br>
+      <li class="fragment fade-in">
+          Every file you put into a in a dataset can be easily version-controlled,
+          regardless of size, with the same command: <em>datalad save</em> </li>
+      <li class="fragment fade-in">
+          Pure Git/git-annex commands can be used as well </li>
+  </section>
+
+
+  <section>
+      <h2>Local version control</h2>
+
+      <p>Procedurally, version control is easy with DataLad!</p>
+      <img class="fragment fade-in" src="../pics/local_wf.svg" height="500"> <!-- .element: class="fragment" -->
+      <br>
+
+      <b class="fragment fade-in">Advice:</b>
+      <ul>
+        <li class="fragment fade-in">Save <i>meaningful</i> units of change</li>
+        <li class="fragment fade-in">Attach helpful commit messages</li>
+      </ul>
+  </section>
+
+  <section data-markdown><script type="text/template" >
+
+  ### This means: You can also version control data! <!-- .element: class="fragment" -->
+
+  <pre><code class="bash" style="max-height:none">$ datalad save \
+     -m "Adding raw data from neuroimaging study 1" \
+     sub-*
+  add(ok): sub-1/anat/T1w.json (file)
+  add(ok): sub-1/anat/T1w.nii.gz (file)
+  add(ok): sub-1/anat/T2w.json (file)
+  add(ok): sub-1/anat/T2w.nii.gz (file)
+  add(ok): sub-1/func/sub-1-run-1_bold.json (file)
+  add(ok): sub-1/func/sub-1-run-1_bold.nii.gz (file)
+  add(ok): sub-10/anat/T1w.json (file)
+  add(ok): sub-10/anat/T1w.nii.gz (file)
+  add(ok): sub-10/anat/T2w.json (file)
+  add(ok): sub-10/anat/T2w.nii.gz (file)
+    [110 similar messages have been suppressed]
+  save(ok): . (dataset)
+  action summary:
+    add (ok: 120)
+    save (ok: 1)
+  </code></pre>  <!-- .element: class="fragment" -->
+
+  </script>
+  </section>
+
+  <section data-markdown><script type="text/template" >
+  ## Version Control
+  * Your dataset can be a complete research log, capturing everything that was done, when, by whom, and how
+  ![](../pics/researchlog.png)
+  * Interact with the history:
+    * reset your dataset (or subset of it) to a previous state,
+    * throw out changes or bring them back,
+    * find out what was done when, how, why, and by whom
+    * Identify precise versions: Use data in the most recent version, or the one from 2018, or...
+    * ...
+  </script>
+  </section>
+
+
+  <section>
+      <h2>Preview: Start to record provenance</h2>
+      <ul>
+          <li>
+              Have you ever saved a PDF to read later onto your computer, but forgot
+              where you got it from?
+          </li>
+          <li class="fragment fade-in">
+              Digital Provenance = <i>"The tools and processes used to create a
+              digital file, the responsible entity, and when and where the process
+              events occurred"</i>
+          </li>
+          <li class="fragment fade-in">
+              The history of a dataset already contains provenance, but there is more
+              to record - for example: Where does a file come from?
+              <code>datalad download-url</code> is helpful
+          </li>
+      </ul>
+  </section>
+
+    <section>
+      <h3>Summary - Local version control</h3>
+
+  <dl>
+        <dt class="fragment fade-in"><code>datalad create</code> creates an empty dataset.</dt> <dd class="fragment fade-in">Configurations (<b>-c yoda</b>, <b>-c text2git</b>) are useful (details soon).</dd>
+        <br>
+        <dt class="fragment fade-in">A dataset has a <i>history</i> to track files and their modifications. </dt><dd class="fragment fade-in">Explore it with Git (<b>git log</b>) or external tools (e.g., <b>tig</b>).</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad save</code> records the dataset or file state to the history. </dt><dd class="fragment fade-in">Concise <b>commit messages</b> should summarize the change for future you and others.</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad download-url</code> obtains web content and records its origin. </dt><dd class="fragment fade-in">It even takes care of saving the change.</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad status</code> reports the current state of the dataset.</dt>
+      <dd class="fragment fade-in">A clean dataset status (no modifications, not untracked files) is good practice.</dd>
+      </dl>
+  </section>
+
+
+  <section>
+      <h2>Questions!</h2>
+      <small>Awkward silence can be bridged with awkward MC questions :) </small>
+      <iframe src="https://directpoll.com/r?XDbzPBdEt8j1rJlVwV5I4m6c9z8nJU2YLnRe3j3k",
+              style="border: 0" width="900" height="800"></iframe>
+  </section>
+  </section>
+
+<section>
+    <section>
+        <h2>Teaser: Time-travelling</h2>
+
+        <ul style="font-size:30px">
+            <small>Code: <a href="https://psychoinformatics-de.github.io/rdm-course/01-content-tracking-with-datalad/index.html#getting-started-create-an-empty-dataset" target="_blank">
+          psychoinformatics-de.github.io/rdm-course/01-content-tracking-with-datalad/index.html#breaking-things-and-repairing-them</a></small><br>
+        <small>Comprehensive walk-through<a href="http://handbook.datalad.org/en/lastest/basics/101-137-history.html" target="_blank">
+            handbook.datalad.org/basics/101-137-history.html
+        </a></small>
+            <li>Mistakes are not forever anymore: Past changes can transparently be undone</li>
+            <li>Become a time-bender: Travel back in time or rewrite history</li>
+            <li class="fragment fade-in" data-fragment-index="1">Git's various identifiers:</li>
+            <ul>
+                <li class="fragment fade-in" data-fragment-index="1">Commit hash/Commit SHA: A 40-character string identifying each commit</li>
+                <li class="fragment fade-in" data-fragment-index="1">Branch names, e.g., <em>main</em></li>
+                <li class="fragment fade-in" data-fragment-index="1">Tags, e.g., <em>v.0.1</em></li>
+                <li class="fragment fade-in" data-fragment-index="1">A pointer to the checked-out (current) commit on the current branch, <em>HEAD</em></li>
+            </ul>
+        </ul>
+        <img class="fragment fade-in" src="../pics/commit-ref.png"><br>
+
+    </section>
+
+    <section>
+        <h2>Summary: Interacting with Git's history (teaser)</h2>
+  <dl>
+      <dt class="fragment fade-in">Interactions with Git's history require Git commands, but are immensely powerful</dt><dd class="fragment fade-in">More in <a href="http://handbook.datalad.org/en/latest/basics/101-137-history.html" target="_blank">
+            handbook.datalad.org/basics/101-137-history.html
+        </a></dd>
+       <br>
+      <dt class="fragment fade-in"><code>git restore</code> is a dangerous (!), but sometimes useful command:</dt>
+      <dd class="fragment fade-in"> It removes unsaved modifications to restore files to a past, saved state. What has been removed by it can not be brought back to life!</dd>
+        <br>
+        <dt class="fragment fade-in"><code>git revert [hash]</code> transparently undoes a past commit</dt><dd class="fragment fade-in">It will create a new entry in the revision history about this.</dd>
+        <br>
+        <dt class="fragment fade-in"><code>git checkout</code> </dt>
+        <dd class="fragment fade-in">lets you - among other things - time-travel.</dd>
+       <br>
+        <dt class="fragment fade-in">Commands that are out of scope but useful to know:</dt>
+        <dd class="fragment fade-in"><code>git rebase</code> changes and <code>git reset</code> rewinds history without creating a commit about it (see Handbook chapter for examples).</dd>
+      <br>
+      <dt class="fragment fade-in">A life-saver that is not well-known: <code>git reflog</code></dt><dd class="fragment fade-in">A time-limited backlog of every past performed action, can undo every mistake except <code>git restore</code> and <code>git clean</code>.</dd>
+       </dl>
+    </section>
+
+  <section>
+      <h2>Questions!</h2>
+      <iframe src="https://directpoll.com/r?XDbzPBdEt8j1rJlVwV5I4m6c9z8nJU2YLnRe3j3k",
+              style="border: 0" width="900" height="800"></iframe>
+  </section>
+</section>
+
+  <section>
+<section>
+<h2>A look underneath the hood</h2>
+    <h4>(In-depth explanations how and why things work, with plenty of teasers to additional features)</h4>
+</section>
+
+         <section data-transition="None" style="vertical-align:top">
+        <h3>There are two version control tools at work - why?</h3>
+        <p class="fragment fade-in">Git does not handle large files well.
+            <div class="r-stack">
+            <img class="fragment" src="../pics/gitsnapshot.png">
+        </div>
+        </p>
+    </section>
+
+    <section data-transition="None">
+        <h3>There are two version control tools at work - why?</h3>
+        <p>Git does not handle large files well.
+            <img src="../pics/gitsnapshot2.png">
+        </p>
+        <p class="fragment fade-in">
+        And repository hosting services refuse to handle large files:
+        <img src="../pics/pushing_large_files_to_Git.png"></p>
+        <p style="z-index: 100;position: fixed; font-size:35px;margin-top:-450px;margin-bottom:300px;margin-left:1000px">
+            <img class="fragment" src="../pics/horrofied.png" height="380px"></p>
+        <p class="fragment fade-in">git-annex to the rescue! Let's take a look how it works</p>
+    </section>
+
+  <section data-markdown><script type="text/template" >
+  ## Consuming datasets
+  * A dataset can be created from scratch/existing directories:
+  <pre><code class="bash" style="max-height:none">$ datalad create mydataset
+  [INFO] Creating a new annex repo at /home/adina/mydataset
+  create(ok): /home/adina/mydataset (dataset)
+  </code></pre>
+  * but datasets can also be installed from paths or from URLs:
+  <pre><code class="bash" style="max-height:none">$ datalad clone https://github.com/datalad-datasets/human-connectome-project-openaccess HCP
+  install(ok): /tmp/HCP (dataset)
+  </code></pre>
+            <small>Hint: Did you know that you can get the <a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank"> Human Connectome Project Open Access Data </a> as a Dataset?</small>
+  </script>
+ </section>
+
+  <section data-transition="None">
+      <h2>Consuming datasets</h2>
+
+    <ul>
+      <li class="fragment fade-in">Here's how to get a dataset:</li>
+        <img class="fragment fade-in" src="../pics/clonedata.gif" height="900">
+
+    </ul>
+  </section>
+  <section data-transition="None">
+      <h2>Consuming datasets</h2>
+
+    <ul>
+      <li>Here's how a dataset looks after installation:</li>
+        <img class="fragment fade-in" src="../pics/getdata.gif" height="900">
+        <small>Try it yourself with <a href="https://github.com/datalad-datasets/machinelearning-books.git" target="_blank">github.com/datalad-datasets/machinelearning-books.git</a> </small>
+    </ul>
+  </section>
+
+  <section data-transition="None">
+      <h2>Plenty of data, but little disk-usage</h2>
+      <ul>
+          <li class="fragment fade-in-then-semi-out">Cloned datasets are lean.
+              "Meta data" (file names, availability) are present, but <b>no file content</b>:</li>
+  <pre class="fragment fade-in"><code>$ datalad clone git@github.com:psychoinformatics-de/studyforrest-data-phase2.git
+  install(ok): /tmp/studyforrest-data-phase2 (dataset)
+  $ cd studyforrest-data-phase2 && du -sh
+  18M	.</code></pre>
+
+  <li class="fragment fade-in-then-semi-out"> files' contents can be retrieved on demand:</li>
+      </ul>
+  <pre class="fragment fade-in"><code>$ datalad get sub-01/ses-movie/func/sub-01_ses-movie_task-movie_run-1_bold.nii.gz
+  get(ok): /tmp/studyforrest-data-phase2/sub-01/ses-movie/func/sub-01_ses-movie_task-movie_run-1_bold.nii.gz (file) [from mddatasrc...]</code></pre>
+
+  <li class="fragment fade-in">Have more access to your computer than you have disk-space:</li>
+  <pre class="fragment fade-in"><code># eNKI dataset (1.5TB, 34k files):
+$ du -sh
+1.5G	.
+# HCP dataset (~200TB, >15 million files)
+$ du -sh
+48G	. </code></pre>
+  </section>
+
+  <section data-markdown data-transition="None"> <script type="text/template">
+  ## Plenty of data, but little disk-usage
+
+  Drop file content that is not needed:<!-- .element: class="fragment fade-in" -->
+  <pre class="fragment fade-in-then-semi-out"><code>$ datalad drop sub-01/ses-movie/func/sub-01_ses-movie_task-movie_run-1_bold.nii.gz
+  drop(ok): /tmp/studyforrest-data-phase2/sub-01/ses-movie/func/sub-01_ses-movie_task-movie_run-1_bold.nii.gz (file) [checking https://arxiv.org/pdf/0904.3664v1.pdf...]</code></pre>
+  When files are dropped, only "meta data" stays behind, and they can be re-obtained on demand.<!-- .element: class="fragment fade-in" -->
+<pre><code class="python">dl.get('input/sub-01')
+    [really complex analysis]
+    dl.drop('input/sub-01')
+</code></pre><!-- .element: class="fragment fade-in" -->
+  </script></section>
+
+  <section>
+      <h2>Git versus Git-annex</h2>
+      <dl>
+          <dt>Data in datasets is either stored in Git or git-annex</dt>
+          <dd>By default, everything is <i>annexed</i>, i.e., stored in a dataset annex by git-annex
+          & only content-identity is committed to Git.</dd><br>
+
+          <br>
+                    <small>
+          <table>
+              <tr>
+                  <td><b>Git</b></td>
+                  <td><b>git-annex</b></td>
+              </tr>
+              <tr>
+                  <td>handles <b>small</b> files well (text, code)</td>
+                  <td>handles <b>all</b> types and sizes of files well</td>
+              </tr>
+              <tr>
+                  <td>file contents are in the Git history
+                      and will be <b>shared</b> upon git/datalad push</td>
+                  <td>file contents are in the annex. Not necessarily shared</td>
+              </tr>
+              <tr>
+                  <td>Shared with every dataset clone</td>
+                  <td><b>Can be kept private</b> on a per-file level when sharing the dataset</td>
+              </tr>
+              <tr>
+                  <td>Useful: Small, non-binary, frequently modified, need-to-be-accessible (DUA, README) files </td>
+                  <td>Useful: Large files, private files</td>
+              </tr>
+          </table>
+          <table class="fragment fade-in">
+            <tr>
+                <td style="vertical-align: middle">
+                    <li>Files stored in Git are modifiable, files stored in Git-annex are content-locked</li>
+                    <li>Annexed contents are not available right after cloning,
+             only content identity and availability information (as they are stored in Git).
+             Everything that is annexed needs to be retrieved with <code>datalad get</code> from whereever it is stored.
+         </li>
+                </td>
+                <td width="60%">
+                    <img src="../pics/git_vs_gitannex.svg" height="500">
+                </td>
+            </tr>
+                  </table>
+                    </small>
+          <br><br><small>Useful background information for demo later. Read
+          <a href="http://handbook.datalad.org/en/latest/basics/101-115-symlinks.html" target="_blank">
+          this handbook chapter</a> for details
+      </a> </small>
+      </dl>
+  </section>
+
+  <section>
+      <h2>Git versus Git-annex</h2>
+      <img height="500" src="../pics/artwork/src/publishing/publishing_gitvsannex.svg">
+  </section>
+
+  <section>
+      <h2>Git versus Git-annex</h2>
+      <ul>
+          When sharing datasets with someone without access to the same computational
+          infrastructure, annexed data is not necessarily stored together with the rest
+          of the dataset (more tomorrow in the <b>session on publishing</b>).
+      </ul>
+      <img src="../pics/services_connected.png" height="500">
+      <ul>
+          Transport logistics exist to interface with all major storage providers.
+          If the one you use isn't supported, let us know!
+      </ul>
+  </section>
+
+
+  <section>
+      <h2>Git versus Git-annex</h2>
+      <ul>
+          Users can decide which files are annexed:
+          <br><br>
+          <li><b>Pre-made run-procedures</b>, provided by DataLad (e.g., <code>text2git</code>, <code>yoda</code>)
+              or created and shared by users
+              (<a href="http://handbook.datalad.org/en/latest/basics/101-124-procedures.html" target="_blank">Tutorial</a>) </li>
+          <li>Self-made configurations in <code>.gitattributes</code> (e.g., based on file type,
+              file/path name, size, ...; <a href="http://handbook.datalad.org/en/latest/basics/101-123-config2.html#gitattributes" target="_blank">
+                  rules and examples
+              </a> )</li>
+          <li>Per-command basis (e.g., via <code>datalad save --to-git</code>)</li>
+      </ul>
+  </section>
+
+
+  <section>
+      <h2>Text versus binary files</h2>
+      The <em>text2git</em> procedure affects text files. Can you identify
+      them?
+      <iframe src="https://directpoll.com/r?XDbzPBdEt8j1rJlVwV5I4m6c9z8nJU2YLnRe3j3k",
+              style="border: 0" width="900" height="800"></iframe>
+      <small>An overview of text- versus binary files and implications for version control is in
+      <a href="https://psychoinformatics-de.github.io/rdm-course/02-structuring-data/index.html#file-types-text-vs-binary" target="_blank">
+          psychoinformatics-de.github.io/rdm-course/02-structuring-data/index.html#file-types-text-vs-binary
+      </a> </small>
+  </section>
+
+  <section>
+      <h2>Distributed availability</h2>
+      <ul  style="font-size:30px">
+      <li class="fragment fade-in" data-fragment-index="1">git-annex conceptualizes file availability information as a decentral network.
+          A file can exist in multiple different locations. <em>git annex whereis</em>
+          tells you which are known:</li>
+          <pre class="fragment fade-in" data-fragment-index="1"><code class="fragment fade-in" data-fragment-index="1">$ git annex whereis inputs/images/chinstrap_02.jpg
+whereis inputs/images/chinstrap_02.jpg (1 copy)
+	00000000-0000-0000-0000-000000000001 -- web
+	c1bfc615-8c2b-4921-ab33-2918c0cbfc18 -- adina@muninn:/tmp/my-dataset [here]
+
+  web: https://unsplash.com/photos/8PxCm4HsPX8/download?force=true
+ok
+</code></pre>
+          <li class="fragment fade-in" data-fragment-index="2">
+              If a file has no other known storage locations, <em>drop</em> will warn
+          </li>
+          <ul style="font-size:30px">
+          <li class="fragment fade-in" data-fragment-index="3">Here is a file with a registered remote location (the web)</li>
+          <pre class="fragment fade-in" data-fragment-index="3"><code class="fragment fade-in" data-fragment-index="3">$ datalad drop inputs/images/chinstrap_02.jpg
+drop(ok): /home/my-dataset/inputs/images/chinstrap_02.jpg (file)
+$ datalad get inputs/images/chinstrap_02.jpg
+get(ok): inputs/images/chinstrap_02.jpg (file)
+</code></pre>
+          <li class="fragment fade-in" data-fragment-index="3">Here is a file without a registered remote location (the web)
+          </li>
+          <pre class="fragment fade-in" data-fragment-index="3"><code class="fragment fade-in" data-fragment-index="3">$ datalad drop inputs/images/chinstrap_01.jpg
+drop(error): inputs/images/chinstrap_01.jpg (file)
+             [unsafe; Could only verify the existence of 0 out of 1 necessary copy;
+             (Use --reckless availability to override this check, or adjust numcopies.)]</code></pre>
+</ul>
+      <small><p >Delineation and advantages of decentral versus central RDM:<a href="https://doi.org/10.1515/nf-2020-0037" target="_blank">
+          In defense of decentralized research data management</a></small>
+
+       </ul>
+  </section>
+
+  <section>
+      <h2>Data protection</h2>
+      Why are annexed contents write-protected? (part I) <br><br>
+        <ul style="font-size:30px">
+            <li>Where the filesystem allows it, annexed files are symlinks:
+            <pre><code>$ ls -l inputs/images/chinstrap_01.jpg
+lrwxrwxrwx 1 adina adina 132 Apr  5 20:53 inputs/images/chinstrap_01.jpg -> ../../.git/annex/objects/1z/
+xP/MD5E-s725496--2e043a5654cec96aadad554fda2a8b26.jpg/MD5E-s725496--2e043a5654cec96aadad554fda2a8b26.jpg
+</code></pre><small>(PS: especially useful in datasets with many identical files) </small></li>
+            <li>The symlink reveals git-annex internal data organization based on identity hash:
+            <pre><code>$ md5sum inputs/images/chinstrap_01.jpg
+2e043a5654cec96aadad554fda2a8b26  inputs/images/chinstrap_01.jpg
+</code></pre></li>
+            <li class="fragment fade-in">git-annex write-protects files to keep this symlink functional -
+                Changing file contents without git-annex knowing would make the hash change and the symlink point to nothing</li>
+            <li class="fragment fade-in">To (temporarily) remove the write-protection one can <em>unlock</em> the file</li>
+        </ul>
+  </section>
+
+  <section data-transition="fade">
+      <h2>Detour & Teaser: Reproducible data analysis</h2>
+       Your past self is the worst collaborator:
+      <img src="../pics/ownlegacycode_phd.png" height="500">
+    <imgcredit>Full comic at <a href="http://phdcomics.com/comics.php?f=1689">http://phdcomics.com/comics.php?f=1979</a></imgcredit>
+      </p>
+      <small>Code: <a href="https://psychoinformatics-de.github.io/rdm-course/01-content-tracking-with-datalad/index.html#data-processing" target="_blank">
+          psychoinformatics-de.github.io/rdm-course/01-content-tracking-with-datalad/index.html#data-processing</a> </small>
+  </section>
+
+
+  <section data-transition="None">
+      <h2>Reproducible execution & provenance capture</h2>
+
+      <p style="font-size:30px"><em>datalad run</em> wraps a command execution and records its impact on a dataset.
+         <img class="fragment fade-in" src="../pics/run_prov_0.svg">
+</section>
+
+  <section data-transition="None">
+      <h2>Reproducible execution & provenance capture</h2>
+
+      <p style="font-size:30px"><em>datalad run</em> wraps a command execution and records its impact on a dataset.
+          <pre style="max-height:none"><code style="max-height:none">commit 9fbc0c18133aa07b215d81b808b0a83bf01b1984 (HEAD -> main)
+Author: Adina Wagner [adina.wagner@t-online.de]
+Date:   Mon Apr 18 12:31:47 2022 +0200
+
+    [DATALAD RUNCMD] Convert the second image to greyscale
+
+    === Do not change lines below ===
+    {
+     "chain": [],
+     "cmd": "python code/greyscale.py inputs/images/chinstrap_02.jpg outputs/im>
+     "dsid": "418420aa-7ab7-4832-a8f0-21107ff8cc74",
+     "exit": 0,
+     "extra_inputs": [],
+     "inputs": [],
+     "outputs": [],
+     "pwd": "."
+    }
+    ^^^ Do not change lines above ^^^
+
+diff --git a/outputs/images_greyscale/chinstrap_02_grey.jpg b/outputs/images_gr>
+new file mode 120000
+index 0000000..5febc72
+--- /dev/null
++++ b/outputs/images_greyscale/chinstrap_02_grey.jpg
+@@ -0,0 +1 @@
++../../.git/annex/objects/19/mp/MD5E-s758168--8e840502b762b2e7a286fb5770f1ea69.>
+\ No newline at end of file
+</code></pre>
+            <p style="font-size:30px">The resulting commit's hash (or any other identifier) can be used
+      to automatically re-execute a computation (more on this tomorrow)</p> <!-- .element: class="fragment" -->
+  </section>
+
+
+  <section data-transition="None">
+      <h2>Data protection</h2>
+      Why are annexed contents write-protected? (part 2) <br><br>
+        <ul style="font-size:30px">
+            <li>When you try to modify an annexed file without unlocking you will see
+                "Permission denied" errors.
+            <pre><code>Traceback (most recent call last):
+  File "/home/bob/Documents/rdm-warmup/example-dataset/code/greyscale.py", line 20, in module
+    grey.save(args.output_file)
+  File "/home/bob/Documents/rdm-temporary/venv/lib/python3.9/site-packages/PIL/Image.py", line 2232, in save
+    fp = builtins.open(filename, "w+b")
+PermissionError: [Errno 13] Permission denied: 'outputs/images_greyscale/chinstrap_02_grey.jpg'
+</code></pre></li>
+            <li class="fragment fade-in">Use <em>datalad unlock</em> to make the file modifiable.
+                Underneath the hood (given the file system initially supported symlinks), this removes the symlink:
+            <pre><code>$ datalad unlock outputs/images_greyscale/chinstrap_02_grey.jpg
+$ ls outputs/images_greyscale/chinstrap_02_grey.jpg
+-rw-r--r-- 1 adina adina 758168 Apr 18 12:31 outputs/images_greyscale/chinstrap_02_grey.jpg</code></pre></li>
+            <li class="fragment fade-in"><em>datalad save</em> locks the file again.
+                Locking and unlocking ensures that git-annex always finds the right version of a file.</li>
+        </ul>
+  </section>
+
+  <section data-transition="None">
+      <h2>Reproducible execution & provenance capture</h2>
+
+      <p style="font-size:30px"><em>datalad run</em> wraps a command execution and records its impact on a dataset.
+          <br><strong>In addition, it can take care of data retrieval and unlocking</strong></p>
+      <img class="fragment fade-in" src="../pics/run_prov.svg" height="600"> <!-- .element: class="fragment" -->
+  </section>
+
+  <section>
+      <h2>datalad rerun</h2>
+      <ul style="font-size:30px">
+          <li>
+              <code>datalad rerun</code> is helpful to spare others and yourself
+              the short- or long-term memory task, or the forensic skills to figure
+              out how you performed an analysis
+          </li>
+          <li>
+              But it is also a digital and machine-reable provenance record
+          </li>
+          <li>
+              Important: The better the run command is specified, the better the
+              provenance record
+          </li>
+          <li>
+              Note: run and rerun only create an entry in the history if the command execution
+              leads to a change.
+          </li>
+          <br><br>
+          <li class="fragment fade-in">Task: Use <code>datalad rerun</code> to rerun the script execution.
+              Find out if the output changed</li>
+      </ul>
+  </section>
+
+  <section>
+      <h3>Summary - Underneath the hood</h3>
+
+      <ul style="font-size:30px">
+        <dt class="fragment fade-in">Files are either kept in Git or in git-annex.</dt>
+          <dd class="fragment fade-in"><em>datalad save</em> is used for both, but configurations (e.g., <em>text2git</em>), dataset rules
+              (e.g., in a <em>.gitattributes</em> file, or flags change the default behavior
+              of annexing everything</dd>
+          <br>
+        <dt class="fragment fade-in">Annexed files behave differently from files kept in Git:</dt>
+          <dd class="fragment fade-in">They can be retrieved and dropped from local or remote locations, they are write-protected,
+              their content is unkown to Git (and thus easy to keep private).</dd>
+        <br>
+          <dt class="fragment fade-in"><em>datalad clone</em> installs datasets from URLs or local or remote paths</dt>
+          <dd class="fragment fade-in">Annexed files contents can be retrieved or dropped on demand, file contents of
+              files stored in Git are available right away.</dd>
+        <br>
+        <dt class="fragment fade-in"><em>datalad unlock</em> makes annexed files modifiable, <em>datalad save</em>
+        locks them again.</dt>
+          <dd class="fragment fade-in">(It is generally easier to get accidentally saved files out of the annex than out of Git -
+              see <a href="http://handbook.datalad.org/en/latest/basics/101-136-filesystem.html" target="_blank">handbook.datalad.org/basics/101-136-filesystem.html</a> for examples) </dd>
+        <br>
+        <dt class="fragment fade-in"><em>datalad run</em> records the impact of any command execution in
+            a dataset. </dt>
+          <dd class="fragment fade-in">Data/directories specified as <code>--input</code>
+            are retrieved prior to command execution, data/directories specified as <code>--output</code> unlocked.</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad rerun</code> can automatically re-execute run-records later.</dt>
+          <dd class="fragment fade-in">They can be identified with any commit-ish (hash, tag, range, ...)</dd>
+
+      </ul>
+  </section>
+
+
+  <section>
+      <h2>Questions!</h2>
+      <small>Awkward silence can be bridged with awkward MC questions :) </small>
+        <iframe src="https://directpoll.com/r?XDbzPBdEt8j1rJlVwV5I4m6c9z8nJU2YLnRe3j3k",
+              style="border: 0" width="900" height="800"></iframe>
+  </section>
+  </section>
+
+  <section>
+
+<section>
+  <h2> Dropping and removing stuff </h2>
+  <table>
+  <tr>
+    <td>What to do with files you don't want to keep</td>
+  </tr>
+  <tr>
+    <td>
+        <small><code>datalad drop</code> and <code>datalad remove</code><br>
+      </small>
+    </td>
+  </tr>
+  </table>
+
+      <a style="font-size:25px" href="https://psychoinformatics-de.github.io/rdm-course/91-branching" target="_blank">
+          Code: psychoinformatics-de.github.io/rdm-course/92-filesystem-operations
+      </a>
+</section>
+  </section>
+
+  <section>
+
+  <section data-transition="None">
+      <h2>Drop & remove</h2>
+      <ul style="font-size:30px">
+          <li>Try to remove (<em>rm</em>) one of the pictures in your dataset. What happens?</li>
+          <li class="fragment fade-in">Version control tools keep a revision history of your files -
+              file contents are not actually removed when you <em>rm</em> them.
+              Interactions with the revision history of the dataset can bring them "back to life"</li>
+      </ul>
+  </section>
+
+  <section data-transition="None">
+      <h2>Drop & remove</h2>
+      <ul style="font-size:30px">
+          <li>Clone a small example dataset to drop file contents and remove datasets:<br>
+              <pre><code>$ datalad clone https://github.com/datalad-datasets/machinelearning-books.git
+$ cd machinelearning-books
+$ datalad get A.Shashua-Introduction_to_Machine_Learning.pdf </code></pre>
+          <li class="fragment fade-in"><strong>datalad drop</strong> removes annexed file contents from a local dataset
+              annex and frees up disk space. It is the antagonist of <strong>get</strong> (which can get files and subdatasets).
+          <pre><code>$ datalad drop A.Shashua-Introduction_to_Machine_Learning.pdf
+drop(ok): /tmp/machinelearning-books/A.Shashua-Introduction_to_Machine_Learning.pdf (file)
+          [checking https://arxiv.org/pdf/0904.3664v1.pdf...]</code></pre></li>
+          <li class="fragment fade-in">But: Default safety checks require that dropped files can be re-obtained
+          to prevent accidental data loss. <strong>git annex whereis</strong> reports all registered locations
+          of a file's content</li>
+          <li class="fragment fade-in"><strong>drop</strong> does not only operate on individual annexed files,
+          but also directories, or globs, and it can uninstall subdatasets:
+          <pre><code>$ datalad clone https://github.com/datalad-datasets/human-connectome-project-openaccess.git
+$ cd human-connectome-project-openaccess
+$ datalad get -n HCP1200/996782
+$ datalad drop --what all  HCP1200/996782</code></pre></li>
+      </ul>
+  </section>
+
+  <section data-transition="None">
+      <h2>Drop & remove</h2>
+      <ul style="font-size:30px">
+         <li><strong>datalad remove</strong> removes complete dataset or dataset hierarchies
+             and leaves no trace of them. It is the antagonist to <strong>clone</strong>.
+          <pre><code># The command operates outside of the to-be-removed dataset!
+$ datalad remove -d . machinelearning-books
+uninstall(ok): /tmp/machinelearning-books (dataset)</code></pre></li>
+          <li class="fragment fade-in">But: Default safety checks require that it could be re-cloned in its most recent version
+              from other places, i.e., that there is a <em>sibling</em> that has all revisions that exist locally
+              <strong>datalad siblings</strong> reports all registered siblings of a dataset.
+          </li>
+      </ul>
+  </section>
+
+  <section data-transition="None">
+      <h2>Drop & remove</h2>
+      <ul style="font-size:30px">
+          <li>Create a dataset from scratch and add a file<br>
+              <pre><code>$ datalad create local-dataset
+$ cd local-dataset
+$ echo "This file content will only exist locally" > local-file.txt
+$ datalad save -m "Added a file without remote content availability"</code></pre>
+          <li class="fragment fade-in"><strong>datalad drop</strong> refuses to remove annexed file contents if it
+          can't verify that <strong>datalad get</strong> could re-retrieve it
+          <pre><code>$ datalad drop local-file.txt
+$ drop(error): local-file.txt (file) [unsafe; Could only verify the existence of 0 out of 1 necessary copy;
+              (Note that these git remotes have annex-ignore set: origin upstream);
+              (Use --reckless availability to override this check, or adjust numcopies.)]
+</code></pre></li>
+          <li class="fragment fade-in">Adding <strong>--reckless availability</strong> overrides this check
+          <pre><code>$ datalad drop local-file.txt --reckless availability</code></pre></li>
+          <li class="fragment fade-in">Be mindful that <strong>drop</strong> will only operate on
+          the most recent version of a file - past versions may still exist afterwards unless you drop them
+          specifically. <strong>git annex unused</strong> can identify all files that are left behind</li>
+      </ul>
+  </section>
+
+  <section data-transition="None">
+      <h2>Drop & remove</h2>
+      <ul style="font-size:30px">
+          <li class="fragment fade-in"><strong>datalad remove</strong> refuses to remove
+              datasets without an up-to-date <em>sibling</em>
+              <pre><code>$ datalad remove -d local-dataset
+uninstall(error): . (dataset) [to-be-dropped dataset has revisions that are not available at any known
+                  sibling. Use `datalad push --to ...` to push these before dropping the local dataset,
+                  or ignore via `--reckless availability`. Unique revisions: ['main']]
+</code></pre></li>
+          </li>
+          <li class="fragment fade-in">Adding <strong>--reckless availability</strong> overrides this check
+          <pre><code>$ datalad remove -d local-dataset --reckless availability</code></pre></li>
+      </ul>
+  </section>
+
+  <section>
+      <h2>Removing wrongly</h2>
+      <ul style="font-size:30px">
+      <li>
+          Using a file browser or command line calls like <strong>rm -rf</strong> on datasets is doomed to fail.
+          Recreate the local dataset we just removed:
+          <pre><code>$ datalad create local-dataset
+$ cd local-dataset
+$ echo "This file content will only exist locally" > local-file.txt
+$ datalad save -m "Added a file without remote content availability"</code></pre>
+      </li>
+      <li class="fragment fade-in" >Removing it the wrong way causes chaos and leaves an usuable dataset corpse behind:
+      <pre><code>$ rm -rf local-dataset
+rm: cannot remove 'local-dataset/.git/annex/objects/Kj/44/MD5E-s42--8f008874ab52d0ff02a5bbd0174ac95e.txt/
+MD5E-s42--8f008874ab52d0ff02a5bbd0174ac95e.txt': Permission denied
+</code></pre></li>
+      <li class="fragment fade-in" >The dataset can't be fixed, but to remove the corpse <strong>chmod</strong> (change file mode bits) it (i.e., make it writable)
+          <pre><code>$ chmod +w -R local-dataset
+$ rm -rf local-dataset
+</code></pre>
+      </li>
+      </ul>
+  </section>
+
+<section>
+          <h2>Questions!</h2>
+      <small>Awkward silence can be bridged with awkward MC questions :) </small>
+        <iframe src="https://directpoll.com/r?XDbzPBdEt8j1rJlVwV5I4m6c9z8nJU2YLnRe3j3k",
+              style="border: 0" width="900" height="800"></iframe>
+    <small>A complete overview of file system operations is in
+          <a href="http://handbook.datalad.org/en/latest/basics/101-136-filesystem.html" target="_blank">
+              handbook.datalad.org/en/latest/basics/101-136-filesystem.html
+          </a></small>
+  </section>
+  </section>
+
+
+
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280,
+				height: 960,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.3,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: 'c',
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				pdfPageHeightOffset: -1,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
