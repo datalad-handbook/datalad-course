@@ -278,11 +278,151 @@ Clearer separation of semantics, through use of pristine version of original dat
     </ul>
 </section>
 </section>
-<section>
-    <section>
-        [Outro & QA]
-    </section>
 
+<section>
+<section data-markdown><script type="text/template">
+# And now what?
+</script></section>
+<section data-markdown><script type="text/template">
+## When everything is tracked: A reproducible paper
+
+<iframe width="1120" height="630" src="https://www.youtube-nocookie.com/embed/nhLqmF58SLQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- Peer-reviewed paper published in Behavior Research Methods [[DOI 10.3758/s13428-020-01428-x](https://doi.org/10.3758/s13428-020-01428-x)]<!-- .element: style="font-size:70%" -->
+
+- Free to reproduce at https://github.com/psychoinformatics-de/paper-remodnav more details in the DataLad handbook
+  http://handbook.datalad.org/r.html?reproducible-paper.
+
+- Full video: https://youtube.com/datalad
+
+<!-- .element: style="font-size:70%" -->
+Note:
+- VERY useful prior publication
+</script></section>
+
+<section data-markdown><script type="text/template">
+# Anticipate change!
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive capture enables portability
+![](../pics/vamp_2_pushtocloud.png)<!-- .element: width="100%" -->
+Precise identification of data and computational environments, combined for provenance records form a comprehensive and portable data structure, capturing all aspects of an investigation.
+
+**Easily take your stuff with you, whereever and whenever you move on!**
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Services
+![](../pics/studyforrest_on_github.png)<!-- .element: height="500" style="box-shadow: 10px 10px 8px #888888" -->
+
+- make *the* difference for advertisment, discovery, convenience
+- but imply gigantic dependencies
+- often impossible to "take over"
+
+**Make sure data/metadata are self-contained<br>to facilitate/enable transition to another service**
+<aside class="notes">
+Note to self
+</aside>
+</script>
+</section>
+
+<section data-markdown><script type="text/template">
+# Is it really worth the investment?
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big: Process the UK Biobank (imaging data)
+![](../pics/biobank_website.png)<!-- .element: height="400" -->
+
+- 76 TB in 43 million files in total
+- 42,715 participants contributed personal health data
+- Strict DUA
+- Custom binary-only downloader
+- Most data records offered as (unversioned) ZIP files
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Challenges
+
+- Process data such that
+  - Results are computationally reproducible (without the original compute infrastructure)
+  - There is complete linkage from results to an individual data record download
+  - It scales with the amount of available compute resources
+
+- Data processing pipeline
+  - Compiled MATLAB blob
+  - 1h processing time per image, with 41k images to process
+  - 1.2 M output files (30 output files per input file)
+  - 1.2 TB total size of outputs
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big setup
+![](../pics/fairlybig_ukbsetup.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
+
+- UKB DataLad extension can track the evolution of the complete data release in DataLad datasets
+<!-- .element: style="font-size:80%" -->
+- Full version history
+<!-- .element: style="font-size:80%" -->
+- Native and BIDSified data layout
+<!-- .element: style="font-size:80%" -->
+
+<note>Wagner, Waite, Wierzba, Hoffstaedter, Waite, Poldrack, Eickhoff, Hanke (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big workflow
+![](../pics/fairlybig_workflow.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
+- Common data representation in secure environments
+- Content-agnostic persistent (encrypted) storage
+- All computations in freshly bootstrapped emphemeral environments, only using information from a fully self-contained  DataLad dataset
+<note>Wagner et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big provenance capture
+![](../pics/fairlybig_prov.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
+
+- Every single pipeline execution is tracked
+- Each execution individually reproducible without HPC access
+<note>Wagner et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big movie
+
+<iframe width="1120" height="630" src="https://www.youtube-nocookie.com/embed/UsW6xN2f2jc?start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- Rendered exclusively from information captured by DataLad in the output dataset. Full video: https://youtube.com/datalad
+- Two full (re-)computations, programmatically comparable, verifiable, reproducible -- on any system with data access
+</script></section>
+</section>
+
+<section data-markdown><script type="text/template">
+## Interoperable digital research ecosystem
+
+![](../pics/decentralized_rdm.png)<!-- .element: width="100%" style="margin-bottom:100px" -->
+
+<note>Hanke, Pestilli, Wagner, Markiewicz, Poline & Halchenko (2021). In defense of decentralized research data
+management. Neuroforum, 72, 17-25.</note>
+
+Note:
+- Freedom of infrastructure selection
+- Transitions between institutions and stewards
+- Facilitate diverse collaboration
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Training and guideline development
+![](../pics/vamp_poster.png)<!-- .element: width="1100" style="margin-top:-20px;margin-bottom:30px" -->
+
+<note>Adina S. Wagner, Jean-Baptiste Poline, Michael Hanke. *A pragmatic approach to reusable research outputs*. <a href="https://doi.org/10.7490/f1000research.1118575.1">10.7490/f1000research.1118575.1</a> More hands-on details in the DataLad handbook at http://handbook.datalad.org</note>
+</script></section>
+
+</section>
+
+<section>
     <section>
       <h2>After the workshop</h2>
       <ul>
