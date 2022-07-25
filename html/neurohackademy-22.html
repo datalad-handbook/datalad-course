@@ -147,32 +147,16 @@
     </dl></tr>
         <tr><dl class="fragment fade-in">Free, <br> open source, <br> command line tool & Python API </dl></tr>
     </table>
-    </div>
+    </div><note>
+Halchenko, Meyer, Poldrack, ... & Hanke, M. (2021).
+DataLad: distributed system for joint management of code, data, and their relationship.
+Journal of Open Source Software, 6(63), 3262.
+</note>
     <ul style="vertical-align:middle">
         <br>
         <dt></dt>
     </ul>
 </section>
-
-
-<section>
-    <h2>
-        <img src="../pics/datalad_logo_wide.svg" height="150">
-        Core Features:
-    </h2>
-    <ul>
-        <li class="fragment fade-in-then-semi-out">
-        Joint <b>version control</b> (<a href="https://git-scm.com/" target="_blank">Git</a>,
-        <a href="https://git-annex.branchable.com/" target="_blank">git-annex</a>) for code, software, and data</li>
-        <li class="fragment fade-in-then-semi-out"> <b>Data transport</b> mechanisms:
-        Install or share complete projects extremely lightweight,
-        retrieve data on demand and drop it to free up space without losing data
-        access or provenance, collaborate remotely on scientific projects</li>
-        <li class="fragment fade-in-then-semi-out"> <b>Provenance capture</b>:
-        Create and share machine-readable, re-executable records of your data analysis for reproducible, transparent, and FAIR research</li>
-</ul>
-</section>
-
 
 <section data-transition="None">
     <h3>
@@ -234,7 +218,31 @@
 </section>
 </section>
 
+
 <section>
+
+<section>
+    <h2>
+        <img src="../pics/datalad_logo_wide.svg" height="150">
+        Core Features:
+    </h2>
+    <ul>
+        <li class="fragment fade-in-then-semi-out">
+        Joint <b>version control</b> (<a href="https://git-scm.com/" target="_blank">Git</a>,
+        <a href="https://git-annex.branchable.com/" target="_blank">git-annex</a>): version control data & software alongside your code</li>
+        <li class="fragment fade-in-then-semi-out"> <b>Provenance capture</b>:
+        Create and share machine-readable, re-executable provenance records for reproducible, transparent, and FAIR research</li>
+        <li class="fragment fade-in-then-semi-out">
+            decentral <b>data transport</b> mechanisms:
+        Install, share and collaborate on scientific projects; publish,
+        upgrade, and retrieve their contents in a streamlined fashion on demand,
+        and distribute files in a decentral network on the services or infrastructures
+        of your choice </li>
+</ul><br>
+    <p>Code for hands-on: <a href="https://handbook.datalad.org" target="_blank">handbook.datalad.org</a> </p>
+</section>
+
+
   <section data-transition="None">
     <h2>Prerequisites: Terminal</h2>
       <ul>
@@ -262,10 +270,10 @@ dl.create(path="mydataset")</code></pre></div>
               command followed by a sub-command. The main and the sub-command can have options.
               <img height="280px" src="../pics/command-structure.png">
           </li>
-          <li class="fragment fade-in"> Example (main command, subcommand, several subcommand options):
+          <li> Example (main command, subcommand, several subcommand options):
               <pre><code>$ datalad save -m "Saving changes" --recursive </code></pre>
           </li>
-          <li class="fragment fade-in">Use <em>--help</em> to find out more about any (sub)command
+          <li>Use <em>--help</em> to find out more about any (sub)command
               and its options, including detailed description and examples (<em>q</em> to close). Use <em>-h</em> to get a short
           overview of all options
           <pre><code>$ datalad save -h
@@ -285,10 +293,6 @@ Use '--help' to get more comprehensive information.
 
 
 <section>
-<section>
-    <h2>Version control</h2>
-</section>
-
 <section>
     <h2>Everything happens in DataLad datasets</h2>
     <img src="../pics/artwork/src/dataset_extended.svg" width="800"> <br>
@@ -400,74 +404,51 @@ Use '--help' to get more comprehensive information.
     <h2>Use a datasets' history</h2>
     <img src="../pics/researchlog.png">
 <ul>
-    <li class="fragment fade-in"> reset your dataset (or subset of it) to a previous state, </li>
-    <li class="fragment fade-in"> revert changes or bring them back, </li>
-    <li class="fragment fade-in"> find out what was done when, how, why, and by whom </li>
-    <li class="fragment fade-in"> Identify precise versions: Use data in the most recent version, or the one from 2018, or... </li>
+    <li> find out what was done when, how, why, and by whom on which versions of what build blocks </li>
+    <li> reset your dataset (or subset of it) to a previous state, </li>
+    <li> revert changes or bring them back, </li>
+    <li> Identify precise versions: Use data in the most recent version, or the one from 2018, or... </li>
 </ul>
 </section>
-
-<section data-markdown data-transition="none"><script type="text/template">
-## Exhaustive tracking of research components
-![](../pics/vamp_0_start.png)<!-- .element: width="100%" -->
-Well-structured datasets (using community standards), and portable computational environments &mdash; and their evolution &mdash; are the precondition for reproducibility
-
-<table width=100% style="padding:0px">
-<tr><td style="padding:0px">
-<code><pre>
-# turn any directory into a dataset
-# with version control
-
-% datalad create &lt;directory&gt;
-</pre></code>
-</td><td style="padding:0px">
-<code><pre>
-# save a new state of a dataset with
-# file content of any size
-
-% datalad save
-</pre></code>
-</td></tr></table>
-Note:
-- link to prev. statements on description standards
-- your community could be really small (your lab), when data are precious resources
-will be spent to understand it, but information must be capture to make this possible
-</script></section>
 </section>
 
 <section>
-
-<section>
-    <h2>Provenance tracking</h2>
-</section>
-
-
   <section>
-      <h2>Start to record provenance</h2>
+      <h2>Digital provenance</h2>
       <ul>
-          <li>
-              Have you ever saved a PDF to read later onto your computer, but forgot
-              where you got it from?
-          </li>
-          <li class="fragment fade-in">
-              Digital Provenance = <i>"The tools and processes used to create a
+          <p class="fragment fade-in">
+              = <i>"The tools and processes used to create a
               digital file, the responsible entity, and when and where the process
               events occurred"</i>
-          </li>
-          <li class="fragment fade-in">
-              The history of a dataset already contains provenance, but there is more
-              to record - for example: Where does a file come from?
-              <code>datalad download-url</code> is helpful
+          </p>
+          <li>
+              Have you ever saved a PDF to read later onto your computer, but forgot
+              where you got it from? Or did you ever find a figure in your project,
+              but forgot which analysis step produced it?
           </li>
       </ul>
   </section>
 
-  <section>
-      <h2>Seamless dataset nesting & linkage</h2>
-      <img src="../pics/linkage.svg" height="500">
-  </section>
 
-<section>
+<section data-transition="None">
+    <h2>Provenance and reproducibility</h2>
+
+    <strong>datalad run</strong> wraps around anything expressed in a command
+    line call and saves the dataset modifications resulting from the execution
+    <img src="../pics/run_basic.svg" height="600"> <!-- .element: class="fragment" -->
+</section>
+
+<section data-transition="None">
+    <h2>Provenance and reproducibility</h2>
+
+    <strong>datalad rerun</strong> repeats captured executions. <br>
+    If the outcomes
+    differ, it saves a new state of them.
+    <img src="../pics/rerun.svg" height="350"> <!-- .element: class="fragment" -->
+</section>
+
+
+<section data-transition="None">
     <h2>Seamless dataset nesting & linkage</h2>
 
     <img src="../pics/artwork/src/linkage_subds.svg" width="900"> <br>
@@ -482,7 +463,7 @@ nothing to save, working tree clean</code></pre>
     -->
 </section>
 
-<section>
+<section data-transition="None">
 <h2>Seamless dataset nesting & linkage</h2>
 <img data-src="../pics/linkage.svg" height="300">
 <pre><code class="bash" style="font-size:115%;max-height:none">$ datalad clone --dataset . http://example.com/ds inputs/rawdata
@@ -497,7 +478,8 @@ index 0000000..c3370ba
 @@ -0,0 +1,3 @@
 +[submodule "inputs/rawdata"]
 +       path = inputs/rawdata
-+       url = http://example.com/importantds
++       datalad-id = 68bdb3f3-eafa-4a48-bddd-31e94e8b8242
++       datalad-url = http://example.com/importantds
 diff --git a/inputs/rawdata b/inputs/rawdata
 new file mode 160000
 index 0000000..fabf852
@@ -509,137 +491,6 @@ index 0000000..fabf852
     <aside class="notes">weighs just a few bytes</aside>
 </section>
 
-
-    <section data-markdown style="font-size:30px"><script type="text/template">
-## Dataset management for Reproducibility & Reusability
-<small>Read more at <a href="https://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.htmlhttps://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.html" target="_blank">
-            psychoinformatics-de.github.io/rdm-course/04-dataset-management
-        </a> </small>
-![](../pics/dataset_modules.png)
-
-When setting up data analyses...
-- Create MODULAR datasets: Whenever a particular collection of files could anyhow be useful in more than one context (e.g. data), put them in their own dataset, and install it as a subdataset. <!-- .element: class="fragment fade-in-then-semi-out" -->
-- Keep everything STRUCTURED: Bundle all components of one analysis into one superdataset, and within this dataset, separate code, data, output, execution environments.<!-- .element: class="fragment fade-in-then-semi-out" -->
-- Keep a dataset SELF-CONTAINED with relative paths in scripts to subdatasets or files.
-  Do not use absolute paths.<!-- .element: class="fragment fade-in-then-semi-out" -->
-
-    </script>
-</section>
-
-  <section data-transition="None">
-      <h2>Why Modularity?</h2>
-
-      <ul style="font-size:30px">
-          <li>1. Reuse and access management</li>
-              <img src="../pics/ukb_datasets.svg" height="500px">
-
-          </li>
-          <li class="fragment fade-in" data-fragment-index="1">2. Scalability</li>
-          <pre  class="fragment fade-in" data-fragment-index="1"><code class="fragment fade-in" data-fragment-index="1">adina@bulk1 in /ds/hcp/super on git:master❱ datalad status --annex -r
-  15530572 annex'd files (77.9 TB recorded total size)
-  nothing to save, working tree clean</code></pre>
-          <small  class="fragment fade-in" data-fragment-index="1"><a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank">(github.com/datalad-datasets/human-connectome-project-openaccess)</a></small>
-      </ul>
-
-  </section>
-
-<section style="font-size:30px" data-transition="None">
-<h2>Why Modularity?</h2>
-    <ul>
-        <li>3. Transparency</li><br>
-
-Original:
-<pre><code class="sh" style="max-height:none" data-trim>
-/dataset
-├── sample1
-│   └── a001.dat
-├── sample2
-│   └── a001.dat
-...
-</code></pre>
-<div class="fragment">
-Without modularity, after applied transform (preprocessing, analysis, ...):
-<pre><code class="sh" style="max-height:none" data-trim>
-/dataset
-├── sample1
-│   ├── ps34t.dat
-│   └── a001.dat
-├── sample2
-│   ├── ps34t.dat
-│   └── a001.dat
-...
-</code></pre>
-Without expert/domain knowledge, no distinction between original and derived data
-    possible.
-</div>
-        </ul>
-</section>
-
-
-<section  style="font-size:30px" data-transition="None">
-<h2>Why Modularity?</h2>
-    <ul>
-        <li>3. Transparency</li><br>
-
-Original:
-<pre><code class="sh" style="max-height:none" data-trim>
-/raw_dataset
-├── sample1
-│   └── a001.dat
-├── sample2
-│   └── a001.dat
-...
-</code></pre>
-        <strong>With modularity</strong> after applied transform (preprocessing, analysis, ...)
-<pre><code class="sh" style="max-height:none" data-trim>
-/derived_dataset
-├── sample1
-│   └── ps34t.dat
-├── sample2
-│   └── ps34t.dat
-├── ...
-└── inputs
-    └── raw
-        ├── sample1
-        │   └── a001.dat
-        ├── sample2
-        │   └── a001.dat
-        ...
-</code></pre>
-Clearer separation of semantics, through use of pristine version of original dataset within a
-        <em>new, additional</em> dataset holding the outputs.</ul>
-
-</section>
-
-
-<section>
-    <h2>Reproducible execution & provenance capture</h2>
-
-    <p>datalad run</p>
-    <img src="../pics/run_prov.svg" height="600"> <!-- .element: class="fragment" -->
-</section>
-
-<section data-markdown data-transition="none"><script type="text/template">
-## Capture computational provenance
-![](../pics/vamp_1_provcapture.png)<!-- .element: width="100%" -->
-Which data was needed at which version, as input into which code, running with what parameterization in which
-computional environment, to generate an outcome?
-
-<table width=100% style="padding:0px">
-<tr><td style="padding:0px">
-<code><pre>
-# execute any command and capture its output
-# while recording all input versions too
-
-% datalad run --input ... --output ... &lt;command&gt;
-</pre></code>
-</td></tr></table>
-
-Note:
-The missing link: even when everything is shared, we still don't know how to start.
-README is minimum, but executable prov-records are much better.
-</script></section>
-
 </section>
 
 
@@ -647,10 +498,6 @@ README is minimum, but executable prov-records are much better.
 
 
 <section>
-<section>
-    <h2>Data transport</h2>
-</section>
-
 
   <section data-transition="None">
       <h2>Plenty of data, but little disk-usage</h2>
@@ -880,6 +727,58 @@ Note to self
 <section>
 
 
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive tracking of research components
+![](../pics/vamp_0_start.png)<!-- .element: width="100%" -->
+Well-structured datasets (using community standards), and portable computational environments &mdash; and their evolution &mdash; are the precondition for reproducibility
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# turn any directory into a dataset
+# with version control
+
+% datalad create &lt;directory&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# save a new state of a dataset with
+# file content of any size
+
+% datalad save
+</pre></code>
+</td></tr></table>
+Note:
+- link to prev. statements on description standards
+- your community could be really small (your lab), when data are precious resources
+will be spent to understand it, but information must be capture to make this possible
+</script></section>
+
+
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Capture computational provenance
+![](../pics/vamp_1_provcapture.png)<!-- .element: width="100%" -->
+Which data was needed at which version, as input into which code, running with what parameterization in which
+computional environment, to generate an outcome?
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# execute any command and capture its output
+# while recording all input versions too
+
+% datalad run --input ... --output ... &lt;command&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+The missing link: even when everything is shared, we still don't know how to start.
+README is minimum, but executable prov-records are much better.
+</script></section>
+
+
 <section data-markdown data-transition="none"><script type="text/template">
 ## Ultimate goal: (re-)usability
 ![](../pics/vamp_4_reuse.png)<!-- .element: width="100%" -->
@@ -1094,7 +993,111 @@ Note:
 </section>
 
 </section>
+<section>
 
+    <section data-markdown style="font-size:30px"><script type="text/template">
+## Dataset management for Reproducibility & Reusability
+<small>Read more at <a href="https://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.htmlhttps://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.html" target="_blank">
+            psychoinformatics-de.github.io/rdm-course/04-dataset-management
+        </a> </small>
+![](../pics/dataset_modules.png)
+
+When setting up data analyses...
+- Create MODULAR datasets: Whenever a particular collection of files could anyhow be useful in more than one context (e.g. data), put them in their own dataset, and install it as a subdataset. <!-- .element: class="fragment fade-in-then-semi-out" -->
+- Keep everything STRUCTURED: Bundle all components of one analysis into one superdataset, and within this dataset, separate code, data, output, execution environments.<!-- .element: class="fragment fade-in-then-semi-out" -->
+- Keep a dataset SELF-CONTAINED with relative paths in scripts to subdatasets or files.
+  Do not use absolute paths.<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+    </script>
+</section>
+
+  <section data-transition="None">
+      <h2>Why Modularity?</h2>
+
+      <ul style="font-size:30px">
+          <li>1. Reuse and access management</li>
+              <img src="../pics/ukb_datasets.svg" height="500px">
+
+          </li>
+          <li class="fragment fade-in" data-fragment-index="1">2. Scalability</li>
+          <pre  class="fragment fade-in" data-fragment-index="1"><code class="fragment fade-in" data-fragment-index="1">adina@bulk1 in /ds/hcp/super on git:master❱ datalad status --annex -r
+  15530572 annex'd files (77.9 TB recorded total size)
+  nothing to save, working tree clean</code></pre>
+          <small  class="fragment fade-in" data-fragment-index="1"><a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank">(github.com/datalad-datasets/human-connectome-project-openaccess)</a></small>
+      </ul>
+
+  </section>
+
+<section style="font-size:30px" data-transition="None">
+<h2>Why Modularity?</h2>
+    <ul>
+        <li>3. Transparency</li><br>
+
+Original:
+<pre><code class="sh" style="max-height:none" data-trim>
+/dataset
+├── sample1
+│   └── a001.dat
+├── sample2
+│   └── a001.dat
+...
+</code></pre>
+<div class="fragment">
+Without modularity, after applied transform (preprocessing, analysis, ...):
+<pre><code class="sh" style="max-height:none" data-trim>
+/dataset
+├── sample1
+│   ├── ps34t.dat
+│   └── a001.dat
+├── sample2
+│   ├── ps34t.dat
+│   └── a001.dat
+...
+</code></pre>
+Without expert/domain knowledge, no distinction between original and derived data
+    possible.
+</div>
+        </ul>
+</section>
+
+
+<section  style="font-size:30px" data-transition="None">
+<h2>Why Modularity?</h2>
+    <ul>
+        <li>3. Transparency</li><br>
+
+Original:
+<pre><code class="sh" style="max-height:none" data-trim>
+/raw_dataset
+├── sample1
+│   └── a001.dat
+├── sample2
+│   └── a001.dat
+...
+</code></pre>
+        <strong>With modularity</strong> after applied transform (preprocessing, analysis, ...)
+<pre><code class="sh" style="max-height:none" data-trim>
+/derived_dataset
+├── sample1
+│   └── ps34t.dat
+├── sample2
+│   └── ps34t.dat
+├── ...
+└── inputs
+    └── raw
+        ├── sample1
+        │   └── a001.dat
+        ├── sample2
+        │   └── a001.dat
+        ...
+</code></pre>
+Clearer separation of semantics, through use of pristine version of original dataset within a
+        <em>new, additional</em> dataset holding the outputs.</ul>
+
+</section>
+
+
+</section>
 
 <section>
   <section data-transition="None">
