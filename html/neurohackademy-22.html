@@ -266,7 +266,7 @@ dl.create(path="mydataset")</code></pre></div>
   <section data-transition="None">
       <h2>Prerequisites: Using DataLad</h2>
       <ul style="font-size:30px">
-          <li class="fragment fade-in">Every DataLad command consists of a main
+          <li>Every DataLad command consists of a main
               command followed by a sub-command. The main and the sub-command can have options.
               <img height="280px" src="../pics/command-structure.png">
           </li>
@@ -390,6 +390,28 @@ Use '--help' to get more comprehensive information.
 
 <section data-transition="None">
     <h2>Exhaustive tracking</h2>
+    <dl style="font-size:35px">
+        <dt>The building blocks of a scientific result are rarely static</dt>
+        <br>
+    </dl>
+    <table>
+        <tr>
+            <td style="vertical-align: top">
+                Data changes (for real) <br>
+                        <small>(errors are fixed, data is extended,<br>
+                            naming standards change, ...)</small>
+               <img  height="180px" src="../pics/abcdtwitter.png">
+            </td>
+            <td>
+                <img width="1000px"  src="../pics/abcd.png">
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<section data-transition="None">
+    <h2>Exhaustive tracking</h2>
     "Shit, which version of which script produced these outputs from which version
     of what data... and which software version?"<br>
     <img src="../pics/manuallabor.png">
@@ -400,15 +422,17 @@ Use '--help' to get more comprehensive information.
     </imgcredit>
 </section>
 
-<section>
-    <h2>Use a datasets' history</h2>
-    <img src="../pics/researchlog.png">
-<ul>
-    <li> find out what was done when, how, why, and by whom on which versions of what build blocks </li>
-    <li> reset your dataset (or subset of it) to a previous state, </li>
-    <li> revert changes or bring them back, </li>
-    <li> Identify precise versions: Use data in the most recent version, or the one from 2018, or... </li>
-</ul>
+
+<section data-transition="None">
+    <h3>1. Transparency - for data</h3>
+    Once you track changes to data with version control tools,
+    you can find out <em>why</em> it changed, <em>what</em> has changed, <em>when</em> it changed,
+    and <em>which version</em> of your data was used at which point in time.
+    <div class="r-stack">
+        <img class="fragment fade-out" data-fragment-index="1" src="../pics/tigdata.png">
+        <img class="fragment" data-fragment-index="1" src="../pics/tigdata3.png">
+        <img class="fragment" src="../pics/tigdata2.png">
+    </div>
 </section>
 </section>
 
@@ -416,12 +440,12 @@ Use '--help' to get more comprehensive information.
   <section>
       <h2>Digital provenance</h2>
       <ul>
-          <p class="fragment fade-in">
+          <p >
               = <i>"The tools and processes used to create a
               digital file, the responsible entity, and when and where the process
               events occurred"</i>
           </p>
-          <li>
+          <li class="fragment fade-in">
               Have you ever saved a PDF to read later onto your computer, but forgot
               where you got it from? Or did you ever find a figure in your project,
               but forgot which analysis step produced it?
@@ -451,7 +475,12 @@ Use '--help' to get more comprehensive information.
 <section data-transition="None">
     <h2>Seamless dataset nesting & linkage</h2>
 
+    <img  src="../pics/dataflow.jpg">
+    <imgcredit>
+        <a href="https://www.frontiersin.org/articles/10.3389/fninf.2012.00009/full" target="_blank">
+            Poline et al., 2011</a></imgcredit>
     <img src="../pics/artwork/src/linkage_subds.svg" width="900"> <br>
+
 <!--    <ul>
         <li class="fragment fade-in" data-fragment-index="2">Overcomes scaling issues with large amounts of files</li>
         <pre  class="fragment fade-in" data-fragment-index="2"><code>adina@bulk1 in /ds/hcp/super on git:master❱ datalad status --annex -r
@@ -514,7 +543,7 @@ index 0000000..fabf852
   <pre class="fragment fade-in"><code>$ datalad get sub-01/ses-movie/func/sub-01_ses-movie_task-movie_run-1_bold.nii.gz
   get(ok): /tmp/studyforrest-data-phase2/sub-01/ses-movie/func/sub-01_ses-movie_task-movie_run-1_bold.nii.gz (file) [from mddatasrc...]</code></pre>
 
-  <li class="fragment fade-in">Have more access to your computer than you have disk-space:</li>
+  <li class="fragment fade-in">Have access to more data on your computer than you have disk-space:</li>
   <pre class="fragment fade-in"><code># eNKI dataset (1.5TB, 34k files):
 $ du -sh
 1.5G	.
@@ -593,7 +622,7 @@ ok
 </code></pre>
         </ul>
       <small><p >Delineation and advantages of decentral versus central RDM:<a href="https://doi.org/10.1515/nf-2020-0037" target="_blank">
-          In defense of decentralized research data management</a></small>
+          Hanke et al., (2021). In defense of decentralized research data management</a></small>
   </section>
 
   <section>
@@ -665,43 +694,33 @@ ok
       </ul>
   </section>
 
+
+  <section>
+      <h2>Computational provenance</h2>
+      <ul style="font-size:30px">
+      <li>
+          The <code>datalad-container</code> extension gives DataLad commands to register software containers as "just another file" to your
+              dataset, and <strong>datalad containers-run</strong> analysis inside the container, capturing software as additional
+          provenance
+          </li>
+      </ul>
+      <img class="fragment fade-in" src="../pics/containers-run.svg" height="600"> <!-- .element: class="fragment" -->
+  </section>
+
     <section>
-        TODO: data publication, data collaboration
-    </section>
-
-<section>
-    <h2>Consume and collaborate</h2>
-    <img src="../pics/artwork/src/collaboration.svg" width="900"> <br>
-</section>
-
-<section>
-    <h2>Third party integrations</h2>
-    <img src="../pics/artwork/src/thirdparty.svg" width="900"> <br>
+      <h2>Sharing datasets</h2>
+      <img height="900" src="../pics/artwork/src/publishing/startingpoint.svg">
+  </section>
+    <section>
+        <div class="r-stack">
+            <img class="fragment fade-out" data-fragment-index="1" src="../pics/services_only.png">
+            <img class="fragment fade-in" data-fragment-index="1" src="../pics/services_connected.png">
+        </div>
     <small>Apart from <b>local computing infrastructure</b> (from private laptops to computational clusters),
         datasets can be hosted in major <b>third party repository hosting and cloud storage</b> services.
         More info: Chapter on <a href="http://handbook.datalad.org/en/latest/basics/basics-thirdparty.html" target="_blank">
             Third party infrastructure</a>.</small>
-</section>
-
-
-<section data-markdown data-transition="none"><script type="text/template">
-## Exhaustive capture enables portability
-![](../pics/vamp_2_pushtocloud.png)<!-- .element: width="100%" -->
-Precise identification of data and computational environments, combined for provenance records form a comprehensive and portable data structure, capturing all aspects of an investigation.
-
-<table width=100% style="padding:0px">
-<tr><td style="padding:0px">
-<code><pre>
-# transfer data and metadata to other sites and services
-# with fine-grained access control for dataset components
-
-% datalad push --to &lt;site-or-service&gt;
-</pre></code>
-</td></tr></table>
-
-Note:
-Does it fly? Can you give it to someone? Or can you take it with you to your new lab?
-</script></section>
+    </section>
 
 
 <section data-markdown><script type="text/template">
@@ -719,13 +738,25 @@ Note to self
 </script>
 </section>
 
-</section>
+    <section data-transition="None">
+        <h3>3. Security and reliability - for data</h3>
+        Decentral version control for data integrates with a variety of services
+        to let you store data in different places - creating a resilient network for data
+        <img src="pics/decentral_RDM_overview.png">
+        <small> <a href="https://doi.org/10.1515/nf-2020-0037" target="_blank">"In defense of decentralized Research Data Management", doi.org/10.1515/nf-2020-0037</a> </small>
+    </section>
 
+    <section data-transition="None">
+        <h3>5. Collaboration</h3>
+        Teamscience on more than code:
+        <img src="../pics/teamscience.png">
+        <img class="fragment" src="../pics/datahistory.png">
+    </section>
+</section>
 
 <!-- AND NOW TO THE FAIRLY BIG WORKFLOW -->
 
 <section>
-
 
 
 <section data-markdown data-transition="none"><script type="text/template">
@@ -755,8 +786,6 @@ Note:
 will be spent to understand it, but information must be capture to make this possible
 </script></section>
 
-
-
 <section data-markdown data-transition="none"><script type="text/template">
 ## Capture computational provenance
 ![](../pics/vamp_1_provcapture.png)<!-- .element: width="100%" -->
@@ -778,6 +807,51 @@ The missing link: even when everything is shared, we still don't know how to sta
 README is minimum, but executable prov-records are much better.
 </script></section>
 
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive capture enables portability
+![](../pics/vamp_2_pushtocloud.png)<!-- .element: width="100%" -->
+Precise identification of data and computational environments
+combined with provenance records form a comprehensive and portable
+data structure, capturing all aspects of an investigation.
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# transfer data and metadata to other sites and services
+# with fine-grained access control for dataset components
+
+% datalad push --to &lt;site-or-service&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+Does it fly? Can you give it to someone? Or can you take it with you to your new lab?
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Reproducibility strengthens trust
+![](../pics/vamp_3_reproduce.png)<!-- .element: width="100%" -->
+Outcomes of computational transformations can be validated by authorized 3rd-parties. This enables audits, promotes accountability, and streamlines automated "upgrades" of outputs
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# obtain dataset (initially only identity,
+# availability, and provenance metadata)
+
+% datalad clone &lt;url&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# immediately actionable provenance records
+# full abstraction of input data retrieval
+
+% datalad rerun &lt;commit|tag|range&gt;
+</pre></code>
+</td></tr></table>
+Note:
+Goal is automated reproducibility, enables assessment of robustness and benchmarking algorithmic developments
+</script></section>
 
 <section data-markdown data-transition="none"><script type="text/template">
 ## Ultimate goal: (re-)usability
@@ -798,9 +872,21 @@ Note:
 With these in place, re-usability is a small(er) step
 </script></section>
 
+<section>
+    <h2>Big data</h2>
+    <div class="r-stack">
+        <img class="fragment fade-in-then-out" src="../pics/01_once_upon_a_time.svg">
+        <img class="fragment fade-in-then-out" src="../pics/02_preprocessing.svg">
+        <img class="fragment fade-in-then-out" src="../pics/03-transparency.svg">
+        <img class="fragment fade-in-then-out" src="../pics/04-in-the-shits.svg">
+        <img class="fragment fade-in-then-out" src="../pics/05-big-shit.svg">
+    </div>
+</section>
 
-<section data-markdown><script type="text/template">
-## FAIRly big: Process the UK Biobank (imaging data)
+<section data-markdown data-transition="None"><script type="text/template">
+## FAIRly big: Scaling up
+
+Objective: Process the UK Biobank (imaging data)
 ![](../pics/biobank_website.png)<!-- .element: height="400" -->
 
 - 76 TB in 43 million files in total
@@ -810,7 +896,7 @@ With these in place, re-usability is a small(er) step
 - Most data records offered as (unversioned) ZIP files
 </script></section>
 
-<section data-markdown><script type="text/template">
+<section data-markdown data-transition="None"><script type="text/template">
 ## Challenges
 
 - Process data such that
@@ -825,86 +911,99 @@ With these in place, re-usability is a small(er) step
   - 1.2 TB total size of outputs
 </script></section>
 
-<section data-markdown><script type="text/template">
-## FAIRly big setup
-![](../pics/fairlybig_ukbsetup.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
+<section data-transition="None">
+    <h2> FAIRly big setup</h2>
+<img src="../pics/fairlybig_ukbsetup.png" width="1200" style="margin-top:-35px;margin-bottom:-30px">
 
-- UKB DataLad extension can track the evolution of the complete data release in DataLad datasets
-<!-- .element: style="font-size:80%" -->
-- Full version history
-<!-- .element: style="font-size:80%" -->
-- Native and BIDSified data layout
-<!-- .element: style="font-size:80%" -->
+    <ul style="font-size:30px">
+        <strong>Exhaustive tracking</strong>
+        <li><a href="https://github.com/datalad/datalad-ukbiobank" target="_blank">datalad-ukbiobank</a>
+extension downloads, transforms & track the evolution of the complete data release
+            in DataLad datasets
+</li>
+        <li>Native and BIDSified data layout (at no additional disk space usage)</li>
+        <li>Structured in 42k individual datasets, combined to one superdataset</li>
+        <li>Containerized pipeline in a software container</li>
+        <li>Link input data & computational pipeline as dependencies</li>
+    </ul>
+<br><br>
+<small><a href="https://www.nature.com/articles/s41597-022-01163-2" target="_blank">
+    Wagner, Waite, Wierzba et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</a>
+</small>
+</section>
 
-<note>Wagner, Waite, Wierzba, Hoffstaedter, Waite, Poldrack, Eickhoff, Hanke (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
-</script></section>
+<section  data-transition="None">
+    <h2>FAIRly big workflow</h2>
+<img src="../pics/fairlybig_workflow.png" width="1200" style="margin-top:-35px;margin-bottom:-30px">
+<br><br>
+    <ul style="font-size:30px">
+        <strong>portability</strong>
+    <li>Parallel processing: 1 job = 1 subject
+        (number of concurrent jobs capped at the capacity of the compute cluster)
+    </li>
+    <li>Each job is computed in a ephemeral (short-lived) dataset clone, results are pushed back:
+        Ensure exhaustive tracking &
+        portability during computation</li>
+    <li>Content-agnostic persistent (encrypted) storage (minimizing storage and inodes)</li>
+    <li>Common data representation in secure environments</li>
+</ul>
+    <br><br>
+<small><a href="https://www.nature.com/articles/s41597-022-01163-2" target="_blank">
+    Wagner, Waite, Wierzba et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</a>
+</small></section>
 
-<section data-markdown><script type="text/template">
-## FAIRly big workflow
-![](../pics/fairlybig_workflow.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
-- Common data representation in secure environments
-- Content-agnostic persistent (encrypted) storage
-- All computations in freshly bootstrapped emphemeral environments, only using information from a fully self-contained  DataLad dataset
-<note>Wagner et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
-</script></section>
-
-<section data-markdown><script type="text/template">
-## FAIRly big provenance capture
-![](../pics/fairlybig_prov.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
-
-- Every single pipeline execution is tracked
-- Each execution individually reproducible without HPC access
-<note>Wagner et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
-</script></section>
+<section data-transition="None">
+    <h2>FAIRly big provenance capture</h2>
+<img src="../pics/fairlybig_prov.png" width="1200" style="margin-top:-35px;margin-bottom:-30px">
+<br><br>
+    <ul style="font-size:30px">
+        <strong>Provenance</strong>
+    <li>Every single pipeline execution is tracked</li>
+    <li>Execution in ephemeral workspaces ensures results
+        individually reproducible without HPC access</li>
+</ul>
+<br><br>
+<small><a href="https://www.nature.com/articles/s41597-022-01163-2" target="_blank">
+    Wagner, Waite, Wierzba et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</a>
+</small></section>
 
 <section data-markdown><script type="text/template">
 ## FAIRly big movie
 
 <iframe width="1120" height="630" src="https://www.youtube-nocookie.com/embed/UsW6xN2f2jc?start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-- Rendered exclusively from information captured by DataLad in the output dataset. Full video: https://youtube.com/datalad
+- Two computations on clusters of different scale (small cluster, supercomputer). Full video: https://youtube.com/datalad
 - Two full (re-)computations, programmatically comparable, verifiable, reproducible -- on any system with data access
-</script></section>
-
-<section data-markdown><script type="text/template">
-## DataLad: Manage (co-)evolution of digital objects
-![](../pics/yoda_decentralized_publishing.png)<!-- .element: width="900" style="margin-bottom:-70px;margin-top:-20px" -->
-
-Consume, create, curate, analyze, publish, and query data with full provenance capture and "universal" metadata support.
-<p style="font-size:70%;margin-top:-20px">
-DataLad is free and open source (MIT-licensed). http://datalad.org
-</p>
-
-<note>
-Halchenko, Meyer, Poldrack, ... & Hanke, M. (2021).
-DataLad: distributed system for joint management of code, data, and their relationship.
-Journal of Open Source Software, 6(63), 3262.
-</note>
-Note:
-- following illustrations contain concrete implementation with datalad
-- Software developed to address the needs of long-term maintenance and collab on the stufyforrest dataset
-</script></section>
-
-
-<section data-markdown><script type="text/template">
-## Interoperable digital research ecosystem
-
-![](../pics/decentralized_rdm.png)<!-- .element: width="100%" style="margin-bottom:100px" -->
-
-<note>Hanke, Pestilli, Wagner, Markiewicz, Poline & Halchenko (2021). In defense of decentralized research data
-management. Neuroforum, 72, 17-25.</note>
-
-Note:
-- Freedom of infrastructure selection
-- Transitions between institutions and stewards
-- Facilitate diverse collaboration
 </script></section>
 </section>
 
-
 <section>
+
+    <section>
+        <h3>Take home messages</h3>
+        <dl>
+            <dt class="fragment fade-in-then-semi-out" data-fragment-index="1">Data deserves version control</dt>
+            <dd class="fragment fade-in-then-semi-out" data-fragment-index="1">It changes and evolves just like code</dd>
+            <dt class="fragment fade-in-then-semi-out" data-fragment-index="2">
+                Science, especially on big data, relies on good data management
+            </dt>
+            <dd class="fragment fade-in-then-semi-out" data-fragment-index="2">
+                But effort pays off: Increased transparency, better reproducibility, easier accessibility,
+                efficiency through automation and collaboration, streamlined procedures for synchronizing and updating your work, ...</dd>
+            <dt  class="fragment fade-in-then-semi-out" data-fragment-index="3">DataLad can help with some things</dt>
+            <dd  class="fragment fade-in-then-semi-out" data-fragment-index="3">
+                Have access to more data than you have disk space</dd>
+            <dd  class="fragment fade-in-then-semi-out" data-fragment-index="3">
+                Who needs short-term memory when you can have automatic provenance capture?
+            </dd>
+            <dd  class="fragment fade-in-then-semi-out" data-fragment-index="3">
+                Link versioned data to your analysis at no disk-space cost</dd>
+            <dd  class="fragment fade-in-then-semi-out" data-fragment-index="3">...</dd>
+        </dl>
+    </section>
+
       <section>
-      <h2>After the Hackademy</h2>
+      <h2>Help?!</h2>
       <ul>
               If you have a question, you can reach out for help any time:
           <br>
@@ -963,6 +1062,16 @@ Note:
               <img src="../pics/bannerthanks.svg">
           </ul>
         </dd>
+        <dt>Science</dt>
+        <dd style="margin-left:5px!important">
+          <ul style="margin-left:5px!important">
+              <li><a href="https://www.psychoinformatics.de/" target="_blank">
+                  Psychoinformatics <br>Lab</a>  &
+                  <a href="https://www.fz-juelich.de/en/inm/inm-7" target="_blank">
+                      INM-7</a></li>
+              <li>Countless open <br>scientists</li>
+          </ul>
+        </dd>
       </dl>
     </td>
     <td style="vertical-align:top">
@@ -991,113 +1100,8 @@ Note:
   </tr>
   </table>
 </section>
-
-</section>
-<section>
-
-    <section data-markdown style="font-size:30px"><script type="text/template">
-## Dataset management for Reproducibility & Reusability
-<small>Read more at <a href="https://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.htmlhttps://psychoinformatics-de.github.io/rdm-course/04-dataset-management/index.html" target="_blank">
-            psychoinformatics-de.github.io/rdm-course/04-dataset-management
-        </a> </small>
-![](../pics/dataset_modules.png)
-
-When setting up data analyses...
-- Create MODULAR datasets: Whenever a particular collection of files could anyhow be useful in more than one context (e.g. data), put them in their own dataset, and install it as a subdataset. <!-- .element: class="fragment fade-in-then-semi-out" -->
-- Keep everything STRUCTURED: Bundle all components of one analysis into one superdataset, and within this dataset, separate code, data, output, execution environments.<!-- .element: class="fragment fade-in-then-semi-out" -->
-- Keep a dataset SELF-CONTAINED with relative paths in scripts to subdatasets or files.
-  Do not use absolute paths.<!-- .element: class="fragment fade-in-then-semi-out" -->
-
-    </script>
 </section>
 
-  <section data-transition="None">
-      <h2>Why Modularity?</h2>
-
-      <ul style="font-size:30px">
-          <li>1. Reuse and access management</li>
-              <img src="../pics/ukb_datasets.svg" height="500px">
-
-          </li>
-          <li class="fragment fade-in" data-fragment-index="1">2. Scalability</li>
-          <pre  class="fragment fade-in" data-fragment-index="1"><code class="fragment fade-in" data-fragment-index="1">adina@bulk1 in /ds/hcp/super on git:master❱ datalad status --annex -r
-  15530572 annex'd files (77.9 TB recorded total size)
-  nothing to save, working tree clean</code></pre>
-          <small  class="fragment fade-in" data-fragment-index="1"><a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank">(github.com/datalad-datasets/human-connectome-project-openaccess)</a></small>
-      </ul>
-
-  </section>
-
-<section style="font-size:30px" data-transition="None">
-<h2>Why Modularity?</h2>
-    <ul>
-        <li>3. Transparency</li><br>
-
-Original:
-<pre><code class="sh" style="max-height:none" data-trim>
-/dataset
-├── sample1
-│   └── a001.dat
-├── sample2
-│   └── a001.dat
-...
-</code></pre>
-<div class="fragment">
-Without modularity, after applied transform (preprocessing, analysis, ...):
-<pre><code class="sh" style="max-height:none" data-trim>
-/dataset
-├── sample1
-│   ├── ps34t.dat
-│   └── a001.dat
-├── sample2
-│   ├── ps34t.dat
-│   └── a001.dat
-...
-</code></pre>
-Without expert/domain knowledge, no distinction between original and derived data
-    possible.
-</div>
-        </ul>
-</section>
-
-
-<section  style="font-size:30px" data-transition="None">
-<h2>Why Modularity?</h2>
-    <ul>
-        <li>3. Transparency</li><br>
-
-Original:
-<pre><code class="sh" style="max-height:none" data-trim>
-/raw_dataset
-├── sample1
-│   └── a001.dat
-├── sample2
-│   └── a001.dat
-...
-</code></pre>
-        <strong>With modularity</strong> after applied transform (preprocessing, analysis, ...)
-<pre><code class="sh" style="max-height:none" data-trim>
-/derived_dataset
-├── sample1
-│   └── ps34t.dat
-├── sample2
-│   └── ps34t.dat
-├── ...
-└── inputs
-    └── raw
-        ├── sample1
-        │   └── a001.dat
-        ├── sample2
-        │   └── a001.dat
-        ...
-</code></pre>
-Clearer separation of semantics, through use of pristine version of original dataset within a
-        <em>new, additional</em> dataset holding the outputs.</ul>
-
-</section>
-
-
-</section>
 
 <section>
   <section data-transition="None">
@@ -1117,14 +1121,17 @@ Clearer separation of semantics, through use of pristine version of original dat
               space. It is the antagonist of <strong>get</strong> (which can get
               files and subdatasets).
           <pre><code>$ datalad drop inputs/sub-02
-drop(ok): TODO (file)
-          [checking TODO]</code></pre></li>
+drop(ok): input/sub-02/func/sub-02_task-oneback_run-01_bold.nii.gz (file)
+drop(ok): input/sub-02 (directory)
+action summary:
+  drop (ok: 2)</code></pre></li>
           <li class="fragment fade-in">But: Default safety checks require that dropped files can be re-obtained
           to prevent accidental data loss. <strong>git annex whereis</strong> reports all registered locations
           of a file's content</li>
           <li class="fragment fade-in"><strong>drop</strong> does not only operate on individual annexed files,
           but also directories, or globs, and it can uninstall subdatasets:
-          <pre><code>$ datalad drop --what all input</code></pre></li>
+          <pre><code>$ datalad drop --what all input
+uninstall(ok): input (dataset)</code></pre></li>
       </ul>
   </section>
 
@@ -1136,7 +1143,7 @@ drop(ok): TODO (file)
              <strong>clone</strong>.
           <pre><code># The command operates outside of the to-be-removed dataset!
 $ datalad remove inputs
-uninstall(ok): [TODO] (dataset)</code></pre></li>
+uninstall(ok):  inputs (dataset)</code></pre></li>
           <li class="fragment fade-in">But: Default safety checks require that
               it could be re-cloned in its most recent version from other places,
               i.e., that there is a <em>sibling</em> that has all revisions that
@@ -1152,10 +1159,10 @@ uninstall(ok): [TODO] (dataset)</code></pre></li>
           <li class="fragment fade-in"><strong>datalad drop</strong> refuses to
               remove annexed file contents if it can't verify that
               <strong>datalad get</strong> could re-retrieve it
-          <pre><code>$ datalad drop figures/TODO.png
-$ drop(error): TODO (file) [unsafe; Could only verify the existence of 0 out of 1 necessary copy;
-              (Note that these git remotes have annex-ignore set: origin upstream);
-              (Use --reckless availability to override this check, or adjust numcopies.)]
+          <pre><code>$ datalad drop figures/sub-02_mean-epi.png
+drop(error): figures/sub-02_mean-epi.png (file) [unsafe; Could only verify the existence of 0 out of 1 necessary
+                                                copy; (Use --reckless availability to override this check, or
+                                                adjust numcopies.)]
 </code></pre></li>
           <li class="fragment fade-in">Adding <strong>--reckless availability</strong> overrides this check
           <pre><code>$ datalad drop figuresTODO --reckless availability</code></pre></li>
