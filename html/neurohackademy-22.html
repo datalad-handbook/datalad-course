@@ -235,7 +235,7 @@ Journal of Open Source Software, 6(63), 3262.
         <li class="fragment fade-in-then-semi-out">
             decentral <b>data transport</b> mechanisms:
         Install, share and collaborate on scientific projects; publish,
-        upgrade, and retrieve their contents in a streamlined fashion on demand,
+        update, and retrieve their contents in a streamlined fashion on demand,
         and distribute files in a decentral network on the services or infrastructures
         of your choice </li>
 </ul><br>
@@ -402,7 +402,7 @@ Use '--help' to get more comprehensive information.
 
 
 <section data-transition="None">
-    <h3>1. Transparency - for data</h3>
+    <h3>Exhaustive tracking</h3>
     Once you track changes to data with version control tools,
     you can find out <em>why</em> it changed, <em>what</em> has changed, <em>when</em> it changed,
     and <em>which version</em> of your data was used at which point in time.
@@ -590,13 +590,12 @@ aeb0e5f2e2d5fe4ade97117a8cc5232f  sub-02/func/sub-02_task-oneback_run-01_bold.ni
             <li class="fragment fade-in">File contents can be shared via almost all
                 standard infrastructure. File availability information is a decentral network.
           A file can exist in multiple different locations.</li>
-          <pre class="fragment fade-in" ><code class="fragment fade-in" data-fragment-index="1">$ git annex whereis inputs/images/chinstrap_02.jpg
-whereis TODO BIDS FUNC DATA!inputs/images/chinstrap_02.jpg (1 copy)
-	00000000-0000-0000-0000-000000000001 -- web
-	c1bfc615-8c2b-4921-ab33-2918c0cbfc18 -- adina@muninn:/tmp/my-dataset [here]
+          <pre class="fragment fade-in" ><code class="fragment fade-in" data-fragment-index="1">$ git annex whereis code/nilearn-tutorial.pdf
+whereis code/nilearn-tutorial.pdf (2 copies)
+        cf13d535-b47c-5df6-8590-0793cb08a90a -- [datalad]
+        e763ba60-7614-4b3f-891d-82f2488ea95a -- jovyan@jupyter-adswa:~/my-analysis [here]
 
-  web: https://unsplash.com/photos/8PxCm4HsPX8/download?force=true
-ok
+  datalad: https://raw.githubusercontent.com/datalad-handbook/resources/master/nilearn-tutorial.pdf
 </code></pre>
         </ul>
       <small><p >Delineation and advantages of decentral versus central RDM:<a href="https://doi.org/10.1515/nf-2020-0037" target="_blank">
@@ -912,8 +911,11 @@ extension downloads, transforms & track the evolution of the complete data relea
 
 <section  data-transition="None">
     <h2>FAIRly big workflow</h2>
-<img src="../pics/fairlybig_workflow.png" width="1200" style="margin-top:-35px;margin-bottom:-30px">
-<br><br>
+    <div class="r-stack">
+<img class="fragment fade-out" src="../pics/fairlybig_workflow.png" width="1200" style="margin-top:-35px;margin-bottom:-30px">
+<img src="../pics/htcondor.svg" class="fragment fade-in">
+    </div>
+        <br>
     <ul style="font-size:30px">
         <strong>portability</strong>
     <li>Parallel processing: 1 job = 1 subject
@@ -929,6 +931,8 @@ extension downloads, transforms & track the evolution of the complete data relea
 <small><a href="https://www.nature.com/articles/s41597-022-01163-2" target="_blank">
     Wagner, Waite, Wierzba et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</a>
 </small></section>
+
+
 
 <section data-transition="None">
     <h2>FAIRly big provenance capture</h2>
@@ -1143,7 +1147,7 @@ drop(error): figures/sub-02_mean-epi.png (file) [unsafe; Could only verify the e
                                                 adjust numcopies.)]
 </code></pre></li>
           <li class="fragment fade-in">Adding <strong>--reckless availability</strong> overrides this check
-          <pre><code>$ datalad drop figuresTODO --reckless availability</code></pre></li>
+          <pre><code>$ datalad drop figures/sub-02_mean-epi.png --reckless availability</code></pre></li>
           <li class="fragment fade-in">Be mindful that <strong>drop</strong> will only operate on
           the most recent version of a file - past versions may still exist afterwards unless you drop them
           specifically. <strong>git annex unused</strong> can identify all files that are left behind</li>
