@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Edit me start! -->
+		<title>RSE Tutorial</title>
+		<meta name="description" content=" Research Software Engineering ">
+		<meta name="author" content=" Adina Wagner, Dennis Terhorst, Oliver Speck ">
+		<!-- Edit me end! -->
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/beige.css">
+        <link rel="stylesheet" href="../css/main.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+<!-- Start of slides -->
+<section>
+  <section>
+      <img style="height:70px;margin-right:10px" data-src="../pics/fzj_logo.svg" />
+  <h2>Research Software Engineering (RSE)<br  />👩‍💻👨‍💻 <br  /></h2>
+    <div style="margin-top:1em;text-align:center">
+    <table style="border: none;">
+    <tr style="border: none;font-size:35px">
+	    <td style="border: none;">
+          Dennis Terhorst (INM-6)<br><small><a href="https://twitter.com/nest" target="_blank">
+		  <img data-src="../pics/twitter.png" style="height:30px;margin:0px" />@nest</a></small>
+        </td>
+        <td style="border: none;">
+          Adina Wagner (INM-7)<br><small><a href="https://twitter.com/AdinaKrik" target="_blank">
+		  <img data-src="../pics/twitter.png" style="height:30px;margin:0px" />@AdinaKrik</a></small>
+        </td>
+	<td style="border: none;">
+          Robert Speck (JSC)<br>
+        </td>
+    </tr>
+    <tr style="border: none;">
+      <td>
+      </td>
+      <td style="text-align:center"><br><small>mit</small><br>
+          <strong>Bernadette Fritzsch</strong> (AWI)
+          <br><br>
+           <small>und</small><br>
+      </td>
+    </tr>
+    </table>
+        <div>
+            <strong>Markus Diesmann </strong> (INM-6),
+            <strong>Claire Wyatt </strong> (JSC),<br>
+            <strong>Oliver Bertuch </strong>(central library) &
+            <strong>Philipp Schönnenbeck</strong> (ERC-3)
+       </div>
+
+  </section>
+</section>
+
+<section>
+  <section>
+        <h2>Dr. Bernadette Fritzsch</h2>
+      <table>
+          <tr>
+              <td>
+                  <img height="300px" src="https://reproducibilitynetwork.de/processed_images/65497d08ca8b229800.jpg">
+              </td>
+              <td style="font-size:30px; text-align:center; vertical-align:top">
+                  <ul>
+                  <li>Deputy Head Division
+                      <a href="https://www.awi.de/en/science/special-groups/scientific-computing.html">
+                      Scientific Computing,<br>
+                      Computing Center, Alfred Wegener Institute <br>
+                      for polar and marine research</a> </li><br>
+                  <li>Co-founder and board member
+                      of the <a href="https://de-rse.org/en"><br>
+                      de-RSE association </a> </li><br>
+                  <li>Steering board member of the
+                          <a href="https://reproducibilitynetwork.de">
+                          German <br> Reproducibility Network </a></li><br>
+                  </ul>
+              </td>
+          </tr>
+      </table>
+  </section>
+
+  <section>
+      <h2>Live Audience QA</h2>
+      <iframe src="https://directpoll.com/r?XDbzPBd3ixYqg8Te3xJGiy7g2E7SuFeXDd4VwTv",
+              style="border: 0" width="900" height="900"></iframe>
+  </section>
+
+  <section>
+    <h2>Thanks!</h2>
+      <iframe src="https://giphy.com/embed/eH3Ra3DUp3tMylXedo" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
+      RSE and Research Data Management (RDM) <br>
+      enthusiasts can network over lunch in a <br>
+      dedicated lunch area
+  </section>
+
+
+<!-- End of slides -->
+
+
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280,
+				height: 960,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.3,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: 'c',
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				pdfPageHeightOffset: -1,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
