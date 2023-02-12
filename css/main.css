@@ -89,4 +89,44 @@ imgcredit
   top: 0;
   right: 0;
   box-shadow: 10px 10px 8px #888888 !important;
-}                                                                                                                 adin
+}
+
+                                                                                                              :root {
+    --color: white;
+}
+
+section > pre > code {
+    padding: 2em;
+}
+
+section > pre > code::after {
+    content: "copy";
+    color: var(--color);
+    position: absolute;
+    padding-top: 0;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    top: 0.2em;
+    right: 0.2em;
+    border: 2px solid;
+    border-color: var(--color);
+    border-radius: 2px;
+}
+
+section > div > pre > code {
+    padding: 2em;
+}
+
+section > div > pre > code::after {
+    content: "copy";
+    color: var(--color);
+    position: absolute;
+    padding-top: 0;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    top: 0.2em;
+    right: 0.2em;
+    border: 2px solid;
+    border-color: var(--color);
+    border-radius: 2px;
+}
