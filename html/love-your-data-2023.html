@@ -669,7 +669,7 @@
     <img src="../pics/linkage_subds.png" alt="">
     </div>
     <ul style="font-size:30px" class="fragment">
-        <li>Helps with scaling (see e.g. the <a href="https://github.com/datalad-datasets/human-connectome-project-openaccess">Human Connectome Project dataset</a> )</li>
+        <li>Helps with scaling (see e.g. the <a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank">Human Connectome Project dataset</a> )</li>
         <li>Version control tools struggle with >100k files</li>
         <li>Modular units improves intuitive structure and reuse potential</li>
         <li>Versioned linkage of inputs for reproducibility</li>
@@ -985,7 +985,7 @@ datalad containers-run -m "run classification analysis in python environment" \
     <h3>...Publishing datasets</h3>
 
     DataLad has convenience functions to create <code>sibling</code>-repositories
-    on various third party services (GitHub, GitLab, OSF, WebDAV-based services, DataVerse, ...)
+    on various infrastructure and third party services (GitHub, GitLab, OSF, WebDAV-based services, DataVerse, ...)
     , to which data can then be published with <code>push</code>.
     <pre style="margin-left: 0;">
         <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
@@ -1107,9 +1107,9 @@ datalad clone \
     you can find out <em>why</em> it changed, <em>what</em> has changed, <em>when</em> it changed,
     and <em>which version</em> of your data was used at which point in time.
     <div class="r-stack">
-        <img class="fragment fade-out" data-fragment-index="1" src="../pics/tigdata.png">
-        <img class="fragment" data-fragment-index="1" src="../pics/tigdata3.png">
-        <img class="fragment" src="../pics/tigdata2.png">
+        <img height="450px" class="fragment fade-out" data-fragment-index="1" src="../pics/tigdata.png">
+        <img height="450px" class="fragment" data-fragment-index="1" src="../pics/tigdata3.png">
+        <img height="450px" class="fragment" src="../pics/tigdata2.png">
     </div>
 </section>
 
@@ -1126,6 +1126,8 @@ datalad clone \
               where you got it from? Or did you ever find a figure in your project,
               but forgot which analysis step produced it?
           </li>
+          <img src="../pics/Provenance_alpha.png">
+          <imgcredit data-fragment-index="1" >Scriberia and <a href="https://the-turing-way.netlify.app">The Turing Way </a> (CC-BY)</imgcredit>
       </ul>
   </section>
 
@@ -1161,18 +1163,18 @@ datalad clone \
           use of DataLad features and structure datasets according to the <b>YODA principles</b>:</li>
   </ul>
 
-  <img style="" data-src="../pics/yoda.png" height="400">
+  <img style="" data-src="../pics/yoda.png" height="200">
   <dl style="font-size:30px">
       <dt>P1: One thing, one dataset</dt>
       <dt>P2: Record where you got it from, and where it is now</dt>
       <dt>P3: Record what you did to it, and with what</dt>
-  </dl>
-                      <note>Find out more about the YODA principles in
+  </dl><br><br<br>
+                      <small>Find out more about the YODA principles in
           <a href="http://handbook.datalad.org/en/latest/basics/101-127-yoda.html" target="_blank">
               the handbook</a>, and more about structuring dataset at
           <a href="https://psychoinformatics-de.github.io/rdm-course/02-structuring-data/index.html#example-structure-yoda-principles" target="_blank">
               psychoinformatics-de.github.io/rdm-course/02-structuring-data</a>
-                         </note>
+                         </small>
     </section>
 
     <section data-markdown style="font-size:30px">
@@ -1189,25 +1191,11 @@ datalad clone \
 
 </section>
 
-  <section data-transition="None">
-      <h2>Why Modularity?</h2>
-
-      <ul style="font-size:30px">
-          <li>1. Reuse and access management</li>
-              <img src="../pics/ukb_datasets.svg" height="500px">
-
-          </li>
-          <li class="fragment fade-in" data-fragment-index="1">2. Scalability</li>
-          <pre  class="fragment fade-in" data-fragment-index="1"><code class="fragment fade-in" data-fragment-index="1">adina@bulk1 in /ds/hcp/super on git:master❱ datalad status --annex -r
-  15530572 annex'd files (77.9 TB recorded total size)
-  nothing to save, working tree clean</code></pre>
-          <small  class="fragment fade-in" data-fragment-index="1"><a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank">(github.com/datalad-datasets/human-connectome-project-openaccess)</a></small>
-      </ul>
-  </section>
-
 <section style="font-size:30px" data-transition="None">
 <h2>Why Modularity?</h2>
     <ul>
+        <li>1. Reuse and access management</li>
+        <li>2. Scalability</li>
         <li>3. Transparency</li><br>
 
 Original:
@@ -1339,14 +1327,6 @@ Each (sub)dataset is a separately, but jointly version-controlled entity.
     and yet <strong>actionable</strong> (<strong>datalad get</strong> retrieves contents on demand)
     <aside class="notes">weighs just a few bytes</aside>
 </section>
-
-<section data-transition="None" style="font-size:30px">
-  <h2>Example dataset structure</h2>
-  <img style="" height="750px" data-src="../pics/virtual_dirtree.png">
-  <p style="margin-top:-.5em">Link precisely versioned inputs to version-controlled outputs</p>
-    <aside class="notes">dataset linkage is pairwise, i.e. cheap</aside>
-</section>
-
 
     <section data-markdown style="font-size:30px">
 ## P3: Record what you did to it, and with what
