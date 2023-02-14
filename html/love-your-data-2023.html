@@ -191,6 +191,30 @@
           <iframe src="https://www.directpoll.com/r?XDbzPBd3ixYqg8VRC7Mz8FH4nJ3iEPxTGiMZyeyf",
               style="border: 0" width="900" height="800"></iframe>
   </section>
+
+  <section>
+      <h3>DataLad usecases</h3>
+      <div class="r-stack">
+        <li data-fragment-index="1" class="fragment fade-in-then-out"> <b>Publish or consume datasets</b>
+        via GitHub, GitLab, OSF, the European Open Science Cloud, or similar services</li>
+        <li data-fragment-index="2" class="fragment fade-in-then-out">
+        Behind-the-scenes <b>infrastructure component for data transport and versioning</b>
+        (e.g., used by <a href="https://openneuro.org/" target="_blank"> OpenNeuro</a>,
+        <a href="https://brainlife.io/" target="_blank"> brainlife.io </a>,
+        the <a href="https://conp.ca/" target="_blank">Canadian Open Neuroscience Platform (CONP)</a>,
+        <a href="https://mcin.ca/technology/cbrain/" target="_blank"> CBRAIN</a>)</li>
+        <li data-fragment-index="3" class="fragment fade-in-then-out"><b>Central data management</b> and archival system</li>
+        <li data-fragment-index="4" class="fragment fade-in-then-out"><b>Decentral data and metadata catalog</b></li>
+        <li data-fragment-index="5" class="fragment fade-in-then-out"> <b>Creating and sharing reproducible, open science</b>: Sharing data, software, code, and provenance </li>
+      </div>
+      <div class="r-stack">
+        <img data-fragment-index="1" height="700" class="fragment fade-in-then-out" src="../pics/getdata_studyforrest.gif" alt="a screenrecording of cloning studyforrest data from github">
+        <img height="700" class="fragment fade-in-then-out" data-fragment-index="2" src="../pics/openneuro_new_2.gif" alt="a screenrecording of browsing open neuro">
+        <img height="700" data-fragment-index="3" class="fragment fade-in-then-out" src="../pics/centralmanagement2.gif">
+        <img height="1000" data-fragment-index="4" class="fragment fade-in-then-out" src="../pics/sfb-catalog.gif">
+        <img height="700" class="fragment fade-in" data-fragment-index="5" src="../pics/remodnavpaper_2.gif" alt="a screenrecording of cloning REMODNAV paper dataset from github">
+      </div>
+  </section>
 </section>
 
 
@@ -983,9 +1007,25 @@ datalad containers-run -m "run classification analysis in python environment" \
             <a href="https://gin.g-node.org/user/sign_up" target="_blank">gin.g-node.org/user/sign_up</a> </li>
         <li>
             <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux" target="_blank">
-                Create</a> and
-            <a href="https://handbook.datalad.org/en/latest/basics/101-139-gin.html#prerequisites" target="_blank">
-                upload</a> an SSH key to GIN</li>
+                Create</a> an SSH key </li>
+    <div>
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                ssh-keygen -t ed25519 -C "your-email"
+                eval "$(ssh-agent -s)"
+                ssh-add ~/.ssh/id_ed25519
+            </code>
+        </pre>
+    </div>
+        <li> <a href="https://handbook.datalad.org/en/latest/basics/101-139-gin.html#prerequisites" target="_blank">
+                upload</a> the SSH key to GIN</li>
+    <div class="fragment">
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                cat ~/.ssh/id_ed25519.pub
+            </code>
+        </pre>
+    </div>
             <img src="../pics/screenshot-gin3.png" height="400">
         <li>Publish your dataset!</li>
     </ul>
