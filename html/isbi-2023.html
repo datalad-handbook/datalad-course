@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Edit me start! -->
+		<title>Towards computational reproducibility when working with very large datasets</title>
+		<meta name="description" content=" 10 years of reproducibility in biomedical research:
+How can we achieve generalizability and fairness? ISBI 2023">
+		<meta name="author" content=" Adina Wagner ">
+		<!-- Edit me end! -->
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/beige.css">
+        <link rel="stylesheet" href="../css/main.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+<!-- Start of slides -->
+<section>
+<section>
+<h2>Towards computational reproducibility when working with very large datasets</h2>
+
+  <div style="margin-top:1em;text-align:center">
+  <table style="border: none;">
+  <tr>
+	<td style="border: none;">Adina Wagner
+	  <br><small>
+		<a href="https://mas.to/@adswa" target="_blank">
+		  <img data-src="../pics/mastodon.svg" style="height:30px;margin:0px" />
+		  mas.to/@adswa</a></small></td>
+    <td style="border: none;">
+	  <br></td>
+  </tr>
+  <tr>
+    <td style="border: none; vertical-align:top">
+        <small><a href="http://psychoinformatics.de" target="_blank">Psychoinformatics lab</a>,
+          <br> Institute of Neuroscience and
+          Medicine, Brain &amp; Behavior (INM-7)<br>
+       Research Center Jülich</small><br>
+    </td>
+      <td><img style="height:100px;margin-right:10px" data-src="../pics/fzj_logo.png" /></td>
+  </tr>
+  </table>
+  </div>
+        <p style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:0px;margin-bottom:100px;margin-left:1000px">
+        <img src="../pics/isbi_2023.png" height="200">
+    </p>
+<br><br><small>
+
+    Slides: <a href="https://doi.org/10.5281/zenodo.7835784" target="_blank">
+    DOI 10.5281/zenodo.7835784</a> (Scan the QR code)
+</small>
+</a>
+</section>
+
+<section>
+  <h2>Acknowledgements</h2>
+  <table>
+  <tr style="vertical-align:middle">
+    <td style="vertical-align:middle">
+      <dl>
+        <dt style="margin-top:20px">Co-authors</dt>
+          <dd style="margin-left:5px!important">
+          <ul style="margin-left:5px!important">
+              <li><strong>Laura K. Waite*</strong></li>
+              <li><strong>Małgorzata Wierzba*</strong></li>
+              <li>Felix Hoffstaedter</li>
+              <li>Alexander Q. Waite</li>
+              <li>Benjamin Poldrack</li>
+              <li>Simon B. Eickhoff</li>
+              <li>Michael Hanke</li>
+          </ul>
+        </dd>
+        <dt style="margin-top:20px">DataLad software <br>
+            & ecosystem</dt>
+        <dd style="margin-left:5px!important">
+          <ul style="margin-left:5px!important">
+              <li>Psychoinformatics Lab, <br>
+              Research center Jülich</li>
+              <li>Center for Open <br>
+              Neuroscience, <br>
+              Dartmouth College</li>
+              <li>Joey Hess (git-annex)</li>
+              <li><em>>100 additional contributors</em></li>
+          </ul>
+        </dd>
+    </td>
+    <td style="vertical-align:middle">
+  <div style="margin-bottom:-20px;text-align:center"><strong>Funders</strong></div>
+  <img style="height:150px;margin-right:50px" data-src="../pics/nsf.png" />
+  <img style="height:150px;margin-right:50pxi;margin-left:50px" data-src="../pics/binc.png" />
+  <img style="height:150px;margin-left:50px" data-src="../pics/bmbf.png" />
+  <div style="margin-top:-20px">
+  <img style="height:80px;margin-top:-40px;margin-left:40px" data-src="../pics/fzj_logo.svg" />
+  <img style="height:60px;margin-left:50px;margin-bottom:25px" data-src="../pics/dfg_logo.png" />
+  </div>
+  <div style="margin-top:-20px">
+  <img style="height:60px;margin-right:20px" data-src="../pics/erdf.png" />
+  <img style="height:60px;margin-right:20px" data-src="../pics/cbbs_logo.png" />
+  <img style="height:60px" data-src="../pics/LSA-Logo.png" />
+  </div>
+  <div style="margin-top:40px;margin-bottom:20px;text-align:center"><strong>Collaborators</strong></div>
+  <div style="margin-top:-20px">
+  <img style="height:100px;margin:20px" data-src="../pics/hbp_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/conp_logo.png" />
+  <img style="height:120px;margin:10px" data-src="../pics/openneuro_logo.png" />
+  </div>
+  <div style="margin-top:-40px">
+  <img style="height:100px;margin:20px" data-src="../pics/ebrains-logo.png"/>
+  <img style="height:100px;margin:0px" data-src="../pics/gin-logo.png" />
+  <img style="height:120px;margin:10px" data-src="../pics/sfb1451_logo.png" />
+</div>
+  <div style="margin-top:-40px;align:middle">
+  <img style="height:140px;margin:10px" data-src="../pics/brainlife_logo.png" />
+  <img style="height:100px;margin:0px" data-src="../pics/cbrain_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/vbc_logo.png" />
+  </div>
+  </td>
+  </tr>
+  </table>
+</section>
+</section>
+
+<section>
+
+<section>
+    <img src="../pics/inm7-homepage.png" height="100%">
+    <a href="https://www.fz-juelich.de/en/inm/inm-7" target="_blank">www.fz-juelich.de/en/inm/inm-7</a>
+</section>
+<section data-markdown data-transition="None"><script type="text/template">
+## FAIRly big: Scaling up
+
+Objective: Process the UK Biobank (imaging data)
+![](../pics/biobank_website.png)<!-- .element: height="400" -->
+
+- 76 TB in 43 million files in total
+- 42,715 participants contributed personal health data
+- Strict DUA
+- Custom binary-only downloader
+- Most data records offered as (unversioned) ZIP files
+</script></section>
+
+<section data-markdown data-transition="None"><script type="text/template">
+## Challenges
+
+- Process data such that
+  - Results are computationally reproducible (without the original compute infrastructure)
+  - There is complete linkage from results to an individual data record download
+  - It scales with the amount of available compute resources
+
+- Data processing pipeline
+  - Compiled MATLAB blob
+  - 1h processing time per image, with 41k images to process
+  - 1.2 M output files (30 output files per input file)
+  - 1.2 TB total size of outputs
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big results
+
+<iframe width="1120" height="630" src="https://www.youtube-nocookie.com/embed/UsW6xN2f2jc?start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- Rendered from provenance records, automatically captured in the output dataset. Full video: https://youtube.com/datalad
+- Two full (re-)computations, programmatically comparable, verifiable, reproducible -- on any system with data access
+</script>
+</section>
+
+<section>
+    <img src="../pics/fairly-big-paper.png" height="900px">
+    <a href="https://www.nature.com/articles/s41597-022-01163-2" target="_blank">
+        https://www.nature.com/articles/s41597-022-01163-2</a>
+</section>
+</section>
+
+<section>
+<section data-markdown><script type="text/template">
+![](../pics/datalad_logo_wide.svg)<!-- .element: height="600" -->
+http://datalad.org<!-- .element: style="margin-left:700px" -->
+(Click [here](https://mybinder.org/v2/gh/psychoinformatics-de/studyforrest-data-binder/HEAD?filepath=exploring_studyforrest_with_datalad.ipynb) to try it in your browser) <!-- .element: style="margin-left:700px" -->
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive tracking of research components
+![](../pics/vamp_0_start.png)<!-- .element: width="100%" -->
+Well-structured datasets (using community standards), and portable computational environments &mdash; and their evolution &mdash; are the precondition for reproducibility
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# turn any directory into a dataset
+# with version control
+
+% datalad create &lt;directory&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# save a new state of a dataset with
+# file content of any size
+
+% datalad save
+</pre></code>
+</td></tr></table>
+Note:
+- link to prev. statements on description standards
+- your community could be really small (your lab), when data are precious resources
+will be spent to understand it, but information must be capture to make this possible
+</script>
+</section>
+
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Capture computational provenance
+![](../pics/vamp_1_provcapture.png)<!-- .element: width="100%" -->
+Which data was needed at which version, as input into which code, running with what parameterization in which
+computional environment, to generate an outcome?
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# execute any command and capture its output
+# while recording all input versions too
+
+% datalad run --input ... --output ... &lt;command&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+The missing link: even when everything is shared, we still don't know how to start.
+README is minimum, but executable prov-records are much better.
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive capture enables portability
+![](../pics/vamp_2_pushtocloud.png)<!-- .element: width="100%" -->
+Precise identification of data and computational environments, combined for provenance records form a comprehensive and portable data structure, capturing all aspects of an investigation.
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# transfer data and metadata to other sites and services
+# with fine-grained access control for dataset components
+
+% datalad push --to &lt;site-or-service&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+Does it fly? Can you give it to someone? Or can you take it with you to your new lab?
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Reproducibility strengthens trust
+![](../pics/vamp_3_reproduce.png)<!-- .element: width="100%" -->
+Outcomes of computational transformations can be validated by authorized 3rd-parties. This enables audits, promotes accountability, and streamlines automated "upgrades" of outputs
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# obtain dataset (initially only identity,
+# availability, and provenance metadata)
+
+% datalad clone &lt;url&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# immediately actionable provenance records
+# full abstraction of input data retrieval
+
+% datalad rerun &lt;commit|tag|range&gt;
+</pre></code>
+</td></tr></table>
+Note:
+Goal is automated reproducibility, enables assessment of robustness and benchmarking algorithmic developments
+</script></section>
+
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Ultimate goal: (re-)usability
+![](../pics/vamp_4_reuse.png)<!-- .element: width="100%" -->
+Verifiable, portable, self-contained data structures that track all aspects of an investigation exhaustively can be (re-)used as modular components in larger contexts &mdash; propagating their traits
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# declare a dependency on another dataset and
+# re-use it a particular state in a new context
+
+% datalad clone -d &lt;superdataset&gt; &lt;url&gt; &lt;path-in-dataset&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+With these in place, re-usability is a small(er) step
+</script></section>
+
+<section data-markdown><script type="text/template">
+## DataLad: Manage (co-)evolution of digital objects
+![](../pics/yoda_decentralized_publishing.png)<!-- .element: width="900" style="margin-bottom:-70px;margin-top:-20px" -->
+
+Consume, create, curate, analyze, publish, and query data with full provenance capture and "universal" metadata support.
+<p style="font-size:70%;margin-top:-20px">
+DataLad is free and open source (MIT-licensed). http://datalad.org
+</p>
+
+<note>
+Halchenko, Meyer, Poldrack, ... & Hanke, M. (2021).
+DataLad: distributed system for joint management of code, data, and their relationship.
+Journal of Open Source Software, 6(63), 3262.
+</note>
+Note:
+- following illustrations contain concrete implementation with datalad
+- Software developed to address the needs of long-term maintenance and collab on the stufyforrest dataset
+</script></section>
+</section>
+
+<section>
+<section data-markdown><script type="text/template">
+## FAIRly big setup
+![](../pics/fairlybig_ukbsetup.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
+
+- UKB DataLad extension can track the evolution of the complete data release in DataLad datasets
+<!-- .element: style="font-size:80%" -->
+- Full version history
+<!-- .element: style="font-size:80%" -->
+- Native and BIDSified data layout
+<!-- .element: style="font-size:80%" -->
+
+<note>Wagner, Waite, Wierzba, Hoffstaedter, Waite, Poldrack, Eickhoff, Hanke (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big workflow
+![](../pics/fairlybig_workflow.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
+- Common data representation in secure environments
+- Content-agnostic persistent (encrypted) storage
+- All computations in freshly bootstrapped emphemeral environments, only using information from a fully self-contained  DataLad dataset
+<note>Wagner et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big provenance capture
+![](../pics/fairlybig_prov.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
+
+- Every single pipeline execution is tracked
+- Each execution individually reproducible without HPC access
+<note>Wagner et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
+</script></section>
+
+<section data-markdown><script type="text/template">
+## FAIRly big workflow
+![](../pics/fairlybig_workflow.png)<!-- .element: width="1200" style="margin-top:-35px;margin-bottom:-30px" -->
+- Common data representation in secure environments
+- Content-agnostic persistent (encrypted) storage
+- All computations in freshly bootstrapped emphemeral environments, only using information from a fully self-contained  DataLad dataset
+<note>Wagner et al. (2021). FAIRly big: A framework for computationally reproducible processing of large-scale data.</note>
+</script></section>
+
+<section>
+<h2>Cthulu Merge</h2>
+<pre>
+List:       linux-kernel
+Subject:    Re: [GIT PULL] regulator updates for v3.13-rc1
+From:       Linus Torvalds &lt;torvalds () linux-foundation ! org&gt;
+Date:       2014-01-21 19:16:57
+
+Christ. When you start doing octopus merges, you don't do it by half
+measures, do you?
+
+I just pulled the sound updates from Takashi, and as a result got your
+merge commit 2cde51fbd0f3. That one has 66 parents.
+
+That kind of merge either needs to be split up, or gitk needs to be
+made better about visualizing it, because it ends up being *so* wide
+that the history is hard to read.
+
+I think you'll find that having that many parents also breaks old
+versions of git.
+
+Anyway, I'd suggest you try to limit octopus merges to ~15 parents or
+less to make the visualization tools not go crazy.  Maybe aim for just
+10 or so in most cases.
+
+It's pulled, and it's fine, but there's clearly a balance between
+"octopus merges are fine" and "Christ, that's not an octopus, that's a
+Cthulhu merge".
+
+    Linus
+</pre>
+42k-way octopus merge -- broke GitLab (JuGit)
+</section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Ready for repeated re-use
+![](../pics/vamp_4_reuse.png)<!-- .element: width="100%" -->
+Outcome: Actionable metadata record (in the form of a Git repository).
+Orthogonalizes information on content identify and availability from actual data access
+</script></section>
+</section>
+
+<section>
+
+<section>
+  <h2>DataLad contact and more information</h2>
+  <table>
+  <tr><td>Website + Demos</td>
+  <td><a href="http://datalad.org">http://datalad.org</a></td>
+  </tr><tr><td>Documentation</td>
+  <td><a href="http://handbook.datalad.org">http://handbook.datalad.org</a></td>
+  </tr><tr><td>Talks and tutorials</td>
+  <td><a href="https://youtube.com/datalad">https://youtube.com/datalad</a></td>
+  </tr><tr><td>Development</td>
+  <td><a href="http://github.com/datalad">http://github.com/datalad</a></td>
+  </tr><tr><td>Support</td>
+  <td><a href="https://matrix.to/#/#datalad:matrix.org">https://matrix.to/#/#datalad:matrix.org</a></td>
+  </tr><tr><td>Open data</td>
+  <td><a href="http://datasets.datalad.org">http://datasets.datalad.org</a></td>
+  </tr>
+  </tr><tr><td>Mastodon</td>
+  <td>@datalad@fosstodon.org</td>
+  </tr><tr><td>Twitter</td>
+  <td>@datalad</td>
+  </table>
+</section>
+
+<section>
+    <h2>Thank you for your attention!</h2>
+
+    <img src="../pics/isbi_2023.png" height="400">
+<br><br><small>
+
+    Slides: <a href="https://doi.org/10.5281/zenodo.7835784" target="_blank">
+    DOI 10.5281/zenodo.7835784</a> (Scan the QR code)
+    <br><br>
+    </small>
+    <table>
+        <tr>
+        </tr>
+        <tr style="vertical-align:middle">
+         <td style="vertical-align:middle">
+             <img src="../pics/winrepo.png">
+         </td>
+            <td style="font-size: 18px">
+                <br><br>
+                Women neuroscientists are <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ejn.14397" target="_blank">
+                underrepresented in neuroscience</a>. You can use the <br>
+                <a href="https://www.winrepo.org/" target="_blank"> Repository for Women in Neuroscience</a> to find
+                and recommend neuroscientists for <br>
+                conferences, symposia or collaborations, and help making neuroscience more open & divers.
+            </td>
+        </tr>
+
+    </table>
+</section>
+
+
+
+</section>
+
+
+<!-- End of slides -->
+
+
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280,
+				height: 960,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.3,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: 'c',
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				pdfPageHeightOffset: -1,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
