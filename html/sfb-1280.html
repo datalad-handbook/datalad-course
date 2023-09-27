@@ -254,7 +254,7 @@
         We will work via the terminal
     </li>
     <li class="fragment">
-        Your username follows this pattern: Firstname + Lastname initial (Adina Wagner -> AdinaW)
+        Your username is all lower-case and follows this pattern: Firstname + Lastname initial (Adina Wagner -> adinaw)
     </li>
     <li class="fragment">
         Pick any password with at least 8 characters at first log-in (and remember it)
@@ -299,7 +299,7 @@ Use '--help' to get more comprehensive information.
     </pre>
 
     <div class="fragment">
-    For help on using DataLad from the command line:
+    For help on using DataLad from the command line (press q to exit):
       <pre style="margin-left: 0;">
         <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
               datalad --help
@@ -332,7 +332,7 @@ Use '--help' to get more comprehensive information.
   Configure git identity:
     <pre style="margin-left: 0;">
       <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
-          git config --global user.name "Adina Wagenr"
+          git config --global user.name "Adina Wagner"
           git config --global user.email "adina.wagner@t-online.de"
       </code>
     </pre>
@@ -583,24 +583,6 @@ dl.create(path="mydataset")</code></pre>
     </table>
   </section>
 
-  <section data-transition="None">
-  <h2>Dataset = Git/git-annex repository</h2>
-    <li>version control files regardless of size or type</li>
-    <img src="../pics/artwork/src/local_wf.svg" width="600"> <br>
-    <ul>
-        <p class="fragment fade-in">
-        Stay flexible:
-          <li class="fragment fade-in">
-              Non-complex DataLad core API (easy for data management novices)
-          </li>
-          <li class="fragment fade-in">
-              Pure Git or git-annex commands (for regular Git or git-annex users, or to use specific functionality)
-          </li>
-        </p>
-    </ul>
-  </section>
-
-
 <section style="text-align: left;">
     <h3>...Datalad datasets</h3>
     Create a dataset (here, with the <code>text2git</code> configuration, which adds
@@ -629,6 +611,23 @@ dl.create(path="mydataset")</code></pre>
         </pre>
     </div>
 </section>
+
+  <section data-transition="None">
+  <h2>Dataset = Git/git-annex repository</h2>
+    <li>version control files regardless of size or type</li>
+    <img src="../pics/artwork/src/local_wf.svg" width="600"> <br>
+    <ul>
+        <p class="fragment fade-in">
+        Stay flexible:
+          <li class="fragment fade-in">
+              Non-complex DataLad core API (easy for data management novices)
+          </li>
+          <li class="fragment fade-in">
+              Pure Git or git-annex commands (for regular Git or git-annex users, or to use specific functionality)
+          </li>
+        </p>
+    </ul>
+  </section>
 
 <section style="text-align: left;">
     <h3>...Version control</h3>
@@ -845,8 +844,7 @@ dl.create(path="mydataset")</code></pre>
         <div class="fragment">
         Imagine that you are getting a script from a colleague to perform your analysis, but they email it to you or upload it to a random place for to download:
         <pre style="margin-left: 0;">
-            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)"># download a script without provenance information
-wget -P code/ \
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">wget -P code/ \
    https://raw.githubusercontent.com/datalad-handbook/resources/master/get_brainmask.py
             </code>
         </pre>
@@ -873,8 +871,7 @@ wget -P code/ \
     <div class="fragment">
         Convenience functions make downloads easier. Let's add a nilearn tutorial, and also register the original location of this file as digital provenance:
         <pre style="margin-left: 0;">
-            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)"># in addition to a nilearn-based script, let's get a nilearn tutorial
-datalad download-url -m "Add a tutorial on nilearn" \
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">datalad download-url -m "Add a tutorial on nilearn" \
    -O code/nilearn-tutorial.pdf \
    https://raw.githubusercontent.com/datalad-handbook/resources/master/nilearn-tutorial.pdf
             </code>
@@ -946,7 +943,7 @@ datalad download-url -m "Add a tutorial on nilearn" \
     </div>
 
     <div class="fragment">
-        let's take a look:
+        let's take a look (press q to exit):
             <pre style="margin-left: 0;">
             <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">git show</code>
         </pre>
@@ -1018,8 +1015,7 @@ index 0000000..fabf852
         location ("input/") in the existing dataset,
         making it a <em>sub</em>dataset:
         <pre style="margin-left: 0;">
-            <code class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)"># clone a remote dataset and register it as
-datalad clone -d . \
+            <code class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">datalad clone -d . \
  https://gin.g-node.org/adswa/bids-data \
  input</code>
         </pre>
@@ -1125,6 +1121,12 @@ datalad run -m "Compute brain mask" \
 </section>
 
   <section>
+  <h2>Software containers</h2><br>
+    <iframe src="https://directpoll.com/r?XDbzPBd3ixYqg84Gif8nU69RJWPkCXwpVvMnElD",
+            style="border: 0" width="900" height="800"></iframe>
+  </section>
+
+  <section>
   <h2>Computational provenance</h2>
   <ul style="font-size:30px">
     <li>
@@ -1196,6 +1198,13 @@ datalad containers-run -m "Compute brain mask" \
          datasets can be hosted in major <b>third party repository hosting and cloud storage</b> services.
          More info: Chapter on <a href="http://handbook.datalad.org/en/latest/basics/basics-thirdparty.html" target="_blank">
         Third party infrastructure</a>.</small>
+  </section>
+
+  <section>
+  <h2>Sharing datasets</h2><br>
+      There are lots of available services, but we will focus on the Open Science Framework.<br>
+    <iframe src="https://directpoll.com/r?XDbzPBd3ixYqg84Gif8nU69RJWPkCXwpVvMnElD",
+            style="border: 0" width="900" height="800"></iframe>
   </section>
 
   <section>
@@ -1470,10 +1479,11 @@ $ datalad siblings add --name origin --url git@git.jugit.fzj.de:adswa/experiment
 
 <section style="text-align: left;">
     <div style="display: flex !important; align-items: center">
-        <h2>create-sibling-osf</h2>&nbsp;<a href="https://docs.datalad.org/projects/osf/en/latest/">(docs)</a>
+        <h2>create-sibling-osf</h2>&nbsp;<a href="https://docs.datalad.org/projects/osf/en/latest/" target="_blank">(docs)</a>
     </div>
+    Requires the DataLad extensions <code>datalad-osf</code> and <code>datalad-next</code><br><br>
 
-    <ol>
+    <ol>Prerequisites:
         <li class="fragment">Log into OSF</li>
         <li class="fragment">Create personal access token</li>
         <li class="fragment">Enter credentials using <code>datalad osf-credentials</code>:</li>
@@ -1485,8 +1495,15 @@ $ datalad siblings add --name origin --url git@git.jugit.fzj.de:adswa/experiment
             </code>
         </pre>
     </div>
-    <div class="fragment">
-        4. Create the sibling:
+</section>
+
+<section style="text-align: left;">
+    <div style="display: flex !important; align-items: center">
+        <h2>create-sibling-osf</h2>&nbsp;<a href="https://docs.datalad.org/projects/osf/en/latest/" target="_blank">(docs)</a>
+    </div>
+
+    <div>
+        Create the sibling in your dataset (different modes are possible):
         <pre style="margin-left: 0;">
             <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
                 datalad create-sibling-osf -d . -s my-osf-sibling \
@@ -1495,7 +1512,7 @@ $ datalad siblings add --name origin --url git@git.jugit.fzj.de:adswa/experiment
         </pre>
     </div>
     <div class="fragment">
-        5. Push to the sibling:
+        Push to the sibling:
         <pre style="margin-left: 0;">
             <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
                 datalad push -d . --to my-osf-sibling
@@ -1503,7 +1520,7 @@ $ datalad siblings add --name origin --url git@git.jugit.fzj.de:adswa/experiment
         </pre>
     </div>
     <div class="fragment">
-        6. Clone from the sibling:
+        Clone from the sibling:
         <pre style="margin-left: 0;">
             <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
                 cd ..
@@ -1652,7 +1669,7 @@ With these in place, re-usability is a small(er) step
 <section>
   <h2>Post-Workshop Contact</h2>
     <ul>
-        <li class="fragment fade-in">Slides are CC-BY and will be made available as PDF</li>
+        <li class="fragment fade-in">Slides are CC-BY. They will stay online and will be made available as a PDF as well</li>
         <li class="fragment fade-in">Contact the DataLad Team anytime via GitHub issue, Matrix chat message, or in our office hour video call</li>
         <li class="fragment fade-in">Find more DataLad content and tutorials at <a href="https://handbook.datalad.org" target="_blank">handbook.datalad.org</a></li>
         <br>
@@ -1663,11 +1680,30 @@ With these in place, re-usability is a small(er) step
   <h3 class="fragment fade-in">Thanks for you attention!</h3>
 </section>
 
+<section style="text-align:left">
+    <h2>List of installed software on Jupyter</h2>
+    The JupyterHub runs on Ubuntu 22.04 via an AWS EC2 instance. The following packages were installed with different package managers:
+    <br><br>
+    <ul>
+        <li>apt: Git, git-annex, tree, tig, zsh, singularity</li>
+        <li>pip: datalad, datalad-next, datalad-container, datalad-osf, black</li>
+    </ul>
+    <br><br>
+    Instructions to set up and configure your own JupyterHub are publicly available at <a href="https://psychoinformatics-de.github.io/rdm-course/for_instructors/index.html" target="_blank">
+    psychoinformatics-de.github.io/rdm-course/for_instructors
+</a>
+    <ul></ul>
+</section>
+
 </section>
 
 <!--- OUTLOOK --->
 
 <section>
+
+<section>
+    <h2>Outlook</h2>
+</section>
 
 <section data-markdown data-transition="None"><script type="text/template">
 ## FAIRly big: Scaling up
