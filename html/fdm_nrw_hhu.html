@@ -1,0 +1,630 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Edit me start! -->
+		<title>RDM in systems neuroscience: Challenges and best practices</title>
+		<meta name="description" content=" RDM solutions in the interdisciplinary neurosciences  ">
+		<meta name="author" content=" Adina S. Wagner ">
+		<!-- Edit me end! -->
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/beige.css">
+        <link rel="stylesheet" href="../css/main.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<section>
+<section>
+<table style="border:none">
+    <tr>
+        <td>
+            <h2>RDM in systems neuroscience: </h2>
+            <h3>Challenges and best practices</h3>
+        </td>
+    </tr>
+</table>
+    <div style="margin-top:1em;text-align:center">
+    <table style="border: none;">
+        <tr>
+	        <td>
+                Adina Wagner<br><small><a href="https://mas.to/@adswa" target="_blank">
+		        <img data-src="../pics/mastodon.svg" style="height:30px;margin:0px" /> mas.to/@adswa</a></small>
+            </td>
+	        <td>
+            <br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img style="height:70px;margin-right:10px;vertical-align:top" data-src="../pics/fzj_logo.svg" /><br>
+                <img style="height:70px;margin-right:10px;vertical-align:top" data-src="../pics/hhu_logo.svg" /><br>
+
+            </td>
+            <td style="vertical-align:bottom">
+                <small><a href="https://www.fz-juelich.de/en/inm/inm-7" target="_blank">Institute of Neuroscience and Medicine (INM-7)</a>,
+                    <br>Research Center Jülich</small><br> <small></small> <br>
+                <small><a href="https://www.psychologie.hhu.de/" target="_blank">Institute for Experimental Psychology</a>,
+                <br>HHU Düsseldorf<br><br></small>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                </td>
+            <td style="vertical-align:top">
+
+            </td>
+        </tr>
+    </table>
+    </div>
+    <small>
+    Slides: <a href="https://files.inm7.de/adina/talks/html/fdm_nrw_hhu.html" target="_blank">files.inm7.de/adina/talks/html/fdm_nrw_hhu.html</a></small></a>
+</section>
+
+</section>
+
+    <!-- INTRODUCTION -->
+
+
+<section>
+      <section data-transition="none">
+    <h3>Perks of being a neuroscientist...</h3>
+    <p class="fragment fade-in" data-fragment-index="1">A growing culture of <a href="https://en.wikipedia.org/wiki/List_of_neuroscience_databases" target="_blank">
+        open data</a>
+    <img src="../pics/opendata.gif">  <imgcredit>https://en.wikipedia.org/wiki/List_of_neuroscience_databases</imgcredit></p>
+</section>
+
+<!--
+<section data-transition="none">
+    <h3>Perks of being a (neuro)scientist...</h3>
+    <p>... with many open dataset of several TB of data!
+    <img src="../pics/bigneurodata.png">
+        <img src="../pics/bigneurodata2.png"> </p>
+</section>
+-->
+
+<section data-transition="none">
+    <h3>Perks of being a neuroscientist...</h3>
+    <p> A large and growing amount of open source software
+      <table>
+  <tr style="vertical-align:middle">
+    <td style="vertical-align:middle">
+  <img style="height:100px;margin-right:50px" data-src="../pics/jupyter_logo.png" />
+  <img style="height:100px;margin-left:50px" data-src="../pics/mindboggle_logo.png" />
+  <img style="height:100px;margin-left:50px" data-src="../pics/psychopy_logo.png" />
+  <img style="height:100px;margin-left:50px" data-src="../pics/fsl_logo.png" />
+  <img style="height:100px;margin-left:50px" data-src="../pics/pydra_logo.png" />
+  <img style="height:100px;margin-right:50px" data-src="../pics/neurodebian.png" />
+  <br />
+
+  <div style="margin-top:-20px">
+  <img style="height:100px;margin-left:50px" data-src="../pics/R_logo.png" />
+  <img style="height:100px;margin-left:50px" data-src="../pics/rstudio-logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/afni_logo.png" />
+  <img style="height:100px;margin-left:50px" data-src="../pics/mne-logo.png" />
+  <img style="height:100px;margin-left:50px" data-src="../pics/sklearn_logo.png" />
+  <img style="height:100px;margin-left:50px" data-src="../pics/FSlogo.png" />
+  <img style="height:80px;margin-left:50px" data-src="../pics/pysurfer_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/dipy-logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/nilearn-logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/mrtrix-logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/giraffetools_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/mricron-logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/pandas_logo.png" />
+  </div>
+  <div style="margin-top:-20px">
+
+  <img style="height:100px;margin:20px" data-src="../pics/ants_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/brainiak_logo.svg" />
+  <img style="height:100px;margin:20px" data-src="../pics/spm.svg" />
+  <img style="height:80px;margin:20px" data-src="../pics/cpac_logo.png" />
+      <img style="height:100px;margin:20px" data-src="../pics/fieldtrip_logo.png" />
+  </div>
+  <div style="margin-top:-40px">
+ <br><small>... and many more!</small>
+  </div>
+  </td>
+  </tr>
+  </table>
+ </p>
+</section>
+
+
+<section data-transition="none">
+    <h3>Perks of being a neuroscientist...</h3>
+    <p>
+        Many readily available, often free, sometimes FOSS, services for data storage and collaboration<br>
+        <img src="../pics/services_only.png" height="750"> <imgcredit>https://www.incf.org/resources/sbps</imgcredit>
+     </p>
+</section>
+
+    <!--
+<section data-transition="none">
+    <h3>Perks of being a (neuro)scientist...</h3>
+    <p>Coordinated efforts towards common standards
+        <img src="../pics/incf_standards.png"> <imgcredit>https://www.incf.org/resources/sbps</imgcredit>
+     </p>
+</section>
+-->
+
+<section data-transition="none">
+    <h3>Perks of being a neuroscientist...</h3>
+    Work on fascinating questions with fascinating data<br>
+        <table>
+            <tr>
+                <td style="border:0px">
+                    <img height="300px" src="../pics/brainscan.gif"> <imgcredit><tiny>Dwayne Reed; commons.wikimedia.org<br>/wiki/File:Parasagittal_MRI_of_human_head_in<br>_patient_with_benign_familial_macrocephaly_prior<br>_to_brain_injury_(ANIMATED).gif</tiny></imgcredit>
+                </td>
+                <td style="border:0px">
+                         <img height="300px" src="../pics/meg-data2.png"><imgcredit>https://mne.tools</imgcredit>
+                </td>
+            </tr>
+            <tr style="border:0px">
+                <td style="border:0px">
+                    <img height="200px" src="../pics/meg-data.png"><imgcredit>https://mne.tools</imgcredit>
+                </td>
+                <td style="border:0px">
+                    <img height="300px" src="../pics/tractography.gif"><imgcredit>http://trackvis.org</imgcredit>
+                </td>
+            </tr>
+        </table>
+</section>
+
+
+<section>
+    <h3>The good news, the bad news</h3>
+    <table>
+        <tr style="vertical-align:middle; font-size:35px" ></tr>
+        <tr>
+            <td style="border:0px" class="fragment fade-in-then-semi-out" data-fragment-index="1">
+                Interesting data</td>
+            <td style="border:0px" class="fragment fade-in" data-fragment-index="2">
+                ... that's subject to GDPR, making storage, analysis, and sharing difficult</td>
+        </tr>
+        <tr>
+            <td style="border:0px" class="fragment fade-in-then-semi-out" data-fragment-index="4">
+                Data analysis</td>
+            <td style="border:0px" class="fragment fade-in" data-fragment-index="5">
+                Reproducibility is threatened by intransparent, multi-stepped analyses¹ & unstable results across software versions².
+                Dataset sizes exceed computational capabilities (e.g., HCP project: ~100TB, 1.2k people).
+            </td>
+        </tr>
+        <tr>
+            <td style="border:0px" class="fragment fade-in-then-semi-out" data-fragment-index="6">
+                Data sharing</td>
+            <td style="border:0px" class="fragment fade-in" data-fragment-index="7">
+                Heterogenous distribution and updating, many scientists lack data management skills</td>
+        </tr>
+        <tr>
+            <td style="border:0px" class="fragment fade-in-then-semi-out" data-fragment-index="8">Collaboration</td>
+            <td style="border:0px" class="fragment fade-in" data-fragment-index="9">Few interoperable workflows across institutes, rather: isolated solutions</td>
+        </tr>
+        <!--
+        <tr>
+            <td class="fragment fade-in-then-semi-out" data-fragment-index="7">Standards towards consistent file organization, description, and interoperability </td>
+            <td class="fragment fade-in" data-fragment-index="8">Standards aren't static and evolve over time, thus tools and data need updates</td>
+        </tr>
+        <-->
+    </table>
+    <br>
+    <small>
+    <div class="fragment fade-in-then-semi-out" data-fragment-index="5" align="left">
+        ¹ <a href="https://doi.org/10.1038/s41586-020-2314-9" target="_blank">Botvinik-Nezer et al., 2020: Variability in the analysis of a single neuroimaging dataset by many teams </a><br>
+        ² <a href="https://doi.org/10.1177%2F1094342020926237" target="_blank"> Kiar et al., 2020: Comparing perturbation models for evaluating stability of neuroimaging pipelines </a>
+    </div>
+    </small>
+</section>
+</section>
+
+<section>
+    <section data-transition="None">
+        <img style="height:150px;margin-bottom:30px" data-src="../pics/datalad_logo_wide.svg">
+        <br>
+        <ul style="font-size:37px">
+            <li class="fragment fade-in-then-semi-out" data-fragment-index="1">Domain-agnostic data management tool
+                <strong>(command-line </strong> + <strong>graphical user interface</strong>),
+            built on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            & <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a></li>
+        <li class="fragment fade-in-then-semi-out" data-fragment-index="2">10+ year open source project (100+ contributors), available for all major OS</li>
+        <li class="fragment" data-fragment-index="3">Born from rethinking data:</li>
+            <ul>
+            <li class="fragment" data-fragment-index="4">Just like code, <b>data is not static</b>.</li>
+            <li class="fragment" data-fragment-index="4">Just like code, <b>data is subject to collaboration</b>.
+                Stream-lined workflows for sharing and collaborating should be possible, mirroring those in software development. </li>
+            <li class="fragment" data-fragment-index="4"><b>Provenance</b> of data is essential for reproducible, trustworthy, and FAIR science</li>
+            <li class="fragment" data-fragment-index="4">Flexibility and <b>interoperability with existing tools</b> is the key to sustainability and ease of use</li>
+                </ul>
+            </ul>
+    </section>
+
+
+    <section data-transition="None">
+        <img style="height:150px;margin-bottom:30px" data-src="../pics/datalad_logo_wide.svg"><br>
+        <ul style="font-size:37px">
+            <li>Domain-agnostic <strong>command-line tool</strong> (+ <strong>graphical user interface</strong>),
+            built on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            & <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a></li>
+                        <li>10+ year open source project (100+ contributors), available for all major OS</li>
+        <li>Major features:</li>
+        <dt>Version-controlling arbitrarily large content </dt>
+        <dd>Version control data & software alongside to code!</dd>
+        <dt>Transport mechanisms for sharing, updating & obtaining data </dt>
+        <dd>Consume & collaborate on data (analyses) like software</dd>
+        <dt>(Computationally) reproducible data analysis</dt>
+        <dd>Track and share provenance of all digital objects</dd>
+        <dt>(... and <i>much</i> more) </dt>
+        <br>
+    </ul>
+</section>
+
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive tracking of research components
+![](../pics/vamp_0_start.png)<!-- .element: width="100%" -->
+Well-structured datasets (using community standards), and portable computational environments &mdash; and their evolution &mdash; are the precondition for reproducibility
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# turn any directory into a dataset
+# with version control
+
+% datalad create &lt;directory&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# save a new state of a dataset with
+# file content of any size
+
+% datalad save
+</pre></code>
+</td></tr></table>
+Note:
+- link to prev. statements on description standards
+- your community could be really small (your lab), when data are precious resources
+will be spent to understand it, but information must be capture to make this possible
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Capture computational provenance
+![](../pics/vamp_1_provcapture.png)<!-- .element: width="100%" -->
+Which data was needed at which version, as input into which code, running with what parameterization in which
+computional environment, to generate an outcome?
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# execute any command and capture its output
+# while recording all input versions too
+
+% datalad run --input ... --output ... &lt;command&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+The missing link: even when everything is shared, we still don't know how to start.
+README is minimum, but executable prov-records are much better.
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive capture enables portability
+![](../pics/vamp_2_pushtocloud.png)<!-- .element: width="100%" -->
+Precise identification of data and computational environments
+combined with provenance records form a comprehensive and portable
+data structure, capturing all aspects of an investigation.
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# transfer data and metadata to other sites and services
+# with fine-grained access control for dataset components
+
+% datalad push --to &lt;site-or-service&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+Does it fly? Can you give it to someone? Or can you take it with you to your new lab?
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Reproducibility strengthens trust
+![](../pics/vamp_3_reproduce.png)<!-- .element: width="100%" -->
+Outcomes of computational transformations can be validated by authorized 3rd-parties. This enables audits, promotes accountability, and streamlines automated "upgrades" of outputs
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# obtain dataset (initially only identity,
+# availability, and provenance metadata)
+
+% datalad clone &lt;url&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# immediately actionable provenance records
+# full abstraction of input data retrieval
+
+% datalad rerun &lt;commit|tag|range&gt;
+</pre></code>
+</td></tr></table>
+Note:
+Goal is automated reproducibility, enables assessment of robustness and benchmarking algorithmic developments
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Ultimate goal: (re-)usability
+![](../pics/vamp_4_reuse.png)<!-- .element: width="100%" -->
+Verifiable, portable, self-contained data structures that track all aspects of an investigation exhaustively can be (re-)used as modular components in larger contexts &mdash; propagating their traits
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# declare a dependency on another dataset and
+# re-use it a particular state in a new context
+
+% datalad clone -d &lt;superdataset&gt; &lt;url&gt; &lt;path-in-dataset&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+With these in place, re-usability is a small(er) step
+</script>
+</section>
+
+<section data-transition="None">
+    <h2>Tracking & Sharing - Where is the Privacy?</h2>
+
+    <ul>
+        <li class="fragment fade-in" data-fragment-index="1">Datasets have an optional annex for (large or sensitive) data. </li>
+        <li class="fragment fade-in" data-fragment-index="2">Rather than file content, identity (hash) and location information is tracked.
+            Users have fine-grained control over transport and access; encryption is possible.</li>
+        <li class="fragment fade-in" data-fragment-index="3">Datasets can separate data access from meta data access</li>
+    </ul>
+        <img class="fragment fade-in" data-fragment-index="3" height="400px" src="../pics/artwork/src/hospital.png">
+</section>
+
+<section data-transition="None">
+    <h2>Fine-grained file transport</h2>
+    <ul>
+         <li class="fragment fade-in">Cloned datasets are lean, because file content is retrieved on demand:</li>
+  <pre style="margin-left: 0; max-height:None" class="fragment fade-in">
+      <code data-trim class="language-bash"data-line-numbers="1-2|3-4|5-8">$ datalad clone \
+    https://github.com/datalad-datasets/human-connectome-project-openaccess.git
+$ cd human-connectome-project-openaccess && du -sh
+  5.0M	.
+$ datalad get HCP1200/102513/T1w/T1w_acpc_dc.nii.gz
+  get(ok): HCP1200/102513/T1w/T1w_acpc_dc.nii.gz (file) [from datalad...]
+$ datalad drop HCP1200/102513/T1w/T1w_acpc_dc.nii.gz
+  drop(ok)       </code></pre></ul>
+    <div class="r-stack">
+        <img src="../pics/services_only.png" height="650">
+        <img class="fragment" src="../pics/services_connected.png" height="650">
+    </div>
+
+</section>
+
+
+</section>
+
+
+<section>
+<section>
+    <h2>Big data</h2>
+    <div class="r-stack">
+        <img class="fragment fade-in-then-out" src="../pics/01_once_upon_a_time.svg">
+        <img class="fragment fade-in-then-out" src="../pics/02_preprocessing.svg">
+        <img class="fragment fade-in-then-out" src="../pics/03-transparency.svg">
+        <img class="fragment fade-in-then-out" src="../pics/04-in-the-shits.svg">
+        <img class="fragment fade-in-then-out" src="../pics/05-big-shit.svg">
+    </div>
+</section>
+
+<section data-markdown data-transition="None"><script type="text/template">
+## FAIRly big: Scaling up
+
+![](../pics/07-title.svg)<!-- .element: height="400" -->
+
+**Objective**: Process the UK Biobank (imaging data) <br>
+with 76 TB in 43 million files from 42,715 participants
+<br><br>
+    <small><a href="https://www.nature.com/articles/s41597-022-01163-2" target="_blank">
+    Wagner, Waite, Wierzba et al. (2021). FAIRly big: A framework for<br>
+        computationally reproducible processing of large-scale data.</a>
+</small>
+
+</script></section>
+
+<section>
+    <div class="r-stack">
+        <img class="fragment fade-in-then-out" src="../pics/science_01_ds.png">
+        <img class="fragment fade-in-then-out" src="../pics/science_03-dsukb.png">
+        <img class="fragment fade-in-then-out" src="../pics/science_04_dslinkage.png">
+        <img class="fragment fade-in-then-out" src="../pics/science_05_get.png">
+        <img  height="500px" class="fragment fade-in-then-out" src="../pics/science_07_job.png">
+        <img height="500px" class="fragment fade-in-then-out" src="../pics/science_08_provrec.png">
+        <img class="fragment fade-in-then-out" src="../pics/science_09_merge.png">
+        <img class="fragment fade-in-then-out" src="../pics/science_12_ria.png">
+        <img class="fragment fade-in-then-out" src="../pics/science_13_ukbdatasetlinkage.png">
+        <img class="fragment fade-in-then-out" src="../pics/science_11_recompute.png">
+
+
+    </div>
+</section>
+
+
+<section data-markdown><script type="text/template">
+## FAIRly big movie
+
+<iframe width="1120" height="630" src="https://www.youtube-nocookie.com/embed/UsW6xN2f2jc?start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- Two computations on clusters of different scale (small cluster, supercomputer). Full video: https://youtube.com/datalad
+- Two full (re-)computations, programmatically comparable, verifiable, reproducible -- on any system with data access
+</script></section>
+</section>
+
+
+
+
+      <section>
+      <h2>Where can I find out more?</h2>
+      <ul>
+          <br>
+          <ul style="font-size:30px">
+              <dt>Reach out to to the <b>DataLad</b> team via</dt>
+            <li>
+                <a href="https://matrix.to/#/!NaMjKIhMXhSicFdxAj:matrix.org?via=matrix.waite.eu&via=matrix.org&via=inm7.de" target="_blank">
+                    Matrix</a> (free, decentralized communication app, no app needed).
+                    We run a weekly Zoom office hour (Tuesday, 4pm Berlin time) from this room as well.
+            </li>
+            <li>the development repository on GitHub
+                <a href="https://github.com/datalad/datalad" target="_blank">
+                (github.com/datalad/datalad)</a>
+            </li>
+              <br>
+              <dt>Reach out to the user community with</dt>
+              <li>A question on <a href="https://neurostars.org/" target="_blank">neurostars.org</a>
+              with a <code>datalad</code> tag</li>
+              <br>
+              <dt>Find more user tutorials or workshop recordings</dt>
+              <li>On DataLad's YouTube channel <a href="https://www.youtube.com/channel/datalad" target="_blank">
+                  (www.youtube.com/channel/datalad) </a>
+              </li>
+              <li>
+                  In the DataLad Handbook<a href="http://handbook.datalad.org/en/latest/" target="_blank">
+                  (handbook.datalad.org)</a>
+              </li>
+              <li>In the DataLad RDM course <a href="https://psychoinformatics-de.github.io/rdm-course/" target="_blank">
+                  (psychoinformatics-de.github.io/rdm-course)</a> </li>
+              <li>In the Official API documentation <a href="http://docs.datalad.org" target="_blank">
+                  (docs.datalad.org)</a> </li>
+          </ul>
+      </ul>
+  </section>
+
+
+
+
+<section>
+<section>
+    <h2>{Open,Transparent,Reproducible} science</h2>
+
+<ul>
+    <li class="fragment fade-in-then-semi-out"> Treat data like software: obtain, version, share, and update data</li>
+    <li class="fragment fade-in-then-semi-out"> Simplified data management, disk-space aware storage & computing</li>
+    <li class="fragment fade-in-then-semi-out"> Transparent and reproducible science: link code, data, software, and execution
+    in a human- and machine-readable way</li>
+    <li class="fragment fade-in-then-semi-out"> Collaborate: Generic workflows, interoperabality with established tools & services</li>
+ <!--   <li class="fragment fade-in-then-semi-out"> Publish and share data, but retain complete control over storage and access</li> -->
+
+</ul>
+</section>
+</section>
+
+<section>
+
+                <section style="font-size:45px" data-transition="None" data-background-image="https://cdn.fosstodon.org/media_attachments/files/111/064/426/935/161/479/original/8db65ebe3df0d9d8.jpg"
+                         data-background-size="2500px" data-background-opacity="0.2">
+                    <h2><a href="https://distribits.live" target="_blank">distribits.live</a> </h2>
+                    <ul>
+                        <li>First conference on technologies for distributed data management</li>
+                        <li>2 day conference plus single-day Hackathon </li>
+                        <li>@ Haus der Universität Düsseldorf</li>
+                    </ul>
+                </section>
+  <section>
+  <h2>Acknowledgements</h2>
+  <table>
+    <tr style="vertical-align:top">
+      <td style="vertical-align:top">
+        <dl>
+        <dt>Software</dt>
+        <dd style="margin-left:5px!important">
+          <ul style="margin-left:5px!important">
+              <li>Joey Hess (git-annex)</li>
+              <li>The DataLad team &
+              contributors</li>
+          </ul>
+        </dd>
+            <br> <br>
+            <h2>Thanks!</h2>
+            <b>Questions?</b>
+        </dl>
+      </td>
+      <td style="vertical-align:top">
+        <div style="margin-bottom:-20px;text-align:center"><strong>Funders</strong></div>
+            <img style="height:150px;margin-right:50px" data-src="../pics/nsf_2020.png" />
+            <img style="height:150px;margin-right:50pxi;margin-left:50px" data-src="../pics/binc.png" />
+            <img style="height:150px;margin-left:50px" data-src="../pics/bmbf_2020.png" />
+            <img style="height:80px;margin-top:-40px;margin-left:auto;margin-right:auto;width:100%" data-src="../pics/fzj_logo.svg" />
+        <div style="margin-top:-20px">
+            <img style="height:60px;margin-right:20px" data-src="../pics/erdf.png" />
+            <img style="height:60px;margin-right:20px" data-src="../pics/cbbs_logo.png" />
+            <img style="height:60px" data-src="../pics/LSA-Logo.png" />
+        </div>
+        <div style="margin-top:40px;margin-bottom:20px;text-align:center"><strong>Collaborators</strong></div>
+        <div style="margin-top:-20px">
+            <img style="height:100px;margin:20px" data-src="../pics/hbp_logo.png" />
+            <img style="height:100px;margin:20px" data-src="../pics/conp_logo.png" />
+            <img style="height:100px;margin:20px" data-src="../pics/vbc_logo.png" />
+        </div>
+        <div style="margin-top:-40px">
+            <img style="height:120px;margin:20px" data-src="../pics/openneuro_logo.png" />
+            <img style="height:120px;margin:20px" data-src="../pics/cbrain_logo.png" />
+            <img style="height:140px;margin:20px" data-src="../pics/brainlife_logo.png" />
+        </div>
+      </td>
+    </tr>
+  </table>
+  </section>
+</section>
+
+
+			</div>
+		</div>
+
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="../custom_functions.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280,
+				height: 960,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.3,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: 'c',
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				pdfPageHeightOffset: -1,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
