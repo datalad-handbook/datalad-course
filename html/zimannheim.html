@@ -1,0 +1,714 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Edit me start! -->
+		<title>Open research software infrastructure in Neuro-Medicine</title>
+		<meta name="description" content=" Open research software infrastructure in Neuro-Medicine ">
+		<meta name="author" content=" Adina Wagner ">
+		<!-- Edit me end! -->
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/beige.css">
+        <link rel="stylesheet" href="../css/main.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+  <!--...Datalad Basics...-->
+
+  <section>
+
+
+<section>
+<h2>Open research software infrastructure <br>
+    in Neuro-Medicine</h2>
+
+  <div style="margin-top:1em;text-align:center">
+  <table style="border: none;">
+  <tr>
+	<td style="border: none;">Adina Wagner
+	  <br><small>
+		<a href="https://mas.to/@adswa" target="_blank">
+		  <img data-src="../pics/mastodon.svg" style="height:30px;margin:0px" />
+		  mas.to/@adswa</a></small></td>
+    <td style="border: none;">
+	  <br></td>
+  </tr>
+  <tr>
+    <td style="border: none; vertical-align:top">
+        <small><a href="http://psychoinformatics.de" target="_blank">Psychoinformatics lab</a>,
+          <br> Institute of Neuroscience and
+          Medicine, Brain &amp; Behavior (INM-7)<br>
+       Research Center Jülich</small><br>
+    </td>
+      <td><img style="height:100px;margin-right:10px" data-src="../pics/fzj_logo.png" /></td>
+  </tr>
+  </table>
+  </div>
+        <p style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:0px;margin-bottom:100px;margin-left:1000px">
+        <img src="../pics/qr_zi.png" height="200">
+    </p>
+<br><br><small>
+
+    Slides: <a href="https://doi.org/10.5281/zenodo.10149349" target="_blank">
+    DOI 10.5281/zenodo.10149349</a> (Scan the QR code) <br>
+    <a href="https://files.inm7.de/adina/talks/html/zimannheim.html"
+       target="_blank">files.inm7.de/adina/talks/html/zimannheim.html</a>
+</small>
+</a>
+</section>
+</section>
+
+
+
+<!--- INM-7 --->
+
+<section>
+    <section>
+        <h2>Open Science and Open Software go hand in hand</h2>
+        <ul>Notes
+            <li>Science has specific requirements; research software from within science ("from scientists, for scientists") can fulfill them</li>
+            <li>Open and reproducible science has specific needs for transparency: Open source software provides the necessary auditability</li>
+            <li>Creating software becomes increasingly possible for scientists: The San Francisco Declaration on Research Assessment
+                (<a href="https://sfdora.org" target="_blank">DORA</a>; signed by FZJ),
+                the Agreement on Reforming Research Assessment
+                (<a href="https://coara.eu" target="_blank">CoARA</a>),
+            and the DFG recognize software as academic output</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>The Institute for Neuroscience and Medicine (INM-7)</h2>
+        <ul>Notes
+            <li>Overview of institute and our science</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Software@INM-7</h2>
+        <ul>Notes
+            <li>Intro: We do various software, not only for us, but everyone. This talk
+            will showcase three software's and their usecases: DataLad, JTrack, julearn</li>
+            <li>This talk will also show a just-started multi-site project combining all of them,
+            ABCD-J</li>
+        </ul>
+
+    </section>
+</section>
+
+<!--- DATALAD --->
+
+<section>
+
+    <section data-transition="None">
+        <img style="height:150px;margin-bottom:30px" data-src="../pics/datalad_logo_wide.svg">
+        <br>
+        <ul style="font-size:37px">
+            <li class="fragment fade-in-then-semi-out" data-fragment-index="1">Domain-agnostic data management tool
+                <strong>(command-line </strong> + <strong>graphical user interface</strong>),
+            built on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            & <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a></li>
+        <li class="fragment fade-in-then-semi-out" data-fragment-index="2">10+ year open source project (100+ contributors), available for all major OS</li>
+        <li class="fragment" data-fragment-index="3">Born from rethinking data:</li>
+            <ul>
+            <li class="fragment" data-fragment-index="4">Just like code, <b>data is not static</b>.</li>
+            <li class="fragment" data-fragment-index="4">Just like code, <b>data is subject to collaboration</b>.
+                Stream-lined workflows for sharing and collaborating should be possible, mirroring those in software development. </li>
+            <li class="fragment" data-fragment-index="4"><b>Provenance</b> of data is essential for reproducible, trustworthy, and FAIR science</li>
+            <li class="fragment" data-fragment-index="4">Flexibility and <b>interoperability with existing tools</b> is the key to sustainability and ease of use</li>
+                </ul>
+            </ul>
+    </section>
+
+
+    <section data-transition="None">
+        <img style="height:150px;margin-bottom:30px" data-src="../pics/datalad_logo_wide.svg"><br>
+        <ul style="font-size:37px">
+            <li>Domain-agnostic <strong>command-line tool</strong> (+ <strong>graphical user interface</strong>),
+            built on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            & <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a></li>
+                        <li>10+ year open source project (100+ contributors), available for all major OS</li>
+        <li>Major features:</li>
+        <dt>Version-controlling arbitrarily large content </dt>
+        <dd>Version control data & software alongside to code!</dd>
+        <dt>Transport mechanisms for sharing, updating & obtaining data </dt>
+        <dd>Consume & collaborate on data (analyses) like software</dd>
+        <dt>(Computationally) reproducible data analysis</dt>
+        <dd>Track and share provenance of all digital objects</dd>
+        <dt>(... and <i>much</i> more) </dt>
+        <br>
+    </ul>
+</section>
+
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive tracking of research components
+![](../pics/vamp_0_start.png)<!-- .element: width="100%" -->
+Well-structured datasets (using community standards), and portable computational environments &mdash; and their evolution &mdash; are the precondition for reproducibility
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# turn any directory into a dataset
+# with version control
+
+% datalad create &lt;directory&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# save a new state of a dataset with
+# file content of any size
+
+% datalad save
+</pre></code>
+</td></tr></table>
+Note:
+- link to prev. statements on description standards
+- your community could be really small (your lab), when data are precious resources
+will be spent to understand it, but information must be capture to make this possible
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Capture computational provenance
+![](../pics/vamp_1_provcapture.png)<!-- .element: width="100%" -->
+Which data was needed at which version, as input into which code, running with what parameterization in which
+computional environment, to generate an outcome?
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# execute any command and capture its output
+# while recording all input versions too
+
+% datalad run --input ... --output ... &lt;command&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+The missing link: even when everything is shared, we still don't know how to start.
+README is minimum, but executable prov-records are much better.
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Exhaustive capture enables portability
+![](../pics/vamp_2_pushtocloud.png)<!-- .element: width="100%" -->
+Precise identification of data and computational environments
+combined with provenance records form a comprehensive and portable
+data structure, capturing all aspects of an investigation.
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# transfer data and metadata to other sites and services
+# with fine-grained access control for dataset components
+
+% datalad push --to &lt;site-or-service&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+Does it fly? Can you give it to someone? Or can you take it with you to your new lab?
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Reproducibility strengthens trust
+![](../pics/vamp_3_reproduce.png)<!-- .element: width="100%" -->
+Outcomes of computational transformations can be validated by authorized 3rd-parties. This enables audits, promotes accountability, and streamlines automated "upgrades" of outputs
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# obtain dataset (initially only identity,
+# availability, and provenance metadata)
+
+% datalad clone &lt;url&gt;
+</pre></code>
+</td><td style="padding:0px">
+<code><pre>
+# immediately actionable provenance records
+# full abstraction of input data retrieval
+
+% datalad rerun &lt;commit|tag|range&gt;
+</pre></code>
+</td></tr></table>
+Note:
+Goal is automated reproducibility, enables assessment of robustness and benchmarking algorithmic developments
+</script></section>
+
+<section data-markdown data-transition="none"><script type="text/template">
+## Ultimate goal: (re-)usability
+![](../pics/vamp_4_reuse.png)<!-- .element: width="100%" -->
+Verifiable, portable, self-contained data structures that track all aspects of an investigation exhaustively can be (re-)used as modular components in larger contexts &mdash; propagating their traits
+
+<table width=100% style="padding:0px">
+<tr><td style="padding:0px">
+<code><pre>
+# declare a dependency on another dataset and
+# re-use it a particular state in a new context
+
+% datalad clone -d &lt;superdataset&gt; &lt;url&gt; &lt;path-in-dataset&gt;
+</pre></code>
+</td></tr></table>
+
+Note:
+With these in place, re-usability is a small(er) step
+</script>
+</section>
+
+  <section>
+      <h3>DataLad usecases</h3>
+      <div class="r-stack">
+        <li data-fragment-index="1" class="fragment fade-in-then-out"> <b>Publish or consume datasets</b>
+        via GitHub, GitLab, OSF, the European Open Science Cloud, or similar services</li>
+        <li data-fragment-index="2" class="fragment fade-in-then-out">
+        Behind-the-scenes <b>infrastructure component for data transport and versioning</b>
+        (e.g., used by <a href="https://openneuro.org/" target="_blank"> OpenNeuro</a>,
+        <a href="https://brainlife.io/" target="_blank"> brainlife.io </a>,
+        the <a href="https://conp.ca/" target="_blank">Canadian Open Neuroscience Platform (CONP)</a>,
+        <a href="https://mcin.ca/technology/cbrain/" target="_blank"> CBRAIN</a>)</li>
+        <li data-fragment-index="3" class="fragment fade-in-then-out"><b>Central data management</b> and archival system</li>
+        <li data-fragment-index="4" class="fragment fade-in-then-out"><b>Decentral data and metadata catalog</b></li>
+        <li data-fragment-index="5" class="fragment fade-in-then-out"> <b>Creating and sharing reproducible, open science</b>: Sharing data, software, code, and provenance </li>
+      </div>
+      <div class="r-stack">
+        <img data-fragment-index="1" height="700" class="fragment fade-in-then-out" src="../pics/getdata_studyforrest.gif" alt="a screenrecording of cloning studyforrest data from github">
+        <img height="700" class="fragment fade-in-then-out" data-fragment-index="2" src="../pics/openneuro_new_2.gif" alt="a screenrecording of browsing open neuro">
+        <img height="700" data-fragment-index="3" class="fragment fade-in-then-out" src="../pics/centralmanagement2.gif">
+        <img height="1000" data-fragment-index="4" class="fragment fade-in-then-out" src="../pics/sfb-catalog.gif">
+        <img height="700" class="fragment fade-in" data-fragment-index="5" src="../pics/remodnavpaper_2.gif" alt="a screenrecording of cloning REMODNAV paper dataset from github">
+      </div>
+  </section>
+
+<section>
+  <h2>Acknowledgements</h2>
+  <table>
+  <tr style="vertical-align:middle">
+    <td style="vertical-align:middle">
+      <dl>
+        <dt style="margin-top:20px">DataLad software <br>
+            & ecosystem</dt>
+        <dd style="margin-left:5px!important">
+          <ul style="margin-left:5px!important">
+              <li>Psychoinformatics Lab, <br>
+              Research center Jülich</li>
+              <li>Center for Open <br>
+              Neuroscience, <br>
+              Dartmouth College</li>
+              <li>Joey Hess (git-annex)</li>
+              <li><em>>100 additional contributors</em></li>
+          </ul>
+        </dd>
+    </td>
+    <td style="vertical-align:middle">
+  <div style="margin-bottom:-20px;text-align:center"><strong>Funders</strong></div>
+  <img style="height:150px;margin-right:50px" data-src="../pics/nsf.png" />
+  <img style="height:150px;margin-right:50pxi;margin-left:50px" data-src="../pics/binc.png" />
+  <img style="height:150px;margin-left:50px" data-src="../pics/bmbf.png" />
+  <div style="margin-top:-20px">
+  <img style="height:80px;margin-top:-40px;margin-left:40px" data-src="../pics/fzj_logo.svg" />
+  <img style="height:60px;margin-left:50px;margin-bottom:25px" data-src="../pics/dfg_logo.png" />
+  </div>
+  <div style="margin-top:-20px">
+  <img style="height:60px;margin-right:20px" data-src="../pics/erdf.png" />
+  <img style="height:60px;margin-right:20px" data-src="../pics/cbbs_logo.png" />
+  <img style="height:60px" data-src="../pics/LSA-Logo.png" />
+  </div>
+  <div style="margin-top:40px;margin-bottom:20px;text-align:center"><strong>Collaborators</strong></div>
+  <div style="margin-top:-20px">
+  <img style="height:100px;margin:20px" data-src="../pics/hbp_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/conp_logo.png" />
+  <img style="height:120px;margin:10px" data-src="../pics/openneuro_logo.png" />
+  </div>
+  <div style="margin-top:-40px">
+  <img style="height:100px;margin:20px" data-src="../pics/ebrains-logo.png"/>
+  <img style="height:100px;margin:0px" data-src="../pics/gin-logo.png" />
+  <img style="height:120px;margin:10px" data-src="../pics/sfb1451_logo.png" />
+</div>
+  <div style="margin-top:-40px;align:middle">
+  <img style="height:140px;margin:10px" data-src="../pics/brainlife_logo.png" />
+  <img style="height:100px;margin:0px" data-src="../pics/cbrain_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/vbc_logo.png" />
+  </div>
+  </td>
+  </tr>
+  </table>
+</section>
+
+</section>
+
+<!-------- JTRACK
+/login/?next=/
+https://preprints.jmir.org/preprint/51689
+https://www.mdpi.com/1424-8220/22/13/4975
+https://jtrack.readthedocs.io/en/latest/JTrack_Dashboard.html
+https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
+----------->
+
+<section>
+
+    <section>
+        <h2>JTrack: Digital biomarkers from your smartphone</h2>
+        <ul>
+            <li><b>Objective</b>: Close monitoring of patients/participants in non-clinical settings</li>
+            <li>Modern smartphones contain a variety of sensors
+                for passive monitoring and active acquisition:</li>
+            <table>
+                <tr>
+                    <td style="vertical-align:top">
+                        <div class="r-stack">
+                            <img class="fragment" src="../pics/jtrack/jtrack1.png">
+                        </div>
+                    </td>
+                    <td>
+                        <ul style="vertical-align:center">
+                            <li>gyroscope</li>
+                            <li>accelerometer</li>
+                            <li>location</li>
+                            <li>human activity recognition</li>
+                            <li>application usage</li>
+                            <li>screen time</li>
+                            <li>microphone</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </ul>
+    </section>
+
+    <section>
+        <h2>JTrack</h2>
+        <ul>Notes
+            <li>Add info on privacy</li>
+            <li>Add info on open source</li>
+            <li>Overview of different components: Jtrack social, JTrack EMA, JDash</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>JTrack components: JTrack Social</h2>
+        <ul>
+            <img height=300px src="../pics/jtrack/jtrack_social_1.png">
+            TODO: add study data screenshots
+            <li>Smartphone app for active monitoring and passive labeling</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>JTrack components: JTrack EMA</h2>
+        <ul>
+            Smartphone App for Ecological Momentary Assessment
+            <table>
+                <tr>
+                    <td style="vertical-align:top">
+                        <ul><br>
+                            <li>Binary Questions</li>
+                            <li>Date and Time <br>
+                                Questions</li>
+                            <li>Sliding Questions</li>
+                            <li>Multiple/Single <br>
+                                coice questions</li>
+                        </ul>
+                    </td>
+                    <td >
+                        <div class="r-stack">
+                            <img class="fragment fade-in-then-out" height="600px" src="../pics/jtrack/jtrack_ema_1.png">
+                            <img class="fragment fade-in-then-out"  height="600px" src="../pics/jtrack/jtrack_ema_2.png">
+                            <img class="fragment fade-in-then-out"  height="600px" src="../pics/jtrack/jtrack_ema_3.png">
+                            <img class="fragment fade-in-then-out"  height="600px" src="../pics/jtrack/jtrack_ema_4.png">
+                            <img class="fragment fade-in-then-out"  height="600px" src="../pics/jtrack/jtrack_ema_5.png">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </ul>
+    </section>
+
+    <section>
+        <h2>JTrack components: JDash</h2>
+        <ul>
+            Dashboard for Study Administration
+            <table>
+                <tr>
+                    <td style="vertical-align:top">
+                        <ul><br>
+                            <li>Investigator's <br>
+                                study & user <br>
+                                management</li>
+                            <li>Data Quality <br>
+                                Control</li>
+                            <li>Notification <br>
+                                Center</li>
+                        </ul>
+                    </td>
+                    <td >
+                        <div class="r-stack">
+                            <img class="fragment fade-in-then-out" height="600px" src="../pics/jtrack/jtrack_jdash_desktop.png">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Behind the scenes</h2>
+        <img src="../pics/jtrack/jtrack_backend.png">
+    </section>
+
+
+    <section data-transition="None">
+        <h2>Investigator's / Participant's point of view</h2>
+        <table>
+            <tr>
+                <td style="vertical-align:top">
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Install JTrack</li>
+                        <li class="fragment" data-fragment-index="2">Scan QR code and give permissions to App</li>
+                        <li class="fragment" data-fragment-index="3">Resume daily life</li>
+                        <div class="r-stack">
+                        <img class="fragment fade-in-then-out" data-fragment-index="1" height="600px" src="../pics/jtrack/jtrack_social.png">
+                        <img style="horizontal-align:center" class="fragment fade-in-then-out"  data-fragment-index="2" class="fragment" src="../pics/jtrack/jtrack_qr.png">
+                        </div>
+                    </ul>
+                </td>
+                <td style="vertical-align:top">
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Install JTrack with Participant</li>
+                        <li class="fragment" data-fragment-index="2">Provide study- and subject-specific QR code from JDash</li>
+                        <li class="fragment" data-fragment-index="3">Monitor study and communicate with participants via JDash</li>
+                        <div class="r-stack">
+                        <img class="fragment fade-in-then-out" data-fragment-index="1" height="600px" src="../pics/jtrack/jtrack_social.png">
+                        <img class="fragment fade-in-then-out" height="400px" style="horizontal-align:center" data-fragment-index="2" src="../pics/jtrack/jtrack_jdash_tablet.png">
+                        <img style="horizontal-align:center" data-fragment-index="3" class="fragment" src="../pics/jtrack/jtrack_jdash_monitor.png">
+                        </div>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Advantages</h2>
+            <ul>
+                <li>Easy to deploy and free environment for collection
+                    of real world data (RWD) basically at no cost</li>
+                <li>Standardized data collection across centers</li>
+                <li>High-density longitudinal data with fully customizable data
+                    collection</li>
+            </ul>
+    </section>
+
+    <section>
+        <h2>Acknowledgements</h2>
+        <table>
+            <tr>
+                <td>
+                    Publications:
+                <ul>
+                    <li>JTrack Social: <a href="https://doi.org/10.3389/fpubh.2021.763621" target="_blank">Sahandi Far et al. 2021</a></li>
+                    <li>JTrack EMA: <a href="https://preprints.jmir.org/preprint/51689" target="_blank">Sahandi Far et al. 2023</a></li>
+                    <li>JTrack Dashboard: <a href="https://jtrack.inm7.de" target="_blank">jtrack.inm7.de</a> </li>
+                </ul>
+                </td>
+                <td>
+                    Team:
+                    <ul>
+                    <img src="../pics/jtrack/jtrack_team.png">
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </section>
+</section>
+
+<!-------- JULEARN ---------->
+
+<section>
+    <section>
+        <h2>Julearn: An easy to use ML-library</h2>
+        <ul>
+            <li>Open source Python library, built upon scikit-learn</li>
+            <li>Domain-general, but aims to simplify entry into ML for domain scientists with built-in
+            guarantees against most common pitfalls:</li>
+            <ul>
+                <li>Data leakage</li>
+                <li>Overfitting of hyperparameters</li>
+            </ul>
+            <li>Simplifies common use cases for supervised ML pipelines, with feature such as:</li>
+            <ul>
+                <li>Automatic usage of nested cross-validation for proper evaluation in hyperparameter tuning </li>
+                <li>Preprocessing based on feature types, incl. confound removal</li>
+                <li>Built-in visualization for model inspection and comparison</li>
+            </ul>
+            <li>Plug-and-play with scikit-learn transformers
+        </ul>
+    </section>
+
+    <section>
+        <h2>Visualization</h2>
+        <img src="../pics/julearn/scores_viewer.png">
+    </section>
+    <section data-transition="None">
+        <h2>Julearn vs scikit-learn</h2>
+        Simple CV pipeline
+        <pre style="margin-left: 0;"><code data-trim class="language-python" >from julearn import run_cross_validation
+run_cross_validation(
+    X=X, y=y, data=data,
+    preprocess=["zscore"], model="svm",
+    problem_type="classification",
+    X_types={"continuous": X} # X_types optional here</code></pre>
+        <pre style="margin-left: 0;"><code data-trim class="language-python" >from sklearn.model_selection import cross_validate
+from sklearn.svm import SVC # SVR in case of regression
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipelines import make_pipeline
+
+pipeline = make_pipeline(StandardScaler(), SVC())
+cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre>
+
+    </section>
+
+    <section data-transition="None">
+        <h2>Julearn vs scikit-learn</h2>
+        Nested CV with hyperparameter tuning
+        <pre style="margin-left: 0;"><code data-trim class="language-python" >from julearn import run_cross_validation, PipelineCreator
+creator=PipelineCreator(problem_type="classification")
+creator.add("zscore", with_mean=[True, False])
+creator.add("pca", n_components=2)
+creator.add("svm", C=[1,2], degree=[3,4])
+
+# X_types optional
+run_cross_validatoin(
+    X=X, y=y, data=data, model=creator, X_types={"continuous": X})</code></pre>
+        <pre style="margin-left: 0;"><code data-trim class="language-python" >from sklearn.model_selection import cross_validate, GridSearchCV
+from sklearn.svm import SVC # SVR in case of regression
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.pipelines import make_pipeline
+
+pipeline = make_pipeline(StandardScaler(), PCA(), SVC())
+param_grid = {
+    "standardscaler__with_mean": [True, False],
+    "pca__n_components": [2],
+    "scv__C": [1,2],
+    "svc__degree": [3, 4]
+}
+grid_pipeline = GridSearchCV(estimator=pipeline, param_grid=param_grid)
+cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre>
+
+    </section>
+
+    <section>
+        <h2>Acknowledgements</h2>
+        <br><br>
+        <ul>
+            <li>Preprint: <a href="https://arxiv.org/pdf/2310.12568v1.pdf" target="_blank">
+                Hamdan et al., 2023</a></li>
+            <li>Documentation: <a href="https://juaml.github.io/julearn/" target="_blank">juaml.github.io/julearn</a> </li>
+        </ul>
+        <br><br>
+        <table>
+            <tr>
+                <td>
+                    <img src="../pics/julearn/fede.png" height="130px">
+                    <small>Fede Raimondo</small>
+                </td>
+                <td>
+                    <img src="../pics/julearn/sami.png" height="130px">
+                    <small>Sami Hamdan</small>
+                </td>
+                <td>
+                    <img src="../pics/julearn/kaustubh.png" height="130px">
+                    <small>Kaustubh Patil</small>
+                </td>
+                <td>
+                    <img src="../pics/julearn/shammi.png" height="130px">
+                    <small>Shammi More</small>
+                </td>
+                <td>
+                    <img src="../pics/julearn/vera.png" height="130px">
+                    <small>Vera Komeyer</small>
+                </td>
+                <td>
+                    <img src="../pics/julearn/synchon.png" height="130px">
+                    <small>Synchon Mandal</small>
+                </td>
+                <td>
+                    <img src="../pics/julearn/leo.png" height="130px">
+                    <small>Leonard Sasse</small>
+                </td>
+            </tr>
+        </table>
+
+    </section>
+</section>
+
+<!------- ABCD-J --------->
+
+<section>
+    <section>
+        <h2>The ABCD-J platform</h2>
+        Add some powerrangers etc GIF on combining super powers
+    </section>
+
+    <section>
+
+    </section>
+
+</section>
+
+
+<section>
+    <section>
+        <h2></h2>
+    </section>
+</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="../custom_functions.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280,
+				height: 960,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.3,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: 'c',
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				pdfPageHeightOffset: -1,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
