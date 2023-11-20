@@ -73,31 +73,58 @@
 <section>
     <section>
         <h2>Open Science and Open Software go hand in hand</h2>
-        <ul>Notes
-            <li>Science has specific requirements; research software from within science ("from scientists, for scientists") can fulfill them</li>
-            <li>Open and reproducible science has specific needs for transparency: Open source software provides the necessary auditability</li>
-            <li>Creating software becomes increasingly possible for scientists: The San Francisco Declaration on Research Assessment
+        <ul>
+            <li class="fragment">Science has <b>specific requirements</b>;
+                research software from within science ("from scientists,
+                for scientists") can fulfill them. Open formats, protocols, and
+                code allow re-use, interoperability, and customization.</li> <br>
+            <li class="fragment">Open and reproducible science has specific needs for
+                <b>transparency</b>: Open source software provides the necessary auditability.</li><br>
+            <li class="fragment">Creating software becomes
+                <b>increasingly possible for scientists</b>:
+                The San Francisco Declaration on Research Assessment
                 (<a href="https://sfdora.org" target="_blank">DORA</a>; signed by FZJ),
                 the Agreement on Reforming Research Assessment
                 (<a href="https://coara.eu" target="_blank">CoARA</a>),
-            and the DFG recognize software as academic output</li>
+            and the DFG recognize software as academic output.</li>
         </ul>
     </section>
 
     <section>
         <h2>The Institute for Neuroscience and Medicine (INM-7)</h2>
-        <ul>Notes
-            <li>Overview of institute and our science</li>
+
+            <div class="r-stack">
+                <img class="fragment fade-out" src="../pics/inm7-homepage.png">
+                <ul>
+            <li>Interdisciplinary institute with 11 research groups</li>
+            <li>Research foci:</li>
+            <ul>
+                <li>Infrastructure and method development: Digital biomarker,
+                    machine learning, meta analysis,
+                    research data management</li>
+                <li>Basic research in human brain mapping: Connectomics, genetic gradients,
+                    in-vivo brain mapping, multimodal integration</li>
+                <li>AI Applications in medical research: Cognition,
+                    Personality, Aging & neurodegenerative disease, Schizophrenia</li>
+                <li>Ethical implications of medical AI: Bias in AI applications, medical AI and society,
+                    individualized predictions</li>
+            </ul>
+
+
+            </div>
         </ul>
     </section>
 
     <section>
-        <h2>Software@INM-7</h2>
-        <ul>Notes
-            <li>Intro: We do various software, not only for us, but everyone. This talk
-            will showcase three software's and their usecases: DataLad, JTrack, julearn</li>
-            <li>This talk will also show a just-started multi-site project combining all of them,
-            ABCD-J</li>
+        <h2>Software @ INM-7</h2>
+        <ul>
+            <li>The institute has a history of open source software, starting with the
+                <a href="https://github.com/inm7/jubrain-anatomy-toolbox" target="_blank">
+                    SPM Anatomy Toolbox (Eickhoff, 2005)</a></li>
+            <li>Multiple groups develop and maintain open source research software for their
+                respecitve subdomain</li>
+            <li>Recent integration efforts connect our open software
+                stack to open research software infrastructure for neuro-medicine</li>
         </ul>
 
     </section>
@@ -283,7 +310,7 @@ With these in place, re-usability is a small(er) step
         <img height="700" data-fragment-index="3" class="fragment fade-in-then-out" src="../pics/centralmanagement2.gif">
         <img height="1000" data-fragment-index="4" class="fragment fade-in-then-out" src="../pics/sfb-catalog.gif">
         <img height="700" class="fragment fade-in" data-fragment-index="5" src="../pics/remodnavpaper_2.gif" alt="a screenrecording of cloning REMODNAV paper dataset from github">
-      </div>
+       </div>
   </section>
 
 <section>
@@ -382,22 +409,52 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
         </ul>
     </section>
 
-    <section>
+    <section data-transition="None">
         <h2>JTrack</h2>
-        <ul>Notes
-            <li>Add info on privacy</li>
-            <li>Add info on open source</li>
-            <li>Overview of different components: Jtrack social, JTrack EMA, JDash</li>
+
+        <img src="../pics/jtrack/hospital.png">
+        <ul>Flexible components for different users:
+            <li><b>JTrack Social</b>: Smartphone app for participants</li>
+            <li><b>JTrack EMA</b>: Smartphone app for participants</li>
+            <li><b>JDash</b>: Monitoring and analytics tool for study owners</li>
         </ul>
     </section>
 
-    <section>
+    <section data-transition="None">
         <h2>JTrack components: JTrack Social</h2>
         <ul>
-            <img height=300px src="../pics/jtrack/jtrack_social_1.png">
-            TODO: add study data screenshots
-            <li>Smartphone app for active monitoring and passive labeling</li>
+            Smartphone App for active labeling and passive monitoring
+            <table>
+                <tr>
+                    <td style="vertical-align:top">
+                        <ul><br>
+                            <li>Sensor data (passive <br>
+                                collection mode default: <br>
+                                Accelerometer & Gyroscope) </li>
+                            <li>Application usage statistics</li>
+                            <li>Human activation recognition <br>
+                                (e.g., walking, running, driving)</li>
+                            <li>Location information (anonymized)</li>
+                            <li>Active recording, e.g., free-speech <br>
+                                generation tasks</li>
+                        </ul>
+                    </td>
+                    <td >
+                        <div class="r-stack">
+                            <img class="fragment fade-out" height="600px" src="../pics/jtrack/jtrack_social_3.png">
+                            <img height="600px" src="../pics/jtrack/jtrack_social_1.png">
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </ul>
+        <small>Available for Android + IPhone</small>
+    </section>
+
+    <section data-transition="None">
+        <h2>JTrack components: JTrack Social</h2>
+        <img src="../pics/jtrack/image7.gif" height="600px">
+        <img src="../pics/jtrack/image9.png">
     </section>
 
     <section>
@@ -428,6 +485,7 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
                 </tr>
             </table>
         </ul>
+        <small>Available for Android + IPhone</small>
     </section>
 
     <section>
@@ -450,6 +508,8 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
                     <td >
                         <div class="r-stack">
                             <img class="fragment fade-in-then-out" height="600px" src="../pics/jtrack/jtrack_jdash_desktop.png">
+                            <img class="fragment fade-in-then-out" height="500px" src="../pics/jtrack/jdash_overview2.png">
+
                         </div>
                     </td>
                 </tr>
@@ -460,6 +520,12 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
     <section>
         <h2>Behind the scenes</h2>
         <img src="../pics/jtrack/jtrack_backend.png">
+        <ul>
+            <li>Servers in Germany</li>
+            <li>Data versioning via DataLad</li>
+            <li>Authenticated data access via JDash</li>
+            <li>Data transfer via HTTPS</li>
+        </ul>
     </section>
 
 
@@ -502,6 +568,7 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
                 <li>Standardized data collection across centers</li>
                 <li>High-density longitudinal data with fully customizable data
                     collection</li>
+                <li>Opportunity for citizen science</li>
             </ul>
     </section>
 
@@ -510,21 +577,31 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
         <table>
             <tr>
                 <td>
-                    Publications:
                 <ul>
+                    <b>Publications</b>:
                     <li>JTrack Social: <a href="https://doi.org/10.3389/fpubh.2021.763621" target="_blank">Sahandi Far et al. 2021</a></li>
                     <li>JTrack EMA: <a href="https://preprints.jmir.org/preprint/51689" target="_blank">Sahandi Far et al. 2023</a></li>
-                    <li>JTrack Dashboard: <a href="https://jtrack.inm7.de" target="_blank">jtrack.inm7.de</a> </li>
+                    <br>
+                    <b>Contact</b>:<br>
+                    <li>via JDash: <a href="https://jdash.inm7.de/login/?next=/" target="_blank">jdash.inm7.de</a></li>
+                    <br>
+                    <li><b>JTrack Hour</b> (open to everyone)<br>
+                    Every second Tuesday at 1PM (even-numbered calendar weeks) - <br>
+                    Join the <a href="https://fz-juelich-de.zoom.us/j/65477322046?pwd=K1JPbG0wSGdTL0lIV1h4WjVtc25MQT09" target="_blank">
+                    Zoom meeting</a>!</li>
                 </ul>
                 </td>
-                <td>
-                    Team:
+                <td style="vertical-align: top">
+                    <b>Team</b>:
                     <ul>
                     <img src="../pics/jtrack/jtrack_team.png">
                     </ul>
                 </td>
             </tr>
         </table>
+        <ul>
+
+            </ul>
     </section>
 </section>
 
@@ -532,28 +609,59 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
 
 <section>
     <section>
-        <h2>Julearn: An easy to use ML-library</h2>
+        <img src="../pics/julearn/julearn_logo.png">
         <ul>
-            <li>Open source Python library, built upon scikit-learn</li>
+            <li>Open source Python library for easy-to use ML-pipelines, built upon scikit-learn</li>
             <li>Domain-general, but aims to simplify entry into ML for domain scientists with built-in
             guarantees against most common pitfalls:</li>
             <ul>
                 <li>Data leakage</li>
                 <li>Overfitting of hyperparameters</li>
             </ul>
-            <li>Simplifies common use cases for supervised ML pipelines, with feature such as:</li>
-            <ul>
-                <li>Automatic usage of nested cross-validation for proper evaluation in hyperparameter tuning </li>
-                <li>Preprocessing based on feature types, incl. confound removal</li>
-                <li>Built-in visualization for model inspection and comparison</li>
-            </ul>
-            <li>Plug-and-play with scikit-learn transformers
         </ul>
     </section>
 
     <section>
+        <ul>
+            <table>
+                <tr>
+                    <td class="fragment" data-fragment-index="1">
+                        <b>The problem</b>: Expensive AI mistakes
+
+                    </td>
+                    <td style="vertical-align:top"  class="fragment" data-fragment-index="2">
+                        <b>A solution</b>: User-friendly <br>solutions to common <br>complex use cases
+
+                    </td>
+                </tr>
+                <tr>
+                    <td  class="fragment" data-fragment-index="1">
+                         <img src="../pics/julearn/nature.png" >
+                    </td>
+                    <td style="vertical-align:top"  class="fragment" data-fragment-index="2">
+                         <ul style="font-size:35px">
+                        <li>Simplifies common use cases <br>
+                            for supervised ML pipelines, <br>
+                            with feature such as:</li>
+                            <ul>
+                                <li>Automatic usage of nested cross-<br>validation
+                                    for proper evaluation in hyperparameter tuning </li>
+                                <li>Preprocessing based on feature <br>
+                                    types, incl. confound removal</li>
+                                <li>Built-in visualization for model <br>
+                                    inspection and comparison</li>
+                            </ul>
+                        <li>Plug-and-play with scikit-learn transformers</li>
+                            </ul>
+                    </td>
+                </tr>
+            </table>
+            </ul>
+    </section>
+    <section>
         <h2>Visualization</h2>
-        <img src="../pics/julearn/scores_viewer.png">
+        Interactive "Scores Viewer" for easier model comparison
+        <img src="../pics/julearn/scores_viewer.png" height="800px">
     </section>
     <section data-transition="None">
         <h2>Julearn vs scikit-learn</h2>
@@ -571,7 +679,6 @@ from sklearn.pipelines import make_pipeline
 
 pipeline = make_pipeline(StandardScaler(), SVC())
 cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre>
-
     </section>
 
     <section data-transition="None">
@@ -647,7 +754,13 @@ cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre
             </tr>
         </table>
         <br>
-        TODO: ML Hours?
+        <div>
+            <b>ML Hours</b> (open to everyone)<br>
+            Consultancy on Machine-Learning, every second Thursday, 2-4pm<br>
+            Chat: <a href="https://matrix.to/#/#ml:inm7.de" target="_blank">
+            https://matrix.to/#/#ml:inm7.de</a>
+        </div>
+
 
     </section>
 </section>
@@ -656,6 +769,7 @@ cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre
 
 <section>
     <section>
+        <h2>Even better together</h2>
             <iframe src="https://giphy.com/embed/26gR2f01UTynjCPNS" width="680" height="560" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
     </section>
 
@@ -668,7 +782,7 @@ cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre
             A collaboration between clinical, academic, and industry partners:
             <table>
                 <tr>
-                    <td style="vertical-align:top">
+                    <td style="vertical-align:top; font-size:30px">
             <br>
             Research Center Jülich
             <br>
@@ -683,7 +797,9 @@ cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre
             <br>
             PeakProfiling <br>
             CanControl<br>
-            IXP
+            IXP<br>
+            <br>
+            (open to future additions)
                     </td>
                     <td style="vertical-align:middle">
                         <img src="../pics/abcdj/logo.png">
@@ -692,13 +808,26 @@ cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre
                 </table>
         </ul>
     </section>
+
+    <section>
+        <h2>Goals</h2>
+        <ul>
+            <li><b>Social:</b> Promote and facilitate collaboration between
+                multiple centers </li>
+            <li><b>Technical:</b> Accelarate research through homogenization
+                of workflows and processes, with emphasis on digital biomarker
+                development; Elevate existing open technical solutions for
+                research practice adoption</li>
+        </ul>
+    </section>
+
     <section>
         <h2>Open research infrastructure</h2>
 
         <table>
             <tr>
-                <td>Clinicians' point of view</td>
-                <td>Patients' point of view</td>
+                <td><b>Clinicians' point of view</b></td>
+                <td><b>Patients' point of view</b></td>
             </tr>
             <tr>
                 <td style="vertical-align:top">
@@ -733,11 +862,90 @@ cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre
     </section>
 
     <section>
+        <h2>Open Research Infrastructure</h2>
+        <table>
+            <tr>
+                <td><b>Research data management's point of view</b></td>
+            </tr>
+            <tr>
+                <td style="vertical-align:top">
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Technical solutions exists, need elevation for research practice adoption </li>
+                        <li class="fragment" data-fragment-index="2">Homogenization of workflows and processes fosters collaboration across sites</li>
+                        <li class="fragment" data-fragment-index="3">Decentralized approach with centralized services and web-based multi-center integration</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="r-stack">
+                      </div>
+                </td>
+                <td>
+                   <div class="r-stack">
+                   </div>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section>
         <h2>Front-end and Back-end</h2>
-        <li>JTrack for decentral, ecologically valid acquisitions, complementing in-clinic assessment</li>
+        <ul style="font-size:35px">
+        <li>JTrack for decentral, ecologically valid acquisitions, complementing in-clinic assessments</li>
         <li>JDash for study management, participant management,
             and analytics overview (derived study data at subject & group level)</li>
-        <img src="../pics/jtrack/jdash_overview.png" height="600px">
+        <li>Central data overview and analytics at FZJ</li>
+            <ul>
+                <li>Provenance-tracked analysis and modeling</li>
+                <li>Automated meta-data extraction for data discoverability</li>
+                <li>Result overview for clinical decision making</li>
+            </ul>
+        </ul>
+        <table>
+            <tr>
+                <td>
+                    <img src="../pics/abcdj/backend.png" height="500px">
+                </td>
+                <td>
+                     <img src="../pics/jtrack/jdash_overview.png" height="500px" width="500px">
+                </td>
+
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Opportunities</h2>
+        <b>Software improves with its use cases</b>
+        <ul style="font-size:30px">
+            <li>JTrack integration into different types wearables</li>
+            <li>JTrack integration of cognitive tasks and feedback to participants </li>
+            <li>Julearn integration into JDash</li>
+            <li>More meta-data extractors for DataLad</li>
+            <li>...</li>
+        </ul>
+        <img src="../pics/abcdj/timeline.png">
+    </section>
+
+    <section>
+        <h2>Current (first) steps</h2>
+        <ul>
+            <b>Data cataloging</b>
+            <li>Leveraging legacy data via data census and meta-data catalog </li>
+            <ul>
+                <li>improved discovery without direct data transfer</li>
+                <li>homogenization of access request procedures</li>
+                <li>establishing a legal basis for (re-)use</li>
+                <li>Example: <a href="http://data.sfb1451.de" target="_blank">data.sfb1451.de</a></li>
+            </ul>
+            <li>Demonstrator for data infrastructure based on §21 data
+            (standardized and anonymized performance data of hospitals, legally required,
+                submitted yearly to InEK by all hospitals)</li>
+            <br>
+            <b>Feasibility/Proof-of-concept study</b>
+            <li>Recommendations for common digital tools and workflows for common tasks and processes</li>
+            <li>Selection of digital measures from clinical routine for first trials</li>
+        </ul>
     </section>
 
 </section>
@@ -745,7 +953,26 @@ cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre
 
 <section>
     <section>
-        <h2></h2>
+        <h2>Summary</h2>
+        <ul>
+            <li class="fragment">Open Source (Research) Software aids in various domain-general or
+                -specific applications.</li>
+            <li class="fragment">Open Science needs Open Source: For transparency and reproducibility, for
+                science-specific requirements, for open formats, for re-use, and to
+                enable interoperability across tools.</li>
+            <li class="fragment">Collaboration across clinical and research settings is a technical,
+                social, and legal challenge. Technical solutions won't save us alone,
+                but they are a good first step.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Thanks!</h2>
+        <br><br><br>
+        Questions? <br><br>
+        Inputs, Resources, Synergies <br><br>
+
+
     </section>
 </section>
 
