@@ -79,7 +79,7 @@
                 for scientists") can fulfill them. Open formats, protocols, and
                 code allow re-use, interoperability, and customization.</li> <br>
             <li class="fragment">Open and reproducible science has specific needs for
-                <b>transparency</b>: Open source software provides the necessary auditability.</li><br>
+                <b>transparency</b> and <b>accessibility</b>: Open source software provides the necessary auditability.</li><br>
             <li class="fragment">Creating software becomes
                 <b>increasingly possible for scientists</b>:
                 The San Francisco Declaration on Research Assessment
@@ -90,16 +90,16 @@
         </ul>
     </section>
 
-    <section>
+    <section data-transition="None">
         <h2>The Institute for Neuroscience and Medicine (INM-7)</h2>
 
             <div class="r-stack">
-                <img class="fragment fade-out" src="../pics/inm7-homepage.png">
+                <img src="../pics/inm7-homepage.png">
             </div>
         </ul>
     </section>
 
-        <section>
+        <section data-transition="None">
         <h2>The Institute for Neuroscience and Medicine (INM-7)</h2>
             <ul>
             <li>Interdisciplinary institute with 11 research groups</li>
@@ -306,6 +306,8 @@ With these in place, re-usability is a small(er) step
         <li data-fragment-index="3" class="fragment fade-in-then-out"><b>Central data management</b> and archival system</li>
         <li data-fragment-index="4" class="fragment fade-in-then-out"><b>Decentral data and metadata catalog</b></li>
         <li data-fragment-index="5" class="fragment fade-in-then-out"> <b>Creating and sharing reproducible, open science</b>: Sharing data, software, code, and provenance </li>
+        <li data-fragment-index="6" class="fragment fade-in-then-out"> <b>Reproducibility at the largest scale</b>: Framework for computationally reproducible processing </li>
+
       </div>
       <div class="r-stack">
         <img data-fragment-index="1" height="700" class="fragment fade-in-then-out" src="../pics/getdata_studyforrest.gif" alt="a screenrecording of cloning studyforrest data from github">
@@ -313,7 +315,8 @@ With these in place, re-usability is a small(er) step
         <img height="700" data-fragment-index="3" class="fragment fade-in-then-out" src="../pics/centralmanagement2.gif">
         <img height="1000" data-fragment-index="4" class="fragment fade-in-then-out" src="../pics/sfb-catalog.gif">
         <img height="700" class="fragment fade-in" data-fragment-index="5" src="../pics/remodnavpaper_2.gif" alt="a screenrecording of cloning REMODNAV paper dataset from github">
-       </div>
+        <img height="900" class="fragment fade-in" data-fragment-index="6" src="../pics/fairly-big-paper.png" alt="a screenrecording of cloning REMODNAV paper dataset from github">
+      </div>
   </section>
 
 <section>
@@ -335,6 +338,13 @@ With these in place, re-usability is a small(er) step
               <li><em>>100 additional contributors</em></li>
           </ul>
         </dd>
+          <dt style="margin-top:20px">DataLad Office Hour </dt>
+          <dd style="margin-left:5px!important">
+          <ul style="margin-left:5px!important">
+              Every Tuesday, 4pm. <br>Join the <a href="https://matrix.to/#/!NaMjKIhMXhSicFdxAj:matrix.org?via=matrix.waite.eu&via=matrix.org&via=inm7.de" target="_blank">
+              Matrix Chatroom!
+          </a>
+          </ul></dd>
     </td>
     <td style="vertical-align:middle">
   <div style="margin-bottom:-20px;text-align:center"><strong>Funders</strong></div>
@@ -435,7 +445,7 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
                                 collection mode default: <br>
                                 Accelerometer & Gyroscope) </li>
                             <li>Application usage statistics</li>
-                            <li>Human activation recognition <br>
+                            <li>Human activaty recognition <br>
                                 (e.g., walking, running, driving)</li>
                             <li>Location information (anonymized)</li>
                             <li>Active recording, e.g., free-speech <br>
@@ -533,7 +543,7 @@ https://www.frontiersin.org/articles/10.3389/fpubh.2021.763621/full
 
 
     <section data-transition="None">
-        <h2>Investigator's / Participant's point of view</h2>
+        <h2>Participant's / Investigator's point of view</h2>
         <table>
             <tr>
                 <td style="vertical-align:top">
@@ -694,7 +704,7 @@ creator.add("pca", n_components=2)
 creator.add("svm", C=[1,2], degree=[3,4])
 
 # X_types optional
-run_cross_validatoin(
+run_cross_validation(
     X=X, y=y, data=data, model=creator, X_types={"continuous": X})</code></pre>
         <pre style="margin-left: 0;"><code data-trim class="language-python" >from sklearn.model_selection import cross_validate, GridSearchCV
 from sklearn.svm import SVC # SVR in case of regression
@@ -966,6 +976,7 @@ cross_validate(X=data.loc[:,X], y=data.loc[:,y], estimator=pipeline)</code></pre
             <li class="fragment">Collaboration across clinical and research settings is a technical,
                 social, and legal challenge. Technical solutions won't save us alone,
                 but they are a good first step.</li>
+            <li class="fragment">We build clinical research infrastructure on open tools, for better science</li>
         </ul>
     </section>
 
