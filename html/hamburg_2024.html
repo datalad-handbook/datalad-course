@@ -389,32 +389,6 @@ $ git commit -m "Add a k-nearest-neighbour clustering analysis"</code></pre>
       </ul>
 </section>
 
-<section data-markdown><script type="text/template" >
-
-  ### Version control regardless of size <!-- .element: class="fragment" -->
-
-  <pre><code class="language-bash" style="max-height:none">$ datalad save \
-     -m "Adding raw data from neuroimaging study 1" \
-     sub-*
-  add(ok): sub-1/anat/T1w.json (file)
-  add(ok): sub-1/anat/T1w.nii.gz (file)
-  add(ok): sub-1/anat/T2w.json (file)
-  add(ok): sub-1/anat/T2w.nii.gz (file)
-  add(ok): sub-1/func/sub-1-run-1_bold.json (file)
-  add(ok): sub-1/func/sub-1-run-1_bold.nii.gz (file)
-  add(ok): sub-10/anat/T1w.json (file)
-  add(ok): sub-10/anat/T1w.nii.gz (file)
-  add(ok): sub-10/anat/T2w.json (file)
-  add(ok): sub-10/anat/T2w.nii.gz (file)
-    [110 similar messages have been suppressed]
-  save(ok): . (dataset)
-  action summary:
-    add (ok: 120)
-    save (ok: 1)
-  </code></pre>  <!-- .element: class="fragment" -->
-</script>
-</section>
-
 
   <section>
       <h2>Git versus Git-annex</h2>
@@ -449,6 +423,34 @@ $ git commit -m "Add a k-nearest-neighbour clustering analysis"</code></pre>
           </table>
               </small>
   </section>
+
+
+<section data-markdown><script type="text/template" >
+
+  ### Version control regardless of size <!-- .element: class="fragment" -->
+
+  <pre><code class="language-bash" style="max-height:none">$ datalad save \
+     -m "Adding raw data from neuroimaging study 1" \
+     sub-*
+  add(ok): sub-1/anat/T1w.json (file)
+  add(ok): sub-1/anat/T1w.nii.gz (file)
+  add(ok): sub-1/anat/T2w.json (file)
+  add(ok): sub-1/anat/T2w.nii.gz (file)
+  add(ok): sub-1/func/sub-1-run-1_bold.json (file)
+  add(ok): sub-1/func/sub-1-run-1_bold.nii.gz (file)
+  add(ok): sub-10/anat/T1w.json (file)
+  add(ok): sub-10/anat/T1w.nii.gz (file)
+  add(ok): sub-10/anat/T2w.json (file)
+  add(ok): sub-10/anat/T2w.nii.gz (file)
+    [110 similar messages have been suppressed]
+  save(ok): . (dataset)
+  action summary:
+    add (ok: 120)
+    save (ok: 1)
+  </code></pre>  <!-- .element: class="fragment" -->
+</script>
+</section>
+
 
 <section data-markdown><script type="text/template">
 ## From here <span class="fragment" data-fragment-index="1" style="margin-left:350px">to this:</span>
@@ -547,7 +549,7 @@ registered for path 'multimatch_gaze'</code></pre>
 
 </section>
 
-<section data-transition="None">
+<section style="font-size:35px" data-transition="None">
     <h2>Dataset Nesting</h2>
 
     <ul>
@@ -555,7 +557,7 @@ registered for path 'multimatch_gaze'</code></pre>
                 <img height="330"  src="../pics/artwork/src/linkage_subds.svg">
             <ul>
                 <li>hierarchies of datasets in super-/sub-dataset relationships</li>
-                <li>based on Git submodules, but more seamless</li>
+                <li>based on Git submodules, but more seamless: Mono-repo feel thanks to recursive operations</li>
                 </ul>
         <li class="fragment fade-in" data-fragment-index="2">Overcomes scaling issues with large amounts of files</li>
         <pre  class="fragment fade-in" data-fragment-index="2"><code>adina@bulk1 in /ds/hcp/super on git:master❱ datalad status --annex -r
