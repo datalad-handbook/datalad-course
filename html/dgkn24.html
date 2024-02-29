@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Edit me start! -->
+		<title>DataLad</title>
+		<meta name="description" content=" DataLad ">
+		<meta name="author" content=" Adina Wagner ">
+		<!-- Edit me end! -->
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/beige.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+<section>
+<section>
+    <br>
+    <br>
+<table style="border:none">
+    <tr>
+        <td style="vertical-align:top;"><img style="height:150px;margin-bottom:30px" data-src="../pics/datalad_logo_wide.svg">
+        </td>
+        <td>
+            <h2>
+    Data Management <br> for Open & reproducible Science</h2>
+        </td>
+    </tr>
+</table>
+
+    <br><br>
+  <div style="margin-top:1em;text-align:center">
+  <table style="border: none;">
+  <tr style="border:none;">
+	<td style="vertical-align:top; border:none;">Dr. Adina Wagner
+	  <br><small>
+		<a href="https://mas.to/@adswa" target="_blank">
+		  <img data-src="../pics/mastodon.svg" style="height:30px;margin:0px" />
+		  mas.to@adswa</a></small></td>
+    <td style="vertical-align:top"><img style="height:100px;margin-right:10px" data-src="../pics/fzj_logo.svg" />
+	  <br></td>
+  </tr>
+  <tr style="border:none;vertical-align:top;">
+    <td style="vertical-align:top;border:none;">
+        <small>Institute of Neuroscience and
+          Medicine, Brain &amp; Behavior (INM-7)<br>
+       Research Center Jülich<br>
+        <a href="https://repronim.org" target="_blank">ReproNim/INCF fellow</a></small><br>
+
+    </td>
+    <td style="vertical-align:top;border:none;">
+          <img height="90" src="../pics/repronim.png">
+          <img height="80" src="../pics/incf.png">
+    </td>
+  </tr>
+  </table>
+  </div>
+    <br><small>
+</small>
+</a>
+
+</section>
+</section>
+
+<section>
+
+    <section data-transition="None">
+        <img style="height:150px;margin-bottom:30px" data-src="../pics/datalad_logo_wide.svg"><br>
+        <ul style="font-size:37px">
+            <li>Domain-agnostic <strong>command-line tool</strong> (+ <strong>graphical user interface</strong>),
+            built on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            & <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a></li>
+                        <li>10+ year open source project (100+ contributors), available for all major OS</li>
+        <li>Major features:</li>
+        <dt>Version-controlling arbitrarily large content </dt>
+        <dd>Version control data & software alongside to code!</dd>
+        <dt>Transport mechanisms for sharing, updating & obtaining data </dt>
+        <dd>Consume & collaborate on data (analyses) like software</dd>
+        <dt>(Computationally) reproducible data analysis</dt>
+        <dd>Track and share provenance of all digital objects</dd>
+        <dt>(... and <i>much</i> more) </dt>
+        <br>
+    </ul>
+</section>
+
+  <section data-transition="None">
+  <h3>Examples of what DataLad can be used for:</h3>
+  <ul>
+    <li class="fragment fade-in-then-semi-out">
+        Behind-the-scenes <b>infrastructure component for data transport and versioning</b>
+        (e.g., used by <a href="https://openneuro.org/" target="_blank"> OpenNeuro</a>,
+        <a href="https://brainlife.io/" target="_blank"> brainlife.io </a>,
+        the <a href="https://conp.ca/" target="_blank">Canadian Open Neuroscience Platform (CONP)</a>,
+        <a href="https://mcin.ca/technology/cbrain/" target="_blank"> CBRAIN</a>)
+    </li>
+  </ul>
+  <img height="700" class="fragment fade-in" src="../pics/openneuro_new_2.gif" alt="a screenrecording of browsing open neuro">
+  </section>
+
+  <section data-transition="None">
+  <h3>Examples of what DataLad can be used for:</h3>
+  <ul>
+    <li class="fragment fade-in-then-semi-out">
+        <b>Publish or consume datasets</b>
+        via GitHub, GitLab, OSF, the European Open Science Cloud, or similar services
+    </li>
+  </ul>
+  <img height="700" class="fragment fade-in" src="../pics/getdata_studyforrest.gif" alt="a screenrecording of cloning studyforrest data from github">
+  </section>
+
+
+  <section data-transition="None">
+  <h3>Examples of what DataLad can be used for:</h3>
+  <ul>
+    <li class="fragment fade-in-then-semi-out">
+        <b>Creating and sharing reproducible, open science</b>: Sharing data, software, code, and provenance
+    </li>
+  </ul>
+  <img height="700" class="fragment fade-in" src="../pics/remodnavpaper_2.gif" alt="a screenrecording of cloning REMODNAV paper dataset from github">
+  </section>
+
+  <section data-transition="None">
+  <h3>Examples of what DataLad can be used for:</h3>
+  <ul>
+    <li>
+        <b>Creating and sharing reproducible, open science</b>: Sharing data, software, code, and provenance
+    </li>
+    <img height="800" class="fragment fade-in" src="../pics/openscience.gif" alt="a screenrecording of cloning REMODNAV paper dataset from github">
+  </ul>
+  </section>
+
+  <section data-transition="None">
+  <h3>Examples of what DataLad can be used for:</h3>
+  <ul>
+    <li class="fragment fade-in-then-semi-out"><b>Central data management</b> and archival system</li>
+  </ul>
+  <img height="700" class="fragment fade-in" src="../pics/centralmanagement2.gif">
+  </section>
+
+  <section data-transition="None">
+  <h3>Examples of what DataLad can be used for:</h3>
+  <ul>
+    <li class="fragment fade-in-then-semi-out">
+        <b>Data catalog</b> for consortia
+    </li>
+    <img height="900" class="fragment fade-in" src="../pics/catalog_demo.gif">
+  </ul>
+  </section>
+
+
+  <section data-transition="None">
+  <h3>Examples of what DataLad can be used for:</h3>
+  <ul>
+    <li class="fragment fade-in-then-semi-out">
+        <b>Scalable computing framework</b> for reproducible science
+    </li>
+    <img height="350" class="fragment fade-in" src="../pics/fairly-big.png">
+    <img height="500" class="fragment fade-in" src="../pics/ukb_datasets.svg">
+  </ul>
+  </section>
+
+</section>
+
+
+<!--...WHAT IS DATALAD...-->
+
+<section>
+<section>
+    <h2>Basic facts about DataLad</h2>
+    <ul>
+        <li class="fragment fade-in">✓ <b>Free & Open Source</b>: Builds upon Git and git-annex </li>
+        <li class="fragment fade-in">✓ Comprehensive <b>documentation</b> & weekly open office hours</li>
+        <li class="fragment fade-in">✓ Command line tool + graphical user interface </li>
+        <li class="fragment fade-in">✓ <b>Scalable</b>: hundreds of TB and millions of files are not an issue </li>
+        <li class="fragment fade-in">✓ <b>Interoperable</b>: Compatible with dozens of services and most infrastructure</li>
+        <img class="fragment fade-in" src="../pics/services_connected.png" height="650">
+    </ul>
+</section>
+</section>
+
+    <!--- examples -->
+
+<section>
+    <section>
+    <h2>Further Information</h2>
+      <ul>
+          <br>
+          <ul style="font-size:30px">
+              <dt>Reach out to to the <b>DataLad</b> team via</dt>
+            <li>
+                <a href="https://matrix.to/#/!NaMjKIhMXhSicFdxAj:matrix.org?via=matrix.waite.eu&via=matrix.org&via=inm7.de" target="_blank">
+                    Matrix</a> (free, decentralized communication app, no app needed).
+                    We run a weekly Zoom office hour (Tuesday, 4pm Berlin time) from this room as well.
+            </li>
+            <li>the development repository on GitHub
+                <a href="https://github.com/datalad/datalad" target="_blank">
+                (github.com/datalad/datalad)</a>
+            </li>
+              <br>
+              <dt>Reach out to the user community with</dt>
+              <li>A question on <a href="https://neurostars.org/" target="_blank">neurostars.org</a>
+              with a <code>datalad</code> tag</li>
+              <br>
+              <dt>Find more user tutorials or workshop recordings</dt>
+              <li>On DataLad's YouTube channel <a href="https://www.youtube.com/channel/datalad" target="_blank">
+                  (www.youtube.com/channel/datalad) </a>
+              </li>
+              <li>
+                  In the DataLad Handbook<a href="http://handbook.datalad.org/en/latest/" target="_blank">
+                  (handbook.datalad.org)</a>
+              </li>
+              <li>In the DataLad RDM course <a href="https://psychoinformatics-de.github.io/rdm-course/" target="_blank">
+                  (psychoinformatics-de.github.io/rdm-course)</a> </li>
+              <li>In the Official API documentation <a href="http://docs.datalad.org" target="_blank">
+                  (docs.datalad.org)</a> </li>
+          <br>
+          <li>On the advantages of decentralized research data management:
+              <a href="https://www.degruyter.com/document/doi/10.1515/nf-2020-0037/html" target="_blank">
+                  doi.org/10.1515/nf-2020-0037
+              </a></li>
+                        </ul>
+      </ul>
+        <br>
+        <br>
+        Install it on your own hardware: <a href="http://handbook.datalad.org/r.html?install" target="_blank">handbook.datalad.org/r.html?install</a>
+</section>
+  <section>
+  <h2>Acknowledgements</h2>
+  <table>
+    <tr style="vertical-align:top">
+      <td style="vertical-align:top">
+        <dl>
+        <dt>Software</dt>
+        <dd style="margin-left:5px!important">
+          <ul style="margin-left:5px!important">
+              <li>Joey Hess (git-annex)</li>
+              <li>The DataLad team &
+              contributors</li>
+          </ul>
+        </dd>
+            <br> <br>
+            <h2>Thanks!</h2>
+            <b>Questions?</b>
+        </dl>
+      </td>
+      <td style="vertical-align:top">
+        <div style="margin-bottom:-20px;text-align:center"><strong>Funders</strong></div>
+            <img style="height:150px;margin-right:50px" data-src="../pics/nsf_2020.png" />
+            <img style="height:150px;margin-right:50pxi;margin-left:50px" data-src="../pics/binc.png" />
+            <img style="height:150px;margin-left:50px" data-src="../pics/bmbf_2020.png" />
+            <img style="height:80px;margin-top:-40px;margin-left:auto;margin-right:auto;width:100%" data-src="../pics/fzj_logo.svg" />
+        <div style="margin-top:-20px">
+            <img style="height:60px;margin-right:20px" data-src="../pics/erdf.png" />
+            <img style="height:60px;margin-right:20px" data-src="../pics/cbbs_logo.png" />
+            <img style="height:60px" data-src="../pics/LSA-Logo.png" />
+        </div>
+        <div style="margin-top:40px;margin-bottom:20px;text-align:center"><strong>Collaborators</strong></div>
+        <div style="margin-top:-20px">
+            <img style="height:100px;margin:20px" data-src="../pics/hbp_logo.png" />
+            <img style="height:100px;margin:20px" data-src="../pics/conp_logo.png" />
+            <img style="height:100px;margin:20px" data-src="../pics/vbc_logo.png" />
+        </div>
+        <div style="margin-top:-40px">
+            <img style="height:120px;margin:20px" data-src="../pics/openneuro_logo.png" />
+            <img style="height:120px;margin:20px" data-src="../pics/cbrain_logo.png" />
+            <img style="height:140px;margin:20px" data-src="../pics/brainlife_logo.png" />
+        </div>
+      </td>
+    </tr>
+  </table>
+  </section>
+
+<section style="font-size:45px" data-transition="None"
+         data-background-image="https://cdn.fosstodon.org/media_attachments/files/111/064/426/935/161/479/original/8db65ebe3df0d9d8.jpg"
+         data-background-size="2500px" data-background-opacity="0.2">
+         <h2><a href="https://distribits.live" target="_blank">distribits.live</a> </h2>
+         <ul>
+             <li>First conference on technologies for distributed data management</li>
+             <li>2 day conference plus single-day Hackathon </li>
+             <li>@ Haus der Universität Düsseldorf</li>
+             <li>late registrations (virtual, on-site) still possible</li>
+         </ul>
+</section>
+
+</section>
+
+
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280,
+				height: 960,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.3,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: 'c',
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				pdfPageHeightOffset: -1,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
