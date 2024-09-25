@@ -1,0 +1,1353 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Edit me start! -->
+		<title>Reproducibility with DataLad</title>
+		<meta name="description" content=" DataLad Introduction ">
+		<meta name="author" content=" Adina Wagner ">
+		<!-- Edit me end! -->
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/beige.css">
+        <link rel="stylesheet" href="../css/main.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+  <!--...Datalad Basics...-->
+
+  <section>
+
+
+<section>
+<h2>DataLad - an Introdduction</h2>
+
+  <div style="margin-top:1em;text-align:center">
+  <table style="border: none;">
+  <tr>
+	<td style="border: none;">Dr. Adina Wagner
+	  <br><small>
+		<a href="https://mas.to/@adswa" target="_blank">
+		  <img data-src="../pics/mastodon.svg" style="height:30px;margin:0px" />
+		  mas.to/@adswa</a></small></td>
+    <td style="border: none;">
+	  <br></td>
+  </tr>
+  <tr>
+    <td style="border: none; vertical-align:middle">
+        <small>Institute of Neuroscience and Medicine, <br>
+               Brain &amp; Behavior (INM-7)<br>
+               Research Center Jülich</small><br>
+    </td>
+      <td><img style="height:100px;margin-right:10px;vertical-align:top" data-src="../pics/fzj_logo.png" /></td>
+  </tr>
+  </table>
+  </div>
+<br><br><small>
+
+    Slides: <a href="https://doi.org/10.5281/zenodo.13806404" target="_blank">
+    DOI 10.5281/zenodo.13806404</a> <br>
+    <a href="https://files.inm7.de/adina/talks/html/helmholtz-reproducibility"
+       target="_blank">files.inm7.de/adina/talks/html/andani.html</a>
+</small>
+
+
+</a>
+</section>
+
+      <section>
+    <h2>DataLad</h2>
+          <h3>(<a href="https://datalad.org" target="_blank">datalad.org</a>) </h3>
+            <img style="height:300px; margin-top: 0; margin-right:1px;vertical-align:middle;" src="../pics/comic_box3.svg" alt="">
+    <br>
+                    <ul style="font-size:37px">
+                        <li>Domain-agnostic <strong>command-line tool</strong>
+                            (+ <strong>graphical user interface</strong>),
+            built on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            & <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a></li>
+        <li>Major features:</li>
+        <dt>Version-controlling arbitrarily large content </dt>
+        <dd>Version control data & software alongside to code!</dd>
+        <dt>Transport mechanisms for sharing & obtaining data </dt>
+        <dd>Consume & collaborate on data (analyses) like software</dd>
+        <dt>(Computationally) reproducible data analysis</dt>
+        <dd>Track and share provenance of all digital objects</dd>
+        <dt>(... and <i>much</i> more) </dt>
+        <br>
+    </ul>
+</section>
+
+
+<section>
+    <h2>Let's try DataLad</h2>
+    <img src="../pics/jupyterhub-login.png">
+    <dl style="font-size:37px">
+        For convenience, we work online today: <br>
+        <strong><a href="https://datalad-hub.inm7.de" target="_blank">datalad-hub.inm7.de</a>
+        </strong>
+            <dt>username:</dt>
+    <dd>The spice or herb you got as a user name</dd>
+    <dt>password:</dt>
+    <dd>Set at first login, at least 8 characters</dd>
+    <br>
+    <br>
+        On your own machines, DataLad is available via pip, conda, apt, brew;
+        On all major operating systems: See <a href="https://handbook.datalad.org/r.html?install" target="_blank">handbook.datalad.org/r.html?install</a>
+    </dl>
+</section>
+
+<section>
+  <h2>Acknowledgements</h2>
+  <table>
+  <tr style="vertical-align:middle">
+    <td style="vertical-align:middle">
+      <dl>
+        <dt style="margin-top:20px">DataLad software <br>
+            & ecosystem</dt>
+        <dd style="margin-left:5px!important">
+          <ul style="margin-left:5px!important">
+              <li>Psychoinformatics Lab, <br>
+              Research center Jülich</li>
+              <li>Center for Open <br>
+              Neuroscience, <br>
+              Dartmouth College</li>
+              <li>Joey Hess (git-annex)</li>
+              <li><em>>100 additional contributors</em></li>
+          </ul>
+        </dd>
+    </td>
+    <td style="vertical-align:middle">
+  <div style="margin-bottom:-20px;text-align:center"><strong>Funders</strong></div>
+  <img style="height:150px;margin-right:50px" data-src="../pics/nsf.png" />
+  <img style="height:150px;margin-right:50pxi;margin-left:50px" data-src="../pics/binc.png" />
+  <img style="height:150px;margin-left:50px" data-src="../pics/bmbf.png" />
+  <div style="margin-top:-20px">
+  <img style="height:80px;margin-top:-40px;margin-left:40px" data-src="../pics/fzj_logo.svg" />
+  <img style="height:60px;margin-left:50px;margin-bottom:25px" data-src="../pics/dfg_logo.png" />
+  </div>
+  <div style="margin-top:-20px">
+  <img style="height:60px;margin-right:20px" data-src="../pics/erdf.png" />
+  <img style="height:60px;margin-right:20px" data-src="../pics/cbbs_logo.png" />
+  <img style="height:60px" data-src="../pics/LSA-Logo.png" />
+  </div>
+  <div style="margin-top:40px;margin-bottom:20px;text-align:center"><strong>Collaborators</strong></div>
+  <div style="margin-top:-20px">
+  <img style="height:100px;margin:20px" data-src="../pics/hbp_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/conp_logo.png" />
+  <img style="height:120px;margin:10px" data-src="../pics/openneuro_logo.png" />
+  </div>
+  <div style="margin-top:-40px">
+  <img style="height:100px;margin:20px" data-src="../pics/ebrains-logo.png"/>
+  <img style="height:100px;margin:0px" data-src="../pics/gin-logo.png" />
+  <img style="height:120px;margin:10px" data-src="../pics/sfb1451_logo.png" />
+</div>
+  <div style="margin-top:-40px;align:middle">
+  <img style="height:140px;margin:10px" data-src="../pics/brainlife_logo.png" />
+  <img style="height:100px;margin:0px" data-src="../pics/cbrain_logo.png" />
+  <img style="height:100px;margin:20px" data-src="../pics/vbc_logo.png" />
+  </div>
+  </td>
+  </tr>
+  </table>
+</section>
+
+  <section>
+      <h3>DataLad usecases</h3>
+      <div class="r-stack">
+        <li data-fragment-index="1" class="fragment fade-in-then-out"> <b>Publish or consume datasets</b>
+        via GitHub, GitLab, OSF, the European Open Science Cloud, or similar services</li>
+        <li data-fragment-index="2" class="fragment fade-in-then-out">
+        Behind-the-scenes <b>infrastructure component for data transport and versioning</b>
+        (e.g., used by <a href="https://openneuro.org/" target="_blank"> OpenNeuro</a>,
+        <a href="https://brainlife.io/" target="_blank"> brainlife.io </a>,
+        the <a href="https://conp.ca/" target="_blank">Canadian Open Neuroscience Platform (CONP)</a>,
+        <a href="https://mcin.ca/technology/cbrain/" target="_blank"> CBRAIN</a>)</li>
+        <li data-fragment-index="3" class="fragment fade-in-then-out"><b>Central data management</b> and archival system</li>
+        <li data-fragment-index="4" class="fragment fade-in-then-out"><b>Decentral data and metadata catalog</b></li>
+        <li data-fragment-index="5" class="fragment fade-in-then-out"> <b>Creating and sharing reproducible, open science</b>: Sharing data, software, code, and provenance </li>
+      </div>
+      <div class="r-stack">
+        <img data-fragment-index="1" height="700" class="fragment fade-in-then-out" src="../pics/getdata_studyforrest.gif" alt="a screenrecording of cloning studyforrest data from github">
+        <img height="700" class="fragment fade-in-then-out" data-fragment-index="2" src="../pics/openneuro_new_2.gif" alt="a screenrecording of browsing open neuro">
+        <img height="700" data-fragment-index="3" class="fragment fade-in-then-out" src="../pics/centralmanagement2.gif">
+        <img height="1000" data-fragment-index="4" class="fragment fade-in-then-out" src="../pics/sfb-catalog.gif">
+        <img height="700" class="fragment fade-in" data-fragment-index="5" src="../pics/remodnavpaper_2.gif" alt="a screenrecording of cloning REMODNAV paper dataset from github">
+      </div>
+  </section>
+
+  <section>
+      <h2>Further resources and stay in touch</h2>
+      <ul>
+              If you have questions after the session...
+          <br><br>
+          <ul style="font-size:35px">
+              <dt>Reach out to to the <b>DataLad</b> team via</dt>
+            <li>
+                <a href="https://matrix.to/#/!NaMjKIhMXhSicFdxAj:matrix.org?via=matrix.waite.eu&via=matrix.org&via=inm7.de" target="_blank">
+                    Matrix</a> (free, decentralized communication app, no app needed).
+                    We run a weekly Zoom office hour (Tuesday, 4pm Berlin time) from this room as well.
+            </li>
+            <li>
+                <a href="https://github.com/datalad/datalad" target="_blank">
+                The development repository on GitHub</a>
+            </li>
+              <br>
+              <dt>Reach out to the (Neuro-) user community with</dt>
+              <li>A question on <a href="https://neurostars.org/" target="_blank">neurostars.org</a>
+              with a <code>datalad</code> tag</li>
+              <br>
+              <dt>Find more user tutorials or workshop recordings</dt>
+              <li>On <a href="https://www.youtube.com/datalad" target="_blank">
+                  DataLad's YouTube channel</a>
+              </li>
+              <li>
+                  In the <a href="http://handbook.datalad.org/en/latest/" target="_blank">
+                  DataLad Handbook </a>
+              </li>
+              <li>In the <a href="https://psychoinformatics-de.github.io/rdm-course/" target="_blank">DataLad RDM course</a> </li>
+              <li>In the <a href="http://docs.datalad.org" target="_blank">Official API documentation</a> </li>
+              <li> In an overview of most tutorials, talks, videos at
+              <a href="https://github.com/datalad/tutorials" target="_blank">github.com/datalad/tutorials</a> </li>
+          </ul>
+      </ul>
+  </section>
+</section>
+
+
+
+<!-------Examples-------->
+
+<section>
+<section>
+    <h2>Let's try DataLad</h2>
+    <img src="../pics/jupyterhub-login.png">
+    <dl style="font-size:37px">
+        <a href="https://datalad-hub.inm7.de" target="_blank">datalad-hub.inm7.de</a>
+    <dt>username:</dt>
+    <dd>The spice or herb you got as a user name</dd>
+    <dt>password:</dt>
+    <dd>Set at first login, at least 8 characters</dd>
+        </dl>
+</section>
+
+<section style="text-align: left;">
+    <h3>Git identity setup</h3>
+    Check Git identity:
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+            git config --get user.name
+            git config --get user.email
+        </code>
+    </pre>
+
+    <div class="fragment">
+        Configure Git identity:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                git config --global user.name "Adina Wagner"
+                git config --global user.email "adina.wagner@t-online.de"
+            </code>
+        </pre>
+    </div>
+
+        <div class="fragment">
+        Configure DataLad to use latest features:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                git config --global --add datalad.extensions.load next
+            </code>
+        </pre>
+    </div>
+
+</section>
+
+<section style="text-align: left;">
+    <h3>Using DataLad in a terminal</h3>
+
+    Check the installed version:
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+            datalad --version
+        </code>
+        <p id="displayArea"></p>
+    </pre>
+
+    <div class="fragment">
+        For help on using DataLad from the command line:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad --help
+            </code>
+            The help may be displayed in a pager - exit it by pressing "q"
+        </pre>
+    </div>
+
+    <div class="fragment">
+        For extensive info about the installed package, its dependencies, and extensions, use <code>datalad wtf</code>.
+        Let's find out what kind of system we're on:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad wtf -S system
+            </code>
+        </pre>
+    </div>
+</section>
+
+
+<section style="text-align: left;">
+    <h3>Using datalad via its Python API</h3>
+    Open a Python environment:
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+            ipython
+        </code>
+    </pre>
+    <div class="fragment">
+        Import and start using:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-python" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                import datalad.api as dl
+                dl.create(path='mydataset')
+            </code>
+        </pre>
+    </div>
+    <div class="fragment">
+        Exit the Python environment:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-python" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                exit
+            </code>
+        </pre>
+    </div>
+</section>
+</section>
+
+<section>
+<section>
+    <h3 style="text-align: left;">Datalad datasets...</h3>
+    <img src="../pics/comic_box4.svg" alt="">
+</section>
+
+
+<section style="text-align: left;">
+    <h3>...Datalad datasets</h3>
+    Create a dataset (here, with the <code>yoda</code> configuration, which adds
+    a helpful structure and configuration for data analyses): <br>
+    <img height="100px" src="../pics/yoda.png">
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+            datalad create -c yoda my-analysis
+        </code>
+    </pre>
+
+    <div class="fragment">
+        Let's have a look inside. Navigate using <code>cd</code> (change directory):
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                cd my-analysis
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        List the directory content, including hidden files, with <code>ls</code>:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                ls -la .
+            </code>
+        </pre>
+    </div>
+</section>
+</section>
+
+<section>
+<section>
+    <h3 style="text-align: left;">Version control...</h3>
+    <img src="../pics/comic_box5.svg" alt="">
+</section>
+
+
+<section style="text-align: left;">
+    <h3>...Version control</h3>
+    The yoda-configuration added a README placeholder in the dataset.
+    Let's add Markdown text (a project title) to it:
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+            echo "# My example DataLad dataset" > README.md
+        </code>
+    </pre>
+
+    <div class="fragment">
+        Now we can check the <code>status</code> of the dataset:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad status
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        We can save the state with <code>save</code>
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad save -m "Add project title into the README"
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Further modifications:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                echo "Contains a small data analysis for my project" >> README.md
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        You can also checkout what has changed:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                git diff
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Save again:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad save -m "Add information on the dataset contents to the README"
+            </code>
+        </pre>
+    </div>
+</section>
+
+<section  style="text-align: left;">
+    <h3>...Version control</h3>
+        <div class="fragment">
+        Now, let's check the dataset history:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                git log
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        We can also make the history prettier:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                tig
+            </code>
+            (navigate with arrow keys and enter, press "q" to go back and exit the program)
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Convenience functions make downloads easier. Let's add code for a data analysis from an external source:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">datalad download-url -m "Add an analysis script" \
+  -O code/classification_analysis.py \
+  https://raw.githubusercontent.com/datalad-handbook/resources/master/classification_analysis.py
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Check out the file's history:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">git log code/classification_analysis.py</code>
+        </pre>
+    </div>
+</section>
+
+  <section>
+      <h2>Local version control</h2>
+
+      <p>Procedurally, version control is easy with DataLad!</p>
+      <img class="fragment fade-in" src="../pics/local_wf.svg" height="500"> <!-- .element: class="fragment" -->
+      <br>
+
+      <b class="fragment fade-in">Advice:</b>
+      <ul>
+        <li class="fragment fade-in">Save <i>meaningful</i> units of change</li>
+        <li class="fragment fade-in">Attach helpful commit messages</li>
+      </ul>
+  </section>
+</section>
+
+<section>
+<section>
+    <h3 style="text-align: left;">Computationally reproducible execution I...</h3>
+    <img src="../pics/comic_box7.svg" width="65%" alt="">
+    <ul>
+        <li class="fragment fade-in-then-semi-out">which script/pipeline version</li>
+        <li class="fragment fade-in-then-semi-out">was run on which version of the data</li>
+        <li class="fragment fade-in-then-semi-out">to produce which version of the results?</li>
+    </ul>
+</section>
+
+<section style="text-align:left;">
+    <h3>... Computationally reproducible execution I</h3>
+    <div class="fragment">
+        A variety of processes can modify files. A simple example: Code formatting
+            <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">black code/classification_analysis.py</code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Version control makes changes transparent:
+            <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">git diff</code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        But its useful to keep track beyond that. Let's discard the latest changes...
+            <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">git restore code/classification_analysis.py</code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        ... and record precisely what we did
+            <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">datalad run -m "Reformat code with black" \
+ "black code/classification_analysis.py"</code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        let's take a look:
+            <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">git show</code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        ... and repeat!
+            <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">datalad rerun</code>
+        </pre>
+    </div>
+</section>
+</section>
+
+<section>
+<section>
+    <h3 style="text-align: left;">Data consumption & transport...</h3>
+    <img src="../pics/comic_box6_consumption.svg" alt="">
+</section>
+
+
+<section style="text-align: left;">
+    <h3>...Data consumption & transport...</h3>
+
+    You can install a dataset from remote URL (or local path) using <code>clone</code>.
+    Either as a stand-alone entity:
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" >
+            # just an example:
+            datalad clone \
+            https://github.com/psychoinformatics-de/studyforrest-data-phase2.git
+        </code>
+    </pre>
+
+    <div class="fragment">
+        Or as linked dataset, nested in another dataset in a superdataset-subdataset hierarchy:
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" >
+            # just an example:
+            datalad clone -d . \
+            https://github.com/psychoinformatics-de/studyforrest-data-phase2.git
+        </code>
+    </pre>
+    <img src="../pics/linkage_subds.png" alt="">
+    </div>
+    <ul style="font-size:30px" class="fragment">
+        <li>Helps with scaling (see e.g. the <a href="https://github.com/datalad-datasets/human-connectome-project-openaccess" target="_blank">Human Connectome Project dataset</a> )</li>
+        <li>Version control tools struggle with >100k files</li>
+        <li>Modular units improves intuitive structure and reuse potential</li>
+        <li>Versioned linkage of inputs for reproducibility</li>
+    </ul>
+</section>
+
+
+<section style="text-align: left;">
+    <h3>...Dataset nesting</h3>
+
+    Let's make a nest!
+    <div class="fragment">
+        Clone a dataset with analysis data into a specific
+        location ("input/") in the existing dataset,
+        making it a <em>sub</em>dataset:
+        <pre style="margin-left: 0;">
+            <code class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">datalad clone --dataset . \
+   https://github.com/datalad-handbook/iris_data.git \
+   input/</code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Let's see what changed in the dataset, using the <code>subdatasets</code> command:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad subdatasets
+            </code>
+        </pre>
+    </div>
+    <div class="fragment">
+        ... and also <code>git show</code>:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                git show
+            </code>
+        </pre>
+    </div>
+</section>
+
+<section style="text-align:left;">
+    <div class="fragment">
+        We can now view the cloned dataset's file tree:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                cd input
+                ls
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        ...and also its history
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                tig
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Let's check the dataset size (with the <code>du</code> disk-usage command):
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                du -sh
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Let's check the <em>actual</em> dataset size:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad status --annex
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Let's check try to print the file contents into the terminal (<code>cat</code>):
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                cat iris.csv
+            </code>
+        </pre>
+    </div>
+
+
+</section>
+
+
+
+<section style="text-align: left;">
+    <h3>...Data consumption & transport</h3>
+
+    We can retrieve actual file content with <code>get</code>:
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+            datalad get iris.csv
+        </code>
+    </pre>
+
+    <div class="fragment">
+        If we don't need a file locally anymore, we can <code>drop</code> its content:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad drop iris.csv</code>
+        </pre>
+    </div>
+    <div class="fragment">
+        No need to store all files locally, or archive results with
+        Giga/Terra-Bytes of source data:
+        <pre><code class="python">dl.get('input/sub-01')
+[really complex analysis]
+dl.drop('input/sub-01')</code></pre>
+        If data is published anywhere, your data analysis can carry an actionable link to it,
+        with barely any space requirements.
+    </div>
+</section>
+
+
+  <section>
+      <h2>Git versus Git-annex</h2>
+      <dl>
+          <dt>Data in datasets is either stored in Git or git-annex</dt>
+          <dd>By default, everything is <i>annexed</i>, i.e., stored in a dataset annex by git-annex</dd><br>
+      <img height="500" src="../pics/artwork/src/publishing/publishing_gitvsannex.svg">
+          <br><br>
+          <li class="fragment fade-in-then-semi-out">With annexed data, only content identity (hash)
+              and location information is put into Git, rather than file content.
+              The annex, and transport to and from it is managed with <b>git-annex</b>
+      </dl>
+  </section>
+
+  <section>
+      <h2>Git versus Git-annex</h2>
+      <dl>
+          <dt>Configurations (e.g., YODA), custom <a href="http://handbook.datalad.org/en/latest/basics/101-123-config2.html" target="_blank">
+              rules</a>, or command parametrization determines if a file is annexed</dt>
+          <dd>Storing files in Git or git-annex has distinct advantages:</dd><br>
+
+          <br>
+
+          <table >
+              <tr style="font-size:35px">
+                  <td><b>Git</b></td>
+                  <td><b>git-annex</b></td>
+              </tr>
+              <tr style="font-size:30px">
+                  <td>handles <b>small</b> files well (text, code)</td>
+                  <td>handles <b>all</b> types and sizes of files well</td>
+              </tr>
+              <tr style="font-size:30px">
+                  <td>file contents are in the Git history
+                      and will be <b>shared</b> upon git/datalad push</td>
+                  <td>file contents are in the annex. Not necessarily shared</td>
+              </tr>
+              <tr style="font-size:30px">
+                  <td>Shared with every dataset clone</td>
+                  <td><b>Can be kept private</b> on a per-file level when sharing the dataset</td>
+              </tr>
+              <tr style="font-size:30px">
+                  <td>Useful: Small, non-binary, frequently modified, need-to-be-accessible (DUA, README) files </td>
+                  <td>Useful: Large files, private files</td>
+              </tr>
+          </table>
+          <br><br>
+          <div style="text-align:center" class="fragment">YODA configures the contents of the <code>code/</code>
+          directory and the dataset descriptions (e.g., README files) to be in Git.
+          There are many other configurations, and you can also
+              <a href="http://handbook.datalad.org/en/latest/basics/101-124-procedures.html" target="_blank">
+                  write your own</a>.<br>
+              <img  height="100px" src="../pics/yoda.png">
+          </div>
+      </dl>
+  </section>
+</section>
+
+<section>
+<section style="text-align: left;">
+    <h3>...Computationally reproducible execution...</h3>
+
+    Try to execute the downloaded analysis script. Does it work?
+            <div><pre style="margin-left: 0;"><code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+cd ..
+python code/classification_analysis.py</code></pre></div>
+
+    <ul class="fragment">
+        <li>
+            Software can be difficult or impossible to install (e.g. conflicts with existing software,
+            or on HPC) for you or your collaborators
+        </li>
+        <li>
+            Different software versions/operating systems can produce different results:
+            <a href="https://doi.org/10.3389/fninf.2015.00012" target="_blank">Glatard et al., doi.org/10.3389/fninf.2015.00012</a>
+        </li>
+        <li class="fragment fade-in">
+            <strong>Software containers</strong> encapsulate a software environment and isolate it from
+              a surrounding operating system. Two common solutions: Docker, Singularity
+          </li>
+       </ul>
+</section>
+
+<section style="text-align: left;">
+    <h3>...Computationally reproducible execution...</h3>
+    <ul>
+        <li class="fragment fade-in-then-semi-out">The <code>datalad run</code>
+            can run any command in a way that links the command or script to the
+            results it produces and the data it was computed from</li>
+        <li class="fragment fade-in-then-semi-out">The <code>datalad rerun</code>
+            can take this recorded provenance and recompute the command</li>
+        <li class="fragment fade-in-then-semi-out">The <code>datalad containers-run</code>
+            (from the extension "datalad-container") can capture software provenance in the form of software containers in addition to the provenance that datalad run captures</li>
+    </ul>
+    <br><br>
+
+</section>
+
+
+<section style="text-align: left;">
+    <h3>...Computationally reproducible execution</h3>
+
+    <div class="fragment">
+        With the <code>datalad-container</code> extension, we can add software containers
+        to datasets and work with them.
+        Let's add a software container with Python software to run the script
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+               datalad containers-add python-env --url shub://adswa/resources:2
+            </code>
+        </pre>
+    </div>
+
+
+<div class="fragment">
+        inspect the list of registered containers:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad containers-list
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+    Now, let's try out the <code>containers-run</code> command:
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+datalad containers-run -m "run classification analysis in python environment" \
+  --container-name python-env \
+  --input "input/iris.csv" \
+  --output "pairwise_relationships.png" \
+  --output "prediction_report.csv" \
+  "python3 code/classification_analysis.py {inputs} {outputs}"
+        </code>
+    </pre>
+    </div>
+    <div class="fragment">
+        What changed after the <code>containers-run</code> command has completed?
+        <br>
+        We can use <code>datalad diff</code> (based on <code>git diff</code>):
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad diff -f HEAD~1
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        We see that some files were added to the dataset!
+        <br>
+        And we have a complete provenance record as part of the git history:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                git log -n 1
+            </code>
+        </pre>
+    </div>
+</section>
+
+
+<section>
+    <h3 style="text-align: left;">Publishing datasets...</h3>
+    <div style="margin-top:1em;">
+        <table style="border: none;">
+            <tr>
+                <td><img style="width: 800px; margin-right:1px;margin-bottom:10px;vertical-align:middle;" data-src="../pics/comic_box6_publishing.svg" /></td>
+                <td><img style="width: 1000px; margin-right:1px;margin-bottom:10px;vertical-align:middle;" data-src="../pics/comic_box9.svg" /></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="fragment">We will use GIN: <a href="https://gin.g-node.org/" target="_blank">gin.g-node.org</a>:</div>
+    <img class="fragment" src="../pics/artwork/src/publishing/startingpoint.svg">
+</section>
+
+<section>
+    <h3 style="text-align: left;">Publishing datasets...</h3>
+        <ul>
+        <li>Create a GIN user account and log in:
+            <a href="https://gin.g-node.org/user/sign_up" target="_blank">gin.g-node.org/user/sign_up</a> </li>
+        <li>
+            <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux" target="_blank">
+                Create</a> an SSH key </li>
+    <div>
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                ssh-keygen -t ed25519 -C "your-email"
+                eval "$(ssh-agent -s)"
+                ssh-add ~/.ssh/id_ed25519
+            </code>
+        </pre>
+    </div>
+        <li> <a href="https://handbook.datalad.org/en/latest/basics/101-139-gin.html#prerequisites" target="_blank">
+                upload</a> the SSH key to GIN</li>
+    <div>
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                cat ~/.ssh/id_ed25519.pub
+            </code>
+        </pre>
+    </div>
+            <img src="../pics/screenshot-gin3.png" height="400">
+        <li>Publish your dataset!</li>
+    </ul>
+
+</section>
+
+
+<section style="text-align: left;">
+    <h3>...Publishing datasets</h3>
+
+    DataLad has convenience functions to create <code>sibling</code>-repositories
+    on various infrastructure and third party services (GitHub, GitLab, OSF, WebDAV-based services, DataVerse, ...)
+    , to which data can then be published with <code>push</code>.
+    <pre style="margin-left: 0;">
+        <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+            datalad create-sibling-gin example-analysis --access-protocol ssh
+        </code>
+    </pre>
+
+    <div class="fragment">
+        You can verify the dataset's siblings with the <code>siblings</code> command:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad siblings
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        And we can push our complete dataset (Git repository and annex) to GIN:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad push --to gin
+            </code>
+        </pre>
+    </div>
+    <img class="fragment" src="../pics/in_case_of_fire.png" style="border:20px; margin:0px; float:center; width:500px;"/>
+</section>
+
+
+<section style="text-align: left;">
+    <h3>Using published data...</h3>
+
+    Let's see how the analysis feels like to others:
+    <br><br>
+    <pre style="margin-left: 0;">
+        <code class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">cd ../
+datalad clone \
+   https://gin.g-node.org/adswa/example-analysis \
+   myclone</code>
+    </pre>
+
+    <div class="fragment">
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                cd myclone
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Get results:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad get prediction_report.csv
+            </code>
+        </pre>
+    </div>
+    <div class="fragment">
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad drop prediction_report.csv
+            </code>
+        </pre>
+    </div>
+
+    <div class="fragment">
+        Or recompute results:
+        <pre style="margin-left: 0;">
+            <code data-trim class="language-bash" onmousemove="showHover(event)" onmousedown="clickCopy(event)" onmouseleave="leaveElement(event)">
+                datalad rerun
+            </code>
+        </pre>
+    </div>
+</section>
+</section>
+
+<section>
+    <section>
+        <h3>The YODA principles</h3>
+    </section>
+
+    <section>
+  <h2>DataLad Datasets for data analysis</h2>
+
+  <ul style="font-size:30px">
+      <li>A DataLad dataset can have <i>any</i> structure, and use as many or few
+          features of a dataset as required.</li>
+
+      <li>However, for <b>data analyses</b> it is beneficial to make
+          use of DataLad features and structure datasets according to the <b>YODA principles</b>:</li>
+  </ul>
+
+  <img style="" data-src="../pics/yoda.png" height="200">
+  <dl style="font-size:30px">
+      <dt>P1: One thing, one dataset</dt>
+      <dt>P2: Record where you got it from, and where it is now</dt>
+      <dt>P3: Record what you did to it, and with what</dt>
+  </dl><br><br<br>
+                      <small>Find out more about the YODA principles in
+          <a href="http://handbook.datalad.org/en/latest/basics/101-127-yoda.html" target="_blank">
+              the handbook</a>, and more about structuring dataset at
+          <a href="https://psychoinformatics-de.github.io/rdm-course/02-structuring-data/index.html#example-structure-yoda-principles" target="_blank">
+              psychoinformatics-de.github.io/rdm-course/02-structuring-data</a>
+                         </small>
+    </section>
+
+    <section data-markdown style="font-size:30px">
+## P1: One thing, one dataset
+![](../pics/dataset_modules.png)
+
+- Create **modular** datasets: Whenever a particular collection of files could anyhow be useful in more
+  than one context (e.g. data), put them in their own dataset, and install it as
+  a subdataset.
+- Keep everything **structured**: Bundle all components of one analysis into one superdataset, and
+  within this dataset, separate code, data, output, execution environments.
+- Keep a dataset **self-contained**, with relative paths in scripts to subdatasets or files.
+  Do not use absolute paths.
+
+</section>
+
+<section style="font-size:30px" data-transition="None">
+<h2>Why Modularity?</h2>
+    <ul>
+        <li>1. Reuse and access management</li>
+        <li>2. Scalability</li>
+        <li>3. Transparency</li><br>
+
+Original:
+<pre><code class="sh" style="max-height:none" data-trim>
+/dataset
+├── sample1
+│   └── a001.dat
+├── sample2
+│   └── a001.dat
+...
+</code></pre>
+<div class="fragment">
+Without modularity, after applied transform (preprocessing, analysis, ...):
+<pre><code class="sh" style="max-height:none" data-trim>
+/dataset
+├── sample1
+│   ├── ps34t.dat
+│   └── a001.dat
+├── sample2
+│   ├── ps34t.dat
+│   └── a001.dat
+...
+</code></pre>
+Without expert/domain knowledge, no distinction between original and derived data
+    possible.
+</div>
+        </ul>
+</section>
+
+
+<section  style="font-size:30px" data-transition="None">
+<h2>Why Modularity?</h2>
+    <ul>
+        <li>3. Transparency</li><br>
+
+Original:
+<pre><code class="sh" style="max-height:none" data-trim>
+/raw_dataset
+├── sample1
+│   └── a001.dat
+├── sample2
+│   └── a001.dat
+...
+</code></pre>
+        <strong>With modularity</strong> after applied transform (preprocessing, analysis, ...)
+<pre><code class="sh" style="max-height:none" data-trim>
+/derived_dataset
+├── sample1
+│   └── ps34t.dat
+├── sample2
+│   └── ps34t.dat
+├── ...
+└── inputs
+    └── raw
+        ├── sample1
+        │   └── a001.dat
+        ├── sample2
+        │   └── a001.dat
+        ...
+</code></pre>
+Clearer separation of semantics, through use of pristine version of original dataset within a
+        <em>new, additional</em> dataset holding the outputs.</ul>
+</section>
+
+
+<section style="font-size:30px" data-transition="None" data-markdown><script type="text/template">
+## When to modularize?
+
+- Target audience is different
+  - public vs. private
+  - domain specific vs. domain general
+
+- Pace of evolution is different
+  - "factual" raw data vs. choices of (pre-)processing
+  - completed acquisition vs. ongoing study
+
+- Size impacts I/O and logistics
+  - Git can struggle with 1M+ files
+  - filesystems (licensing) can struggle with large numbers of inodes
+  - More infos: [Go Big or Go Home chapter](http://handbook.datalad.org/en/latest/beyond_basics/basics-scaling.html)
+
+- Legal/Access constraints
+  - personal vs. anonymized data
+
+<aside class="notes">
+Note to self
+</aside>
+</script>
+</section>
+
+<section style="font-size:30px" data-markdown data-transition="None">
+## P2: Record where you got it from, and where it is now
+![](../pics/data_origin.png)
+
+- **Link** individual datasets to declare data-dependencies (e.g. as subdatasets).
+- **Record data's origin** with appropriate commands, for example
+  to record access URLs for individual files obtained from (unstructured) sources "in the cloud".
+- Share and **publish** datasets for collaboration or back-up.
+
+</section>
+
+
+<section data-transition="None" style="font-size:30px">
+<h2>Dataset linkage</h2>
+<img data-src="../pics/dataset_linkage.png">
+<pre><code class="bash" style="font-size:115%;max-height:none">$ datalad clone --dataset . http://example.com/ds inputs/rawdata
+</code></pre>
+
+<pre><code class="diff" style="max-height:none">$ git diff HEAD~1
+diff --git a/.gitmodules b/.gitmodules
+new file mode 100644
+index 0000000..c3370ba
+--- /dev/null
++++ b/.gitmodules
+@@ -0,0 +1,3 @@
++[submodule "inputs/rawdata"]
++       path = inputs/rawdata
++       url = http://example.com/importantds
+diff --git a/inputs/rawdata b/inputs/rawdata
+new file mode 160000
+index 0000000..fabf852
+--- /dev/null
++++ b/inputs/rawdata
+@@ -0,0 +1 @@
++Subproject commit fabf8521130a13986bd6493cb33a70e580ce8572
+</code></pre>
+Each (sub)dataset is a separately, but jointly version-controlled entity.
+    If none of its data is retrieved, subdatasets are an extremely <strong>lightweight</strong> data dependency
+    and yet <strong>actionable</strong> (<strong>datalad get</strong> retrieves contents on demand)
+    <aside class="notes">weighs just a few bytes</aside>
+</section>
+
+    <section data-markdown style="font-size:30px">
+## P3: Record what you did to it, and with what
+![](../pics/dataset_linkage_provenance.png)
+
+- Collect and store **provenance** of all contents of a dataset that you create
+- "Which script produced which output?", "From which data?", "In which **software environment**?"
+  ... Record it in an ideally machine-readable way with **datalad (containers-)run**
+
+</section>
+</section>
+
+<section>
+    <section>
+        <h3>Take home messages</h3>
+        <dl>
+            <dt class="fragment fade-in-then-semi-out" data-fragment-index="1">
+                What does DataLad add to Git and git-annex?</dt>
+            <dd class="fragment fade-in-then-semi-out" data-fragment-index="2">
+                Simple(r) core API to unify Git and git-annex functionality</dd>
+            <dd class="fragment fade-in-then-semi-out" data-fragment-index="3">
+                Ability to record provenance</dd>
+            <dd class="fragment fade-in-then-semi-out" data-fragment-index="4">
+                Support for software container solutions (Singularity, Docker)</dd>
+            <dd class="fragment fade-in-then-semi-out" data-fragment-index="5">
+                Subdatasets and linkage with a mono-repo-like user-experience</dd>
+            <dd class="fragment fade-in-then-semi-out" data-fragment-index="6">
+                Interoperability adapters to publish to a variety of hosting services</dd>
+             <dd class="fragment fade-in-then-semi-out" data-fragment-index="6">
+                Open Data Distribution: To date, more than 600TB of open neuro data are available via
+                via <a href="https://datasets.datalad.org" target="_blank">datasets.datalad.org</a>
+             </dd>
+        </dl>
+    </section>
+</section>
+
+<section>
+<section>
+    <h2>Thank you for your attention!</h2>
+
+    <img src="../pics/qr_hidarepro.png" height="400">
+<br><br><small>
+
+        Slides: <a href="https://doi.org/10.5281/zenodo.10118794" target="_blank">
+    DOI 10.5281/zenodo.10118794</a> (Scan the QR code)
+    <br><br>
+    </small>
+    <table>
+        <tr>
+        </tr>
+        <tr style="vertical-align:middle">
+         <td style="vertical-align:middle">
+             <img src="../pics/winrepo.png">
+         </td>
+            <td style="font-size: 18px">
+                <br><br>
+                Women neuroscientists are <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ejn.14397" target="_blank">
+                underrepresented in neuroscience</a>. You can use the <br>
+                <a href="https://www.winrepo.org/" target="_blank"> Repository for Women in Neuroscience</a> to find
+                and recommend neuroscientists for <br>
+                conferences, symposia or collaborations, and help making neuroscience more open & divers.
+            </td>
+        </tr>
+
+    </table>
+</section>
+
+</section>
+
+
+
+<section>
+    <section>
+        <h3>Command summaries</h3>
+    </section>
+
+    <section>
+      <h3>Summary - Local version control</h3>
+
+  <dl>
+        <dt class="fragment fade-in"><code>datalad create</code> creates an empty dataset.</dt>
+      <dd class="fragment fade-in">Configurations (<b>-c yoda</b>, <b>-c text2git</b>)
+          add useful structure and/or configurations.</dd>
+        <br>
+        <dt class="fragment fade-in">A dataset has a <i>history</i> to track files and their modifications. </dt><dd class="fragment fade-in">Explore it with Git (<b>git log</b>) or external tools (e.g., <b>tig</b>).</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad save</code> records the dataset or file state to the history. </dt><dd class="fragment fade-in">Concise <b>commit messages</b> should summarize the change for future you and others.</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad download-url</code> obtains web content and records its origin. </dt><dd class="fragment fade-in">It even takes care of saving the change.</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad status</code> reports the current state of the dataset.</dt>
+      <dd class="fragment fade-in">A clean dataset status (no modifications, not untracked files) is good practice.</dd>
+      </dl>
+  </section>
+
+  <section>
+      <h3>Summary - Dataset consumption & nesting</h3>
+
+      <ul>
+        <dt class="fragment fade-in"><code>datalad clone</code> installs a dataset.</dt><dd class="fragment fade-in"> It can be installed “on its own”:
+        Specify the source (url, path, ...) of the dataset, and an optional <b>path</b> for it to be installed to.</dd>
+        <br>
+        <dt class="fragment fade-in">Datasets can be installed as subdatasets within an existing dataset. </dt> <dd class="fragment fade-in"> The <b>--dataset/-d</b> option needs a path to the root of the superdataset.</dd>
+        <br>
+        <dt class="fragment fade-in">Only small files and metadata about file availability are present locally after an install. </dt>
+          <dd class="fragment fade-in">To retrieve actual file content of annexed files,
+              <code>datalad get </code> downloads file content on demand.</dd>
+        <br>
+        <dt class="fragment fade-in">Datasets preserve their history.</dt> <dd class="fragment fade-in">The superdataset records only the <i>version state</i> of the subdataset.</dd>
+
+      </ul>
+  </section>
+
+
+  <section>
+      <h3>Summary - Reproducible execution</h3>
+
+      <ul>
+        <dt class="fragment fade-in"><code>datalad run</code> records a command and
+            its impact on the dataset.</dt>
+          <dd class="fragment fade-in">All dataset modifications are saved - use it
+              in a clean dataset.</dd>
+        <br>
+        <dt class="fragment fade-in">Data/directories specified as <code>--input</code>
+            are retrieved prior to command execution.</dt>
+          <dd class="fragment fade-in"> Use one flag per input.</dd>
+        <br>
+        <dt class="fragment fade-in">Data/directories specified as <code>--output</code>
+            will be unlocked for modifications prior to a rerun of the command. </dt>
+          <dd class="fragment fade-in">Its optional to specify, but helpful for recomputations.</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad containers-run</code> can be used
+            to capture the software environment as provenance.</dt>
+          <dd class="fragment fade-in">Its ensures computations are ran in the desired software set up.
+              Supports Docker and Singularity containers</dd>
+        <br>
+        <dt class="fragment fade-in"><code>datalad rerun</code> can automatically re-execute run-records later.</dt>
+          <dd class="fragment fade-in">They can be identified with any commit-ish (hash, tag, range, ...)</dd>
+
+      </ul>
+  </section>
+
+
+
+</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="../custom_functions.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280,
+				height: 960,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.3,
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: 'c',
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				pdfPageHeightOffset: -1,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
